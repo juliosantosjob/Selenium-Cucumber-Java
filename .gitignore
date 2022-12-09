@@ -1,0 +1,5 @@
+target
+.idea
+allure-report
+allure-results
+Env.properties
