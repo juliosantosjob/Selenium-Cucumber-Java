@@ -35,6 +35,7 @@ public class DriverDefinition {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions optChrome = new ChromeOptions();
                 optChrome.addArguments("--headless");
+                optChrome.addArguments("--window-size=1920x1080");
                 driver = new ChromeDriver(optChrome);
                 break;
 
@@ -42,6 +43,7 @@ public class DriverDefinition {
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions optEdge = new EdgeOptions();
                 optEdge.addArguments("headless");
+                optEdge.addArguments("--window-size=1920x1080");
                 driver = new EdgeDriver(optEdge);
                 break;
 
