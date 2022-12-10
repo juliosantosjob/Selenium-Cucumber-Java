@@ -15,7 +15,7 @@
         <junit.version>4.13.2</junit.version>
         <selenium.version>4.3.0</selenium.version>
         <cucumber.version>7.3.3</cucumber.version>
-        <webdriverm.version>5.3.1</webdriverm.version>
+        <webdrivermng.version>5.3.1</webdrivermng.version>
         <allure.version>2.19.0</allure.version>
     </properties>
 
