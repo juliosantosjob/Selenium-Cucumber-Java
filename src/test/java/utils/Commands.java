@@ -54,7 +54,7 @@ public class Commands extends DriverDefinition {
      * @param elementBy
      */
 
-    public static void waitForElementToDisappear(By elementBy) {
+    public static void waitElementDisappear(By elementBy) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
     }

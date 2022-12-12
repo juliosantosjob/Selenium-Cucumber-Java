@@ -37,7 +37,7 @@ public class BuyProductActions extends BuyProductPages {
 
     public void addProductCart() {
         realClick(btnAddToCart);
-//        waitForElementToDisappear(fldShow);
+        waitElementDisappear(fldShow);
         realClick(btnBag);
     }
 

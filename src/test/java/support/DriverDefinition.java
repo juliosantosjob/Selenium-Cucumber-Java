@@ -25,7 +25,9 @@ public class DriverDefinition {
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    ChromeOptions opt = new ChromeOptions();
+                    opt.addArguments("--window-size=1920x1080");
+                    driver = new ChromeDriver(opt);
                     break;
 
                 case "edge":
