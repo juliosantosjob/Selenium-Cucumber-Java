@@ -95,7 +95,13 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 <p>
 
-- Por fim, se desejar executar o projeto utilizando o Maven, basta rodar no terminal do projeto o comando:
+- Por fim, para instalar as dependencias do projeto utilizando o Maven rode o comando.
+
+````
+ mvn install -DENV=hmg -DBROWSER=chrome
+````
+
+- se desejar executar o projeto utilizando o Maven, basta rodar no terminal o comando:
 
 ````
  mvn test -DENV=hmg -DBROWSER=chrome
