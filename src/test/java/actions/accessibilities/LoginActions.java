@@ -14,7 +14,7 @@ import static utils.Commands.*;
 
 public class LoginActions extends LoginPages {
     protected WebDriver driver;
-    protected String title;
+    protected String pageTitle;
 
     public LoginActions(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -22,10 +22,10 @@ public class LoginActions extends LoginPages {
     }
 
     public void goHome() {
-        title = driver.getTitle();
-        assertEquals("QAZANDO Shop E-Commerce", title);
-        waitForElement(fldLogin, 5).isDisplayed();
-        contains(fldLogin, "Login");
+        pageTitle = driver.getTitle();
+        assertEquals("QAZANDO Shop E-Commerce", pageTitle);
+        waitForElement(fldWebsiteHeader, 5).isDisplayed();
+        contains(fldWebsiteHeader, "Promoções especiais disponíveis.");
     }
 
     public void accessLoginPage() {

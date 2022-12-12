@@ -19,7 +19,7 @@ public class RegistrationActions extends RegistrationPages {
     }
 
     public void accessRegistrationPage() {
-        isEnable(btnRegistration).click();
+        btnRegistration.click();
         contains(titleForm, "Cadastro de usuário");
     }
 

@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPages {
 
-    @FindBy(css = "ul[class='right_list_fix']")
-    protected WebElement fldLogin;
+    @FindBy(css = ".top_header_left")
+    protected WebElement fldWebsiteHeader;
 
     @FindBy(css = "i[class='fa fa-user']")
     protected WebElement btnLogin;
