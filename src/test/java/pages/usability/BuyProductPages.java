@@ -24,7 +24,7 @@ public class BuyProductPages {
     protected WebElement btnBag;
 
 
-    @FindBy(css = "#offcanvas-add-cart")
+    @FindBy(xpath = "(//*[@class='offcanvas-wishlist-item-single'])[4]")
     protected WebElement pageCart;
 
     @FindBy(css = "a[class='theme-btn-one btn-black-overlay btn_md']")

@@ -44,7 +44,6 @@ public class BuyProductActions extends BuyProductPages {
     public void seeProductInCart() {
         DataItem = "T-Shirt For Men";
         waitForElement(pageCart, 10);
-        scrollTo(pageCart);
         contains(pageCart, DataItem);
     }
 

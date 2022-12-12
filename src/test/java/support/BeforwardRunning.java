@@ -36,7 +36,7 @@ public class BeforwardRunning extends DriverDefinition {
 
     public void addSettings() {
         if (driver != null) {
-            driver.manage().window().setSize(new Dimension(2200, 1080));
+            driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             driver.get(urlBase());
         }
