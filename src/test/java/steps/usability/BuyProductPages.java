@@ -23,7 +23,7 @@ public class BuyProductPages extends DriverDefinition {
     }
 
     @Dado("faça o checkout da sua compra")
-    public void faça_o_checkout_da_sua_compra() {
+    public void faca_o_checkout_da_sua_compra() {
         buyProduct.checkoutProduct();
     }
 
@@ -35,7 +35,7 @@ public class BuyProductPages extends DriverDefinition {
     }
 
     @Então("sua compra é feita com sucesso")
-    public void sua_compra_é_feita_com_sucesso() {
+    public void sua_compra_e_feita_com_sucesso() {
         assertVisible(buyProduct.modalSuccess());
         contains(buyProduct.modalSuccess(), "Order success!");
         contains(buyProduct.modalSuccess(), "Congrats! Your order was created with sucess!");

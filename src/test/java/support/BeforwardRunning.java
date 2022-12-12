@@ -28,7 +28,7 @@ public class BeforwardRunning extends DriverDefinition {
                 getUrl = System.getenv("URL_STG");
                 break;
             default:
-                throw new IllegalArgumentException("Invalid Environments!");
+                throw new IllegalArgumentException("Invalid environment argument!");
         }
         return getUrl;
     }
@@ -36,7 +36,7 @@ public class BeforwardRunning extends DriverDefinition {
     public void addSettings() {
         if (driver != null) {
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             driver.get(urlBase());
         }
     }

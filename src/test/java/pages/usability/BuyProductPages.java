@@ -1,5 +1,6 @@
 package pages.usability;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -15,9 +16,6 @@ public class BuyProductPages {
 
     @FindBy(css = ".product_wrappers_one")
     protected List<WebElement> product;
-
-    @FindBy(css = "[class='fa fa-shopping-bag']")
-    protected List<WebElement> btnCart;
 
     @FindBy(css = "a[class='theme-btn-one btn-black-overlay btn_sm']")
     protected WebElement btnAddToCart;
@@ -51,9 +49,6 @@ public class BuyProductPages {
     @FindBy(css = "#country")
     protected WebElement optCountry;
 
-    @FindBy(css = "#city")
-    protected WebElement optCity;
-
     @FindBy(css = "#zip")
     protected WebElement fldZip;
 
@@ -72,4 +67,6 @@ public class BuyProductPages {
 
     @FindBy(css = "div[class='newsleetre_modal modal-body']")
     protected WebElement modalSuccess;
+
+    protected By fldShow = By.xpath("(//*[contains(@class, '-show')])[4]");
 }

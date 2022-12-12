@@ -24,14 +24,14 @@ public class LoginSteps extends DriverDefinition {
     }
 
     @Então("ele é logado com sucesso")
-    public void ele_é_logado_com_sucesso() {
+    public void ele_e_logado_com_sucesso() {
         assertVisible(login.popupLoginSuccess());
         contains(login.popupLoginSuccess(), "Login realizado");
         contains(login.isLoggedIn(), "Acompanhe seu pedido");
     }
 
     @Então("ele vê {string}")
-    public void ele_vê(String msgOutput) {
+    public void ele_ve(String msgOutput) {
         assertVisible(login.errorMessages());
         assertive(login.errorMessages(), msgOutput);
     }

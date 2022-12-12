@@ -1,17 +1,16 @@
 package utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import support.DriverDefinition;
 
 import java.time.Duration;
+import java.util.Iterator;
 
 import static java.lang.System.out;
+import static org.apache.commons.io.FileUtils.waitFor;
+import static org.apache.commons.lang3.ObjectUtils.wait;
 
 public class Commands extends DriverDefinition {
 
@@ -47,6 +46,17 @@ public class Commands extends DriverDefinition {
             out.println("Unable to wait for element!");
         }
         return webElement;
+    }
+
+    /**
+     * Wait for element to become invisible.
+     *
+     * @param elementBy
+     */
+
+    public static void waitForElementToDisappear(By elementBy) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
     }
 
     /**

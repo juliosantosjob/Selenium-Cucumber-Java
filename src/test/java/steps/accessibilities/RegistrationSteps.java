@@ -23,7 +23,7 @@ public class RegistrationSteps extends DriverDefinition {
     }
 
     @Então("ele vê a mensagem de sucesso: {string}")
-    public void ele_vê_a_mensagem_de_sucesso(String messageRegistDone) {
+    public void ele_ve_a_mensagem_de_sucesso(String messageRegistDone) {
         contains(register.popup(), messageRegistDone);
     }
 
@@ -38,7 +38,7 @@ public class RegistrationSteps extends DriverDefinition {
     }
 
     @Então("ele vê a mensagem: {string}")
-    public void ele_vê_a_mensagem(String message) {
+    public void ele_ve_a_mensagem(String message) {
         assertive(register.seeMessage(), message);
     }
 }
