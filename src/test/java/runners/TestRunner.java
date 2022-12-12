@@ -6,9 +6,11 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "@regression",
+        tags = "@buy_product",
         features = {"src/test/resources/features"},
         plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-        glue = {"steps"}
+        glue = {"steps"},
+        monochrome = false,
+        dryRun = false
     )
 public class TestRunner {}

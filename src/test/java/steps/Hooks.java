@@ -28,9 +28,9 @@ public class Hooks extends DriverDefinition {
 
     @After
     public void goBack() {
-        out.println("*******************************");;
+        out.println("***************************");
         out.println("Finishing Test Execution...");
-        out.println("*******************************");;
+        out.println("***************************");
         out.println(" ");
         driver.quit();
     }

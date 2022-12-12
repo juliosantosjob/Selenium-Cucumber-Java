@@ -5,8 +5,14 @@
   desenvolvido utilizando as boas práticas dos padrões Page Objects e Page factory, e para exemplificar boas práticas de
   segurança a URL Base do projeto foi inserida em uma variável secrets como uma maneira de guardar dados sensíveis. Para
   execuções dos testes em CI foi utilizado o GitHub Actions, e para visualizar em tempo real o resultado dos testes,
-  foi implementado uma ação no github actions que irá publicar os resultados da execução em uma pagina estática no Github 
-  Pages, é possível visualizar o resultado da última execução acessando o link: https://juliosantosjob.github.io/Selenium-Framework
+  foi implementado uma ação no github actions que irá publicar os resultados da execução em uma pagina estática no
+  Github Pages, é possível visualizar o resultado da última execução acessando o
+  link: https://juliosantosjob.github.io/Selenium-Framework
+
+<p>
+
+- Para executar este projeto acesse o caminho docs/Execute.md, dentro deste aquivo existe um passo a passo para
+  configuração do ambiente e execução deste projeto.
 
 <p>
 
