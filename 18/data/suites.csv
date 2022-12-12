@@ -1,0 +1,13 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Dec 12 20:16:00 GMT 2022","Mon Dec 12 20:16:09 GMT 2022","8853","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon Dec 12 20:16:09 GMT 2022","Mon Dec 12 20:16:16 GMT 2022","6844","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon Dec 12 20:16:21 GMT 2022","Mon Dec 12 20:16:39 GMT 2022","17360","","Comprar de produtos","","Compra de um produto","","Compra de um produto","  - Eu como usuario devo poder realizar a compra de um produto de minha escolha no site."
+"passed","Mon Dec 12 20:15:40 GMT 2022","Mon Dec 12 20:15:45 GMT 2022","4477","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon Dec 12 20:16:16 GMT 2022","Mon Dec 12 20:16:21 GMT 2022","5464","","Steps de suporte","","Login suporte","","Login suporte","  - Esta feature tem como objetivo dar suporte para outros cenarios que tenha
+  como premissa realizar login no aplicativo."
+"passed","Mon Dec 12 20:15:27 GMT 2022","Mon Dec 12 20:15:31 GMT 2022","4352","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Mon Dec 12 20:14:45 GMT 2022","Mon Dec 12 20:15:18 GMT 2022","32902","","Login","","Login sucesso","","Login sucesso","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Mon Dec 12 20:15:53 GMT 2022","Mon Dec 12 20:16:00 GMT 2022","6857","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon Dec 12 20:15:45 GMT 2022","Mon Dec 12 20:15:53 GMT 2022","8359","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon Dec 12 20:15:31 GMT 2022","Mon Dec 12 20:15:40 GMT 2022","9256","","Cadastro de usuario","","Cadastro com sucesso","","Cadastro com sucesso","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon Dec 12 20:15:18 GMT 2022","Mon Dec 12 20:15:27 GMT 2022","8541","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
