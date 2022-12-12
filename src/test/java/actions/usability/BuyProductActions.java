@@ -42,9 +42,7 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void seeProductInCart() {
-        DataItem = "T-Shirt For Men";
         waitForElement(pageCart, 10);
-        contains(pageCart, DataItem);
     }
 
     public void checkoutProduct() {
