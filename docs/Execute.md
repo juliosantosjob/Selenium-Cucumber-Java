@@ -19,7 +19,7 @@
 
 <p>
 
-- Baixe e instale a IDE de sua preferência para rodar o projeto, eu indico o
+- Baixe e instale a IDE de sua preferência para rodar o projeto, eu utilizo o
   <a href="https://www.jetbrains.com/idea/download/#section=windows">
   IntelliJ</a>)
 
@@ -95,13 +95,13 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 <p>
 
-- Por fim, para instalar as dependencias do projeto utilizando o Maven rode o comando.
+- Por fim, para instalar as dependencias do projeto utilizando o Maven rode o comando:
 
 ````
  mvn install -DENV=hmg -DBROWSER=chrome
 ````
 
-- se desejar executar o projeto utilizando o Maven, basta rodar no terminal o comando:
+- Se desejar executar o projeto utilizando o Maven, rode o comando:
 
 ````
  mvn test -DENV=hmg -DBROWSER=chrome
