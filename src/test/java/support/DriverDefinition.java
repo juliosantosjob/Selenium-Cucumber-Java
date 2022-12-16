@@ -34,11 +34,6 @@ public class DriverDefinition {
                     driver = new EdgeDriver();
                     break;
 
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions optChrome = new ChromeOptions();
