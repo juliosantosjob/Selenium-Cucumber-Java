@@ -11,12 +11,12 @@ public class Hooks extends DriverDefinition {
 
     @Before
     public void go(Scenario scenario) throws Exception {
-        out.println("*************************************************");;
+        out.println("*************************************************");
         out.println("Starting Test Execution...");
         out.println("Running Scenario: [" +  scenario.getName() + "]");
         out.println("Scenario Status: [" +  scenario.getStatus() +  "]");
         out.println("Execution Tag: " +  scenario.getSourceTagNames());
-        out.println("*************************************************");;
+        out.println("*************************************************");
         driverDefinition().browserConfig();
         beforwardRunning().addSettings();
     }
