@@ -38,10 +38,10 @@ public class BuyProductPages {
 
     @FindBy(css = "#lname")
     protected WebElement fldLastName;
+    
 
     @FindBy(css = "#cname")
     protected WebElement fldCompany;
-
 
     @FindBy(css = "#email")
     protected WebElement fldEmail;
@@ -54,10 +54,10 @@ public class BuyProductPages {
 
     @FindBy(css = "#faddress")
     protected WebElement fldAdress;
+    
 
     @FindBy(css = "#messages")
     protected WebElement fldAdditionalNotes;
-
 
     @FindBy(xpath = "(//*[@class='theme-btn-one btn-black-overlay btn_sm'])[1]")
     protected WebElement btnSave;
