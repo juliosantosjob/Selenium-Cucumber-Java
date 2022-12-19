@@ -11,7 +11,7 @@
 
 <p>
 
-- Para executar este projeto acesse o caminho docs/Execute.md, dentro deste aquivo existe um passo a passo para
+- Para executar este projeto acesse o caminho docs/Execute.md, dentro deste arquivo existe um passo a passo para
   configuração do ambiente e execução deste projeto.
 
 <p>
@@ -34,4 +34,3 @@
 [<img src = "https://img.shields.io/badge/facebook-%231877F2.svg?&style=for-the-badge&logo=facebook&logoColor=white">](https://www.facebook.com/profile.php?id=100003793058455)
 <a href="mailto:julio958214@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank">
 </a>
-
