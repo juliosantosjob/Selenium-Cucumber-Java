@@ -33,7 +33,7 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 <p>
 
-- Abra o projeto pela IDE, e vá até o aquivo pom.xml, clique no botão maven para instalar as dependencias do projeto.
+- Abra o projeto pela IDE, e vá até o arquivo pom.xml, clique no botão maven para instalar as dependências do projeto.
 
 <p>
 
@@ -41,31 +41,31 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 <p>
 
-- No caminho <strong>"src/test/java/environments/resources"</strong> existe um aquivo chamado <strong>
+- No caminho <strong>"src/test/java/environments/resources"</strong> existe um arquivo chamado <strong>
   Env.properties.example</strong>, ele serve como base para informar qual URL o teste deve apontar, então
-  no lugar de <strong>Env.properties.example</strong> crie um aquivo chamado <strong>Env.properties
+  no lugar de <strong>Env.properties.example</strong> crie um arquivo chamado <strong>Env.properties
   </strong> e informe nele a url base utilizada para automação deste projeto que seria:
   <a href="http://automationpratice.com.br/">
   SiteQazando</a>,
-  (Esta url não foi adicionada ao código para explificar boas praticas utilizando o secrets do Github).
+  (Esta url não foi adicionada ao código para exemplificar boas praticas utilizando o secrets do Github).
 
 <p>
 
-### Examplo:
+### Example:
 
 ![alt text](images/Screenshot_2.png)
 
 - Agora vá até o caminho <strong>"src/test/java/runners/TestRunner.java"</strong> e execute a classe TestRunner, logo de
-  incio ele apresentará um erro, porém não tem problema, siga para o próximo passo.
+  início ele apresentará um erro, porém não tem problema, siga para o próximo passo.
 
 <p>
 
-- Em seguida va até o <strong>"Select/Run"</strong> da IDE, clique em <strong>"Edit Configuration"</strong> e passe o
+- Em seguida vá até o <strong>"Select/Run"</strong> da IDE, clique em <strong>"Edit Configuration"</strong> e passe o
   seguinte
   comando:
 
 ````
- -DENV=hmg -DBROWSER=chrome
+ -ea -DENV=hmg -DBROWSER=chrome
 ````
 
 <p>
@@ -76,13 +76,13 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 ### Parâmetros de execução.
 
-(Obs: para informar um parâmetro é necessario passar o "-D" antes do que deseja informar).
+(Obs: para informar um parâmetro é necessário passar o "-D" antes do que deseja informar).
 
 <p>
 
 - No parâmetro ENV você deve informar em qual ambiente deseja executar os testes, neste caso seria homologação
   (deixei a opção de stage para exemplificar caso houvesse um segundo ambiente).<p>
-  examplo:<strong> -DENV=hmg</strong> ou <strong> -DENV=stg</strong>.
+  example:<strong> -DENV=hmg</strong> ou <strong> -DENV=stg</strong>.
   para rodar o projeto no Github Actions é obrigatório passar: <strong>-DENV=hmg-actions</strong> ou <strong>
   -DENV=stg-actions</strong>
 
@@ -90,12 +90,12 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 - No parâmetro BROWSER você pode escolher qual o navegador deseja para a execução, para informa-lo apenas passe o nome
   do navegador em caixa baixa,
-  <p>examplo: <strong>-DBROWSER=chrome</strong> ou <strong>-DBROWSER=edge</strong>
+  <p>example: <strong>-DBROWSER=chrome</strong> ou <strong>-DBROWSER=edge</strong>
   (Este projeto foi estruturado para rodar somente nos navegadores Chrome e Edge).
 
 <p>
 
-- Por fim, para instalar as dependencias do projeto utilizando o Maven rode o comando:
+- Por fim, para instalar as dependências  do projeto utilizando o Maven rode o comando:
 
 ````
  mvn install -DENV=hmg -DBROWSER=chrome
