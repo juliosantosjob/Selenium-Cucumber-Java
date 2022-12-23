@@ -1,0 +1,13 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Dec 23 02:38:21 GMT 2022","Fri Dec 23 02:38:43 GMT 2022","21963","","Login","","Login sucesso","","Login sucesso","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Fri Dec 23 02:39:24 GMT 2022","Fri Dec 23 02:39:32 GMT 2022","8443","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Fri Dec 23 02:38:43 GMT 2022","Fri Dec 23 02:38:48 GMT 2022","4205","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Fri Dec 23 02:39:32 GMT 2022","Fri Dec 23 02:39:40 GMT 2022","7674","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Fri Dec 23 02:39:16 GMT 2022","Fri Dec 23 02:39:24 GMT 2022","7593","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Fri Dec 23 02:39:02 GMT 2022","Fri Dec 23 02:39:10 GMT 2022","7689","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Fri Dec 23 02:38:53 GMT 2022","Fri Dec 23 02:39:02 GMT 2022","9294","","Cadastro de usuario","","Cadastro com sucesso","","Cadastro com sucesso","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Fri Dec 23 02:39:10 GMT 2022","Fri Dec 23 02:39:16 GMT 2022","6572","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Fri Dec 23 02:39:48 GMT 2022","Fri Dec 23 02:40:07 GMT 2022","18835","","Comprar de produtos","","Compra de um produto","","Compra de um produto","  - Eu como usuario devo poder realizar a compra de um produto de minha escolha no site."
+"passed","Fri Dec 23 02:38:48 GMT 2022","Fri Dec 23 02:38:53 GMT 2022","4967","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Fri Dec 23 02:39:40 GMT 2022","Fri Dec 23 02:39:48 GMT 2022","7949","","Steps de suporte","","Login suporte","","Login suporte","  - Esta feature tem como objetivo dar suporte para outros cenarios que tenha
+  como premissa realizar login no aplicativo."
