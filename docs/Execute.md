@@ -1,27 +1,27 @@
 ## Execução do projeto local
 
-- Para executar este projeto é necessário ter o JDK 11 ou superior instalado em sua máquina.
+- Para executar este projeto é necessário ter o JDK 11 ou superior instalado em sua máquina
   (Download: <a href="https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html">
-  Link</a>)
+  Link</a>).
 
 <p>
 
-- Baixe o Maven na ultima versão.
+- Baixe a última versão do Maven
   (Download: <a href="https://maven.apache.org/download.cgi">
-  Link</a>)
+  Link</a>).
 
 <p>
 
-- Configure o JAVA_HOME e o MAVEN_HOME em sua maquina.
+- Configure o JAVA_HOME e o MAVEN_HOME em sua maquina
   (Artigo de apoio para esta configuração:
   <a href="https://medium.com/beelabacademy/configurando-vari%C3%A1veis-de-ambiente-java-home-e-maven-home-no-windows-e-unix-d9461f783c26">
-  Link</a>)
+  Link</a>).
 
 <p>
 
-- Baixe e instale a IDE de sua preferência para rodar o projeto, (eu utilizo o
+- Baixe e instale a IDE de sua preferência para rodar o projeto (eu utilizo o
   <a href="https://www.jetbrains.com/idea/download/#section=windows">
-  IntelliJ</a>)
+  IntelliJ</a>).
 
 <p>
 
