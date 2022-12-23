@@ -19,7 +19,7 @@
 
 <p>
 
-- Baixe e instale a IDE de sua preferência para rodar o projeto, eu utilizo o
+- Baixe e instale a IDE de sua preferência para rodar o projeto, (eu utilizo o
   <a href="https://www.jetbrains.com/idea/download/#section=windows">
   IntelliJ</a>)
 
