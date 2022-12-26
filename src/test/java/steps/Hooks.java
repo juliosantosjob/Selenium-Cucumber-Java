@@ -10,7 +10,7 @@ import static utils.Screenshots.takingScreenshot;
 public class Hooks extends DriverDefinition {
 
     @Before
-    public void go(Scenario scenario) throws Exception {
+    public void go(Scenario scenario) {
         out.println("*************************************************");
         out.println("Starting Test Execution...");
         out.println("Running Scenario: [" +  scenario.getName() + "]");

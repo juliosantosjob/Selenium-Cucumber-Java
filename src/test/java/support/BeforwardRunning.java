@@ -1,7 +1,6 @@
 package support;
 
 import java.time.Duration;
-import org.openqa.selenium.Dimension;
 
 import static environments.setup.Env.env;
 import static java.lang.System.getProperty;
