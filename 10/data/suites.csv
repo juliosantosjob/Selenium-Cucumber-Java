@@ -1,4 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Mon Dec 12 16:51:47 GMT 2022","Mon Dec 12 16:52:17 GMT 2022","30040","","Login","","Login sucesso","","Login sucesso","  - Eu como usuario devo poder realizar login na plataforma."
-"passed","Mon Dec 12 16:52:17 GMT 2022","Mon Dec 12 16:52:26 GMT 2022","8346","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
-"passed","Mon Dec 12 16:52:26 GMT 2022","Mon Dec 12 16:52:35 GMT 2022","8946","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
