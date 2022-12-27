@@ -1,6 +1,6 @@
 # Selenium-Framework
 
-- Este projeto foi criado para fins de estudo, seu foco está em criar um framework de automação e2e utilizando Selenium
+- Este projeto foi criado para fins de estudo, seu foco está em criar um framework de automação e2e utilizando Selenium,
   Cucumber e Java, e para a visualização do resultado da execução dos testes foi implementado o Allure Report. O projeto foi
   desenvolvido utilizando as boas práticas dos padrões Page Objects e Page factory, e para exemplificar boas práticas de
   segurança a URL Base do projeto foi inserida em uma variável secrets como uma maneira de guardar dados sensíveis. Para
