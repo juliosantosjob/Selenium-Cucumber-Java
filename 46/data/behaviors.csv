@@ -1,0 +1,7 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","Cadastro de usuario","Envio de formulario com email invalido","0","0","5","0","0"
+"","Login","Cenarios alternativas para login","0","0","2","0","0"
+"","Login","Login sucesso","0","0","1","0","0"
+"","Comprar de produtos","Compra de um produto","0","0","1","0","0"
+"","Cadastro de usuario","Cadastro com sucesso","0","0","1","0","0"
+"","Steps de suporte","Login suporte","0","0","1","0","0"
