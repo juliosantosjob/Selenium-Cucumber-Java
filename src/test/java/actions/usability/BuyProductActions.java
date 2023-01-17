@@ -1,29 +1,24 @@
 package actions.usability;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.usability.BuyProductPages;
 
-import static java.lang.System.out;
 import static utils.Asserts.*;
 import static utils.Commands.*;
 import static utils.DynamicMass.*;
 
 public class BuyProductActions extends BuyProductPages {
     static String DataItem;
-    private final WebDriver driver;
 
     public BuyProductActions(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     public void searchForProduct(String item) {
         DataItem = item;
-
         realClick(btnSearch);
         isEnable(fldSearch).sendKeys(DataItem, Keys.ENTER);
         clickText("OK");

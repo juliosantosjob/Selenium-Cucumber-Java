@@ -6,11 +6,8 @@ import org.openqa.selenium.support.ui.*;
 import support.DriverDefinition;
 
 import java.time.Duration;
-import java.util.Iterator;
 
 import static java.lang.System.out;
-import static org.apache.commons.io.FileUtils.waitFor;
-import static org.apache.commons.lang3.ObjectUtils.wait;
 
 public class Commands extends DriverDefinition {
 

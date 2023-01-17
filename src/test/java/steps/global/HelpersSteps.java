@@ -5,7 +5,6 @@ import actions.accessibilities.LoginActions;
 import io.cucumber.java.pt.*;
 import support.DriverDefinition;
 
-import static environments.setup.DataMass.dataMass;
 import static utils.Asserts.*;
 
 public class HelpersSteps extends DriverDefinition {
@@ -18,7 +17,7 @@ public class HelpersSteps extends DriverDefinition {
     }
 
     @E("faça login com {string} e {string}")
-    public void o_login_com_e_a(String email, String passwd) {
+    public void faca_login_com_e_(String email, String passwd) {
         login.accessLoginPage();
         helper.fillEmailPassword(email, passwd);
         contains(login.isLoggedIn(), "Acompanhe seu pedido");

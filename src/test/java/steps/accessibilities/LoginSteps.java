@@ -1,13 +1,11 @@
 package steps.accessibilities;
 
 import actions.accessibilities.LoginActions;
-import actions.accessibilities.RegistrationActions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.pt.*;
 import support.DriverDefinition;
 
 import static utils.Asserts.*;
-import static utils.Commands.*;
 
 public class LoginSteps extends DriverDefinition {
     LoginActions login = new LoginActions(driver);

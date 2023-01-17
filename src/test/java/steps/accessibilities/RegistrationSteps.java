@@ -1,13 +1,11 @@
 package steps.accessibilities;
 
-import actions.global.HelpersActions;
 import actions.accessibilities.RegistrationActions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.pt.*;
 import support.DriverDefinition;
 
 import static utils.Asserts.*;
-import static utils.Commands.*;
 
 public class RegistrationSteps extends DriverDefinition {
     RegistrationActions register = new RegistrationActions(driver);
