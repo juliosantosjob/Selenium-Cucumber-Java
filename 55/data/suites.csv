@@ -1,0 +1,13 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Jan 17 12:16:33 GMT 2023","Tue Jan 17 12:16:41 GMT 2023","8410","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Tue Jan 17 12:16:04 GMT 2023","Tue Jan 17 12:16:13 GMT 2023","8639","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Tue Jan 17 12:17:17 GMT 2023","Tue Jan 17 12:17:26 GMT 2023","9039","","Steps de suporte","","Login suporte","","Login suporte","  - Esta feature tem como objetivo dar suporte para outros cenarios que tenha
+  como premissa realizar login no aplicativo."
+"passed","Tue Jan 17 12:17:26 GMT 2023","Tue Jan 17 12:17:48 GMT 2023","22703","","Comprar de produtos","","Compra de um produto","","Compra de um produto","  - Eu como usuario devo poder realizar a compra de um produto de minha escolha no site."
+"passed","Tue Jan 17 12:16:58 GMT 2023","Tue Jan 17 12:17:07 GMT 2023","8516","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Tue Jan 17 12:16:50 GMT 2023","Tue Jan 17 12:16:58 GMT 2023","8437","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Tue Jan 17 12:16:41 GMT 2023","Tue Jan 17 12:16:50 GMT 2023","8566","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Tue Jan 17 12:17:07 GMT 2023","Tue Jan 17 12:17:17 GMT 2023","9523","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Tue Jan 17 12:16:22 GMT 2023","Tue Jan 17 12:16:33 GMT 2023","10550","","Cadastro de usuario","","Cadastro com sucesso","","Cadastro com sucesso","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Tue Jan 17 12:16:13 GMT 2023","Tue Jan 17 12:16:22 GMT 2023","9470","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Tue Jan 17 12:15:44 GMT 2023","Tue Jan 17 12:16:04 GMT 2023","20536","","Login","","Login sucesso","","Login sucesso","  - Eu como usuario devo poder realizar login na plataforma."
