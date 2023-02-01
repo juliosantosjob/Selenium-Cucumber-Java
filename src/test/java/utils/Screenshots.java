@@ -8,6 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import support.DriverDefinition;
 
 import java.io.File;
+import static utils.Commands.*;
 
 import static java.lang.System.out;
 
@@ -38,6 +39,7 @@ public class Screenshots extends DriverDefinition {
 
     public static void takingScreenshot(Scenario scenario) {
         if (!scenario.isFailed()) {
+            sleep(1000);
             shot(scenario);
         } else {
             out.println("****** Scenario Name: [" + scenario.getName() + "]");
