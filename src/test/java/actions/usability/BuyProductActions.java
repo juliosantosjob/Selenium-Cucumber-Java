@@ -27,8 +27,8 @@ public class BuyProductActions extends BuyProductPages {
     public void productIsDisplayed(String item) {
         WebElement myProduct = product.get(1);
         contains(myProduct, item);
-        myProduct.click();
-    }
+        waitAndTap(myProduct, 10);
+    }, 5
 
     public void addProductCart() {
         realClick(btnAddToCart);
