@@ -1,7 +1,7 @@
 #language:pt
 
 @regression   @buy_product_all
-Funcionalidade: Comprar de produtos
+Funcionalidade: Compra de um produtos
   - Eu como usuario devo poder realizar a compra de um produto de minha escolha no site.
 
   Contexto:
