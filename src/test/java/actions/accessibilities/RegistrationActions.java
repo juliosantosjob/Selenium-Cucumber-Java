@@ -39,12 +39,12 @@ public class RegistrationActions extends RegistrationPages {
         realClick(btnRegistrationSubmit);
     }
 
-    public WebElement seeMessage() {
-        return form;
+    public void heSeePopup(String messageRegistDone) {
+        waitForElement(popupSuccessRegister, 5);
+        contains(popupSuccessRegister, messageRegistDone);
     }
 
-    public WebElement popup() {
-        waitForElement(popupSuccessRegister, 5);
-        return popupSuccessRegister;
+    public void seeMessage(String message) {
+        assertive(form, message);
     }
 }

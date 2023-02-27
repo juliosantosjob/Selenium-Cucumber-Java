@@ -67,8 +67,9 @@ public class BuyProductActions extends BuyProductPages {
         realClick(btnPlaceOrder);
     }
 
-    public WebElement modalSuccess() {
-        waitForElement(modalSuccess, 5).isDisplayed();
-        return modalSuccess;
+    public void seeModalSuccess(String mdlSucess) {
+        waitForElement(modalSuccess, 5);
+        contains(modalSuccess, mdlSucess);
+        contains(modalSuccess, mdlSucess);
     }
 }

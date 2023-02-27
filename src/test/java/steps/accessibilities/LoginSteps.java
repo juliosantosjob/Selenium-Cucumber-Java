@@ -2,7 +2,9 @@ package steps.accessibilities;
 
 import actions.accessibilities.LoginActions;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.pt.*;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Quando;
 import support.DriverDefinition;
 
 import static utils.Asserts.*;
@@ -23,14 +25,12 @@ public class LoginSteps extends DriverDefinition {
 
     @Então("ele é logado com sucesso")
     public void ele_e_logado_com_sucesso() {
-        assertVisible(login.popupLoginSuccess());
-        contains(login.popupLoginSuccess(), "Login realizado");
-        contains(login.isLoggedIn(), "Acompanhe seu pedido");
+        login.heSee("Login realizado");
+        login.isLoggedIn("Acompanhe seu pedido");
     }
 
     @Então("ele vê {string}")
     public void ele_ve(String msgOutput) {
-        assertVisible(login.errorMessages());
-        assertive(login.errorMessages(), msgOutput);
+        login.seeErrorMessages(msgOutput);
     }
 }

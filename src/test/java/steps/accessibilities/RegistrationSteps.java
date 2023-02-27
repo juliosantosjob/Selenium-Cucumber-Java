@@ -2,7 +2,9 @@ package steps.accessibilities;
 
 import actions.accessibilities.RegistrationActions;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.pt.*;
+import io.cucumber.java.pt.E;
+import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Quando;
 import support.DriverDefinition;
 
 import static utils.Asserts.*;
@@ -22,12 +24,12 @@ public class RegistrationSteps extends DriverDefinition {
 
     @Então("ele vê a mensagem de sucesso: {string}")
     public void ele_ve_a_mensagem_de_sucesso(String messageRegistDone) {
-        contains(register.popup(), messageRegistDone);
+        register.heSeePopup(messageRegistDone);
     }
 
     @E("{string}")
     public void a_mensagem(String messageWelcome) {
-        contains(register.popup(), messageWelcome);
+        register.heSeePopup(messageWelcome);
     }
 
     @Quando("ele submeter o formulario com:")
@@ -37,6 +39,6 @@ public class RegistrationSteps extends DriverDefinition {
 
     @Então("ele vê a mensagem: {string}")
     public void ele_ve_a_mensagem(String message) {
-        assertive(register.seeMessage(), message);
+        register.seeMessage(message);
     }
 }

@@ -20,7 +20,7 @@ public class HelpersSteps extends DriverDefinition {
     public void faca_login_com_e_(String email, String passwd) {
         login.accessLoginPage();
         helper.fillEmailPassword(email, passwd);
-        contains(login.isLoggedIn(), "Acompanhe seu pedido");
+        login.isLoggedIn("Acompanhe seu pedido");
     }
 
     @E("logout")

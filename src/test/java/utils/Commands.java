@@ -39,6 +39,7 @@ public class Commands extends DriverDefinition {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            webElement.isDisplayed();
         } catch (Exception e) {
             out.println("Unable to wait for element!");
         }

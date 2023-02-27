@@ -2,7 +2,6 @@ package actions.accessibilities;
 
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.accessibilities.LoginPages;
 
@@ -24,7 +23,7 @@ public class LoginActions extends LoginPages {
     public void goHome() {
         pageTitle = driver.getTitle();
         assertEquals("QAZANDO Shop E-Commerce", pageTitle);
-        waitForElement(fldWebsiteHeader, 5).isDisplayed();
+        waitForElement(fldWebsiteHeader, 5);
         contains(fldWebsiteHeader, "Promoções especiais disponíveis.");
     }
 
@@ -39,17 +38,18 @@ public class LoginActions extends LoginPages {
         isEnable(btnLoginSubmit).click();
     }
 
-    public WebElement popupLoginSuccess() {
+    public void heSee(String msgSuccess) {
         waitForElement(labelLoginSuccess, 5);
-        return labelLoginSuccess;
+        contains(labelLoginSuccess, msgSuccess);
     }
 
-    public WebElement isLoggedIn() {
+    public void isLoggedIn(String msgYourOrder) {
         clickText("OK");
-        return fldLoggedArea;
+        contains(fldLoggedArea, msgYourOrder);
     }
 
-    public WebElement errorMessages() {
-        return fldErrorMessages;
+    public void seeErrorMessages(String msgOutput) {
+        assertVisible(fldErrorMessages);
+        assertive(fldErrorMessages, msgOutput);
     }
 }

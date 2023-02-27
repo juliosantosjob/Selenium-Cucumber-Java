@@ -1,7 +1,9 @@
 package steps.usability;
 
 import actions.usability.BuyProductActions;
-import io.cucumber.java.pt.*;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Quando;
 import support.DriverDefinition;
 
 import static utils.Asserts.assertVisible;
@@ -36,8 +38,7 @@ public class BuyProductPages extends DriverDefinition {
 
     @Então("sua compra é feita com sucesso")
     public void sua_compra_e_feita_com_sucesso() {
-        assertVisible(buyProduct.modalSuccess());
-        contains(buyProduct.modalSuccess(), "Order success!");
-        contains(buyProduct.modalSuccess(), "Congrats! Your order was created with sucess!");
+        buyProduct.seeModalSuccess("Order success!");
+        buyProduct.seeModalSuccess("Congrats! Your order was created with sucess!");
     }
 }
