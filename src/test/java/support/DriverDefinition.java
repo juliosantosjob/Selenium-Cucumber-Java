@@ -18,10 +18,15 @@ public class DriverDefinition {
     }
 
     public void browserConfig() {
+        if (browser == null) browser = "chrome";
+
         switch (browser) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+
+                options.addArguments("--remote-allow-origins=*");
+                driver = new ChromeDriver(options);
                 break;
 
             case "edge":
@@ -33,6 +38,7 @@ public class DriverDefinition {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions optChrome = new ChromeOptions();
                 optChrome.addArguments("--headless");
+                optChrome.addArguments("--remote-allow-origins=*");
                 optChrome.addArguments("--window-size=1920x1080");
                 driver = new ChromeDriver(optChrome);
                 break;

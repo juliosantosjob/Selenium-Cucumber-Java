@@ -55,24 +55,8 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 ![alt text](images/Screenshot_2.png)
 
-- Agora vá até o caminho <strong>"src/test/java/runners/TestRunner.java"</strong> e execute a classe TestRunner, logo de
-  início ele apresentará um erro, porém não tem problema, siga para o próximo passo.
-
 <p>
 
-- Em seguida vá até o <strong>"Select/Run"</strong> da IDE, clique em <strong>"Edit Configuration"</strong> e passe o
-  seguinte
-  comando:
-
-````
- -ea -DENV=hmg -DBROWSER=chrome
-````
-
-<p>
-
-<img src="images/Screenshot_3.png" heigth="850" width="1200">
-
-<p>
 
 ### Parâmetros de execução.
 

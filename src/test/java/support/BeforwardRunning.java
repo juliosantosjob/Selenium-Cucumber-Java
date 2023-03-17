@@ -14,6 +14,8 @@ public class BeforwardRunning extends DriverDefinition {
     }
 
     public String urlBase() {
+        if (getEnv == null) getEnv = "hmg";
+
         switch (getEnv) {
             case "hmg":
                 getUrl = env().getEnv("URL_HOM");
