@@ -10,6 +10,7 @@ public class Asserts {
 
     /**
      * Ensures that web element contains exactly one text.
+     * Example: assertive(element, "text of assertion");
      *
      * @param webElement
      * @param text
@@ -22,7 +23,8 @@ public class Asserts {
 
     /**
      * Validation contains text in a web element.
-     *
+     * Example: contains(element, "text of assertion");
+     * 
      * @param webElement
      * @param text
      */
@@ -34,6 +36,7 @@ public class Asserts {
 
     /**
      * Asserts which element is visible on the screen
+     * Example: assertVisible(element);
      *
      * @param webElement
      */

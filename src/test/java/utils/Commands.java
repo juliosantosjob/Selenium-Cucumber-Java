@@ -13,6 +13,7 @@ public class Commands extends DriverDefinition {
 
     /**
      * Click on the field.
+     * Example: clickText("text");
      *
      * @param text The text to be clicked
      * @throws Exception
@@ -28,6 +29,7 @@ public class Commands extends DriverDefinition {
 
     /**
      * Wait for a defined time until the web element is visible on the screen.
+     * Example: waitForElement(element, 10);
      *
      * @param webElement
      * @param timeout    How many seconds to wait for element to be visible
@@ -48,17 +50,20 @@ public class Commands extends DriverDefinition {
 
     /**
      * Wait for element to become invisible.
+     * Example: waitElementDisappear(element, 10);
      *
      * @param elementBy
      */
 
-    public static void waitElementDisappear(By elementBy) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    public static void waitElementDisappear(By elementBy, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
     }
 
     /**
-     * Wait a defined time until the web element is visible on the screen and click on it.
+     * Wait a defined time until the web element is visible on the screen and click
+     * on it.
+     * Example: waitAndTap(element, 10);
      *
      * @param webElement
      * @param timeout
@@ -79,6 +84,7 @@ public class Commands extends DriverDefinition {
 
     /**
      * Click command for element that is not in focus.
+     * Example: realClick(element);
      *
      * @param webElement
      */
@@ -90,6 +96,7 @@ public class Commands extends DriverDefinition {
 
     /**
      * Wait until element is visible and enabled.
+     * Element: isEnable(element);
      *
      * @param webElement
      * @param timeout
@@ -110,6 +117,7 @@ public class Commands extends DriverDefinition {
 
     /**
      * Scroll to web element.
+     * Element: scrollTo(element);
      *
      * @param webElement
      * @return
@@ -126,6 +134,7 @@ public class Commands extends DriverDefinition {
 
     /**
      * Floating mouse over web element.
+     * Example: mouseHover(element);
      *
      * @param webElement
      */
@@ -138,6 +147,7 @@ public class Commands extends DriverDefinition {
 
     /**
      * Command to select options.
+     * Example: selectOption(element, "text option");
      *
      * @param webElement
      * @param option
@@ -150,6 +160,7 @@ public class Commands extends DriverDefinition {
 
     /**
      * Support command to debug.
+     * Example: sleep(5000);
      *
      * @param timeout
      */

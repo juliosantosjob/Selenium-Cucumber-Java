@@ -1,11 +1,16 @@
 package steps;
 
-import io.cucumber.java.*;
+
 import support.DriverDefinition;
 
 import static java.lang.System.out;
 import static support.BeforwardRunning.beforwardRunning;
 import static utils.Screenshots.takingScreenshot;
+
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 
 public class Hooks extends DriverDefinition {
 

@@ -57,7 +57,6 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 <p>
 
-
 ### Parâmetros de execução.
 
 (Obs: para informar um parâmetro é necessário passar o "-D" antes do que deseja informar).
@@ -79,14 +78,14 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 <p>
 
-- Por fim, para instalar as dependências  do projeto utilizando o Maven rode o comando:
+- Por fim, para instalar as dependências do projeto utilizando o Maven rode o comando:
 
 ````
- mvn install -DENV=hmg -DBROWSER=chrome
+ mvn install
 ````
 
 - Se desejar executar o projeto utilizando o Maven, rode o comando:
 
 ````
- mvn test -DENV=hmg -DBROWSER=chrome
+ mvn test
 ````

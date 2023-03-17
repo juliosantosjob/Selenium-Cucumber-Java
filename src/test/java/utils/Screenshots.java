@@ -32,7 +32,8 @@ public class Screenshots extends DriverDefinition {
     /**
      * Conditional for success or failure screenshots.
      * in this method the screenshots will be executed at the end of each step, the
-     * necessary parameter for the execution would be the scenario itself to be executed.
+     * necessary parameter for the execution would be the scenario itself to be
+     * executed.
      *
      * @param scenario
      */

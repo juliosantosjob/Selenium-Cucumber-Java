@@ -6,9 +6,6 @@ import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import support.DriverDefinition;
 
-import static utils.Asserts.assertVisible;
-import static utils.Asserts.contains;
-
 public class BuyProductPages extends DriverDefinition {
     BuyProductActions buyProduct = new BuyProductActions(driver);
 

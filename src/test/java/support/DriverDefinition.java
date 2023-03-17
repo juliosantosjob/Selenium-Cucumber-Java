@@ -18,7 +18,8 @@ public class DriverDefinition {
     }
 
     public void browserConfig() {
-        if (browser == null) browser = "chrome";
+        if (browser == null)
+            browser = "chrome";
 
         switch (browser) {
             case "chrome":

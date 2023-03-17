@@ -16,7 +16,8 @@ public class Env {
     private static Properties loadProp() {
         try {
             String pathProject = System.getProperty("user.dir");
-            InputStream input = new FileInputStream(pathProject + "/src/test/java/environments/resources/Env.properties");
+            InputStream input = new FileInputStream(
+                    pathProject + "/src/test/java/environments/resources/env.properties");
             prop.load(input);
         } catch (Exception e) {
             e.printStackTrace();
@@ -24,6 +25,7 @@ public class Env {
         }
         return prop;
     }
+
     public String getEnv(String env) {
         return loadProp().getProperty(env);
     }

@@ -7,8 +7,6 @@ import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import support.DriverDefinition;
 
-import static utils.Asserts.*;
-
 public class RegistrationSteps extends DriverDefinition {
     RegistrationActions register = new RegistrationActions(driver);
 

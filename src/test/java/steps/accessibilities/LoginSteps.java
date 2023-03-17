@@ -7,8 +7,6 @@ import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import support.DriverDefinition;
 
-import static utils.Asserts.*;
-
 public class LoginSteps extends DriverDefinition {
     LoginActions login = new LoginActions(driver);
 

@@ -2,10 +2,9 @@ package steps.global;
 
 import actions.global.HelpersActions;
 import actions.accessibilities.LoginActions;
-import io.cucumber.java.pt.*;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.E;
 import support.DriverDefinition;
-
-import static utils.Asserts.*;
 
 public class HelpersSteps extends DriverDefinition {
     LoginActions login = new LoginActions(driver);
