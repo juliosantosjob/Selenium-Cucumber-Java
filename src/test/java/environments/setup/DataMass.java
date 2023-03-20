@@ -7,13 +7,13 @@ import java.util.Properties;
 import static java.lang.System.out;
 
 public class DataMass {
-    static Properties prop = new Properties();
+    private Properties prop = new Properties();
 
     public static DataMass dataMass() {
         return new DataMass();
     }
 
-    private static Properties loadProp() {
+    private Properties loadProp() {
         try {
             String pathProject = System.getProperty("user.dir");
             InputStream input = new FileInputStream(pathProject + "/src/test/dataMass.properties");
@@ -24,6 +24,7 @@ public class DataMass {
         }
         return prop;
     }
+
     public String getData(String mass) {
         return loadProp().getProperty(mass);
     }

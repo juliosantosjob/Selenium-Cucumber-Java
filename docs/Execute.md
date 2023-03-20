@@ -33,7 +33,7 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 
 <p>
 
-- Abra o projeto pela IDE, e vá até o arquivo pom.xml, clique no botão maven para instalar as dependências do projeto.
+- Abra o projeto pela IDE, vá até o arquivo pom.xml e clique no botão maven para instalar as dependências do projeto.
 
 <p>
 

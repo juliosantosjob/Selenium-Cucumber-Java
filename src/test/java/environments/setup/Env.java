@@ -7,13 +7,13 @@ import java.util.Properties;
 import static java.lang.System.out;
 
 public class Env {
-    static Properties prop = new Properties();
+    private Properties prop = new Properties();
 
     public static Env env() {
         return new Env();
     }
 
-    private static Properties loadProp() {
+    private Properties loadProp() {
         try {
             String pathProject = System.getProperty("user.dir");
             InputStream input = new FileInputStream(

@@ -11,7 +11,7 @@ import static utils.Commands.*;
 import static utils.DynamicMass.*;
 
 public class BuyProductActions extends BuyProductPages {
-    static String DataItem;
+    private String DataItem;
 
     public BuyProductActions(WebDriver driver) {
         PageFactory.initElements(driver, this);

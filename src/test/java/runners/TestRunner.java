@@ -11,7 +11,6 @@ import io.cucumber.junit.CucumberOptions;
         plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
         glue = {"steps"},
         monochrome = false,
-        dryRun = false
-    )
-    
+        dryRun = false)
+
 public class TestRunner {}

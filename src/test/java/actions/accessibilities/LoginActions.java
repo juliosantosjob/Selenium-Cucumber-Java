@@ -12,8 +12,8 @@ import static utils.Asserts.*;
 import static utils.Commands.*;
 
 public class LoginActions extends LoginPages {
-   WebDriver driver;
-   String pageTitle;
+    private WebDriver driver;
+    private String pageTitle;
 
     public LoginActions(WebDriver driver) {
         PageFactory.initElements(driver, this);

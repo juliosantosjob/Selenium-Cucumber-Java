@@ -6,14 +6,14 @@ import static environments.setup.Env.env;
 import static java.lang.System.getProperty;
 
 public class BeforwardRunning extends DriverDefinition {
-    static String getEnv = getProperty("ENV");
-    static String getUrl;
+    private String getEnv = getProperty("ENV");
+    private String getUrl;
 
     public static BeforwardRunning beforwardRunning() {
         return new BeforwardRunning();
     }
 
-    public String urlBase() {
+    private String urlBase() {
         if (getEnv == null)
             getEnv = "hmg";
 
