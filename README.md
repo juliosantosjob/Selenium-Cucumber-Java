@@ -6,9 +6,12 @@ segurança, a URL Base do projeto foi inserida em uma variável Secrets como um 
 execuções dos testes em CI foi utilizado o GitHub Actions, e para visualizar em tempo real o resultado dos testes,
 foi implementado uma ação no github actions que irá publicar os resultados da execução em uma página estática no
 Github Pages, é possível visualizar o resultado da última execução clicando <a href="https://juliosantosjob.github.io/Selenium-Framework">aqui.</a>
+
 <p>
-   - Para executar este projeto acesse o caminho docs/Execute.md, dentro deste arquivo existe um passo a passo para
+
+- Para executar este projeto acesse o caminho docs/Execute.md, dentro deste arquivo existe um passo a passo para 
    configuração do ambiente e execução deste projeto.
+   
 <p>
    
 ### Ferramentas utilizadas para o desenvolvimento do projeto:
