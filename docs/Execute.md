@@ -42,8 +42,8 @@ git clone https://github.com/juliosantosjob/Selenium-Framework.git
 <p>
 
 - No caminho <strong>"src/test/java/environments/resources"</strong> existe um arquivo chamado <strong>
-  Env.properties.example</strong>, ele serve como base para informar qual URL o teste deve apontar, então
-  no lugar de <strong>Env.properties.example</strong> crie um arquivo chamado <strong>Env.properties
+  env.properties.example</strong>, ele serve como base para informar qual URL o teste deve apontar, então
+  no lugar de <strong>env.properties.example</strong> crie um arquivo chamado <strong>env.properties
   </strong> e informe nele a url base utilizada para automação deste projeto que seria:
   <a href="http://automationpratice.com.br/">
   SiteQazando</a>,
