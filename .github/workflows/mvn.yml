@@ -29,12 +29,6 @@ jobs:
           URL_HOM: ${{ secrets.URL_HOM }}
         run: mvn test -DENV=hmg-actions -DBROWSER=chrome-headless
 
-      - name: Runner tests with Edge
-        if: always()
-        env:
-          URL_HOM: ${{ secrets.URL_HOM }}
-        run: mvn test -DENV=hmg-actions -DBROWSER=edge-headless
-
       - name: Get Allure History
         uses: actions/checkout@v2
         if: always()
