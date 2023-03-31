@@ -5,7 +5,7 @@ desenvolvido utilizando as boas práticas dos padrões Page Objects e Page Facto
 segurança, a URL Base do projeto foi inserida em uma variável Secrets como um exemplo para guardar dados sensíveis. Para
 execuções dos testes em CI foi utilizado o GitHub Actions, e para visualizar em tempo real o resultado dos testes,
 foi implementado uma ação no github actions que irá publicar os resultados da execução em uma página estática no
-Github Pages, é possível visualizar o resultado da última execução clicando <a href="https://juliosantosjob.github.io/Selenium-Framework">aqui.</a>
+Github Pages, é possível visualizar o resultado da última execução clicando <a href="https://juliosantosjob.github.io/Selenium-Cucumber-Java">aqui.</a>
 
 <p>
 
