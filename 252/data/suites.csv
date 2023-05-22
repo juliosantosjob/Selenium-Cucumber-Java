@@ -1,0 +1,13 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon May 22 12:20:44 GMT 2023","Mon May 22 12:20:52 GMT 2023","7823","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon May 22 12:20:52 GMT 2023","Mon May 22 12:20:59 GMT 2023","7285","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon May 22 12:20:59 GMT 2023","Mon May 22 12:21:06 GMT 2023","6708","","Steps de suporte","","Login suporte","","Login suporte","  - Esta feature tem como objetivo dar suporte para outros cenarios que tenha
+  como premissa realizar login no aplicativo."
+"passed","Mon May 22 12:19:57 GMT 2023","Mon May 22 12:20:04 GMT 2023","7338","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Mon May 22 12:20:28 GMT 2023","Mon May 22 12:20:36 GMT 2023","8228","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon May 22 12:21:06 GMT 2023","Mon May 22 12:21:28 GMT 2023","22313","","Compra de um produtos","","Compra de um produto","","Compra de um produto","  - Eu como usuario devo poder realizar a compra de um produto de minha escolha no site."
+"passed","Mon May 22 12:20:20 GMT 2023","Mon May 22 12:20:28 GMT 2023","7593","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon May 22 12:20:11 GMT 2023","Mon May 22 12:20:20 GMT 2023","8817","","Cadastro de usuario","","Cadastro com sucesso","","Cadastro com sucesso","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon May 22 12:20:36 GMT 2023","Mon May 22 12:20:44 GMT 2023","7834","","Cadastro de usuario","","Envio de formulario com email invalido","","Envio de formulario com email invalido","  - Eu como usuario devo poder me cadastrar na plataforma."
+"passed","Mon May 22 12:20:04 GMT 2023","Mon May 22 12:20:11 GMT 2023","7105","","Login","","Cenarios alternativas para login","","Cenarios alternativas para login","  - Eu como usuario devo poder realizar login na plataforma."
+"passed","Mon May 22 12:19:33 GMT 2023","Mon May 22 12:19:57 GMT 2023","23460","","Login","","Login sucesso","","Login sucesso","  - Eu como usuario devo poder realizar login na plataforma."
