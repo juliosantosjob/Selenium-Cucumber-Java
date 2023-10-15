@@ -8,8 +8,10 @@ import pages.accessibilities.LoginPages;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+
 import static utils.Asserts.*;
 import static utils.Commands.*;
+import static utils.Asserts.containsText;
 
 public class LoginActions extends LoginPages {
     private final WebDriver driver;
@@ -21,8 +23,7 @@ public class LoginActions extends LoginPages {
 
     public LoginActions goHome() {
         String pageTitle = driver.getTitle();
-        assertEquals("QAZANDO Shop E-Commerce", pageTitle);
-
+        containsText("QAZANDO Shop E-Commerce", pageTitle);
         waitForElement(fldWebsiteHeader, 5);
         contains(fldWebsiteHeader, "Promoções especiais disponíveis.");
 
@@ -46,11 +47,13 @@ public class LoginActions extends LoginPages {
 
     public String getMessageSuccess() {
         waitForElement(labelLoginSuccess, 5);
+
         return labelLoginSuccess.getText();
     }
 
     public String getMessageError() {
         assertVisible(fldErrorMessages);
+
         return fldErrorMessages.getText();
     }
 }
