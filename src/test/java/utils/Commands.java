@@ -71,7 +71,7 @@ public class Commands extends DriverDefinition {
      * @throws Exception
      */
 
-    public static WebElement waitAndTap(WebElement webElement, int timeout) {
+    public static WebElement waitAndClick(WebElement webElement, int timeout) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
             wait.until(ExpectedConditions.elementToBeClickable(webElement));

@@ -1,5 +1,6 @@
 package utils;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 import static java.lang.System.out;
@@ -20,6 +21,24 @@ public class Asserts {
         webElement.isEnabled();
         assertEquals(webElement.getText(), text);
     }
+
+    /*
+     * Comando para fazer asserções com textos e textos
+     * Ex: assertText(elemento, "meu texto");
+     */
+
+    public static void assertText(String text, String textTwo) {
+        Assert.assertEquals(text, textTwo);
+    };
+
+    /*
+     * Comando para fazer asserções com textos e textos
+     * Ex: containsText("Texto 1", "texto 2");
+     */
+
+    public static void containsText(String textOne, String textTwo) {
+        Assert.assertTrue(textOne.contains(textTwo));
+    };
 
     /**
      * Validation contains text in a web element.

@@ -19,31 +19,38 @@ public class LoginActions extends LoginPages {
         this.driver = driver;
     }
 
-    public void goHome() {
+    public LoginActions goHome() {
         String pageTitle = driver.getTitle();
         assertEquals("QAZANDO Shop E-Commerce", pageTitle);
+
         waitForElement(fldWebsiteHeader, 5);
         contains(fldWebsiteHeader, "Promoções especiais disponíveis.");
+
+        return new LoginActions(driver);
     }
 
-    public void accessLoginPage() {
+    public LoginActions accessLoginPage() {
         isEnable(btnLogin).click();
+
+        return new LoginActions(driver);
     }
 
-    public void fillEmailPasswd(DataTable dataTable) {
+    public LoginActions fillEmailPasswd(DataTable dataTable) {
         List<List<String>> data = dataTable.cells();
-        isEnable(fldEmail).sendKeys(data.get(0).get(1));
-        isEnable(fldPassword).sendKeys(data.get(1).get(1));
-        isEnable(btnLoginSubmit).click();
+        fldEmail.sendKeys(data.get(0).get(1));
+        fldPassword.sendKeys(data.get(1).get(1));
+        btnLoginSubmit.click();
+
+        return new LoginActions(driver);
     }
 
-    public void heSee(String msgSuccess) {
+    public String getMessageSuccess() {
         waitForElement(labelLoginSuccess, 5);
-        contains(labelLoginSuccess, msgSuccess);
+        return labelLoginSuccess.getText();
     }
 
-    public void seeErrorMessages(String msgOutput) {
+    public String getMessageError() {
         assertVisible(fldErrorMessages);
-        assertive(fldErrorMessages, msgOutput);
+        return fldErrorMessages.getText();
     }
 }
