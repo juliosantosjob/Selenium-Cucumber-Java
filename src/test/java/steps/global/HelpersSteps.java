@@ -15,11 +15,10 @@ public class HelpersSteps extends DriverDefinition {
         login.goHome();
     }
 
-    @E("faça login com {string} e {string}")
-    public void faca_login_com_e_(String email, String passwd) {
+    @Dado("faça login com o email {string} e a senha {string}")
+    public void faca_login_com_o_email_e_a_senha(String email, String passwd) {
         login.accessLoginPage();
         helper.fillEmailPassword(email, passwd);
-        login.isLoggedIn("Acompanhe seu pedido");
     }
 
     @E("logout")

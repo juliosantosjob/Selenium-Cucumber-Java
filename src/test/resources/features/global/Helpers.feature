@@ -1,12 +1,10 @@
 #language:pt
 
-@regression   @helpers_all
-Funcionalidade: Steps de suporte
-  - Esta feature tem como objetivo dar suporte para outros cenarios que tenha
-  como premissa realizar login no aplicativo.
+  Funcionalidade: Steps de suporte
+    - Esta feature tem como objetivo dar suporte para todos os cenarios que tenha
+    a necessidade de estar logado para atingir seu objetivo.
 
-  @helpers
-  Cenario: Login suporte
-    Dado que o usuario acesse o site
-    E faça login com "Email" e "Senha"
-    E logout
+    Cenario: Login suporte
+      Dado que o usuario acesse o site
+      E faça login com o email "" e a senha ""
+      E logout

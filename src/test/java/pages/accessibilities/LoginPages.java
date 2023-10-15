@@ -23,10 +23,6 @@ public class LoginPages {
     @FindBy(css = "div[aria-labelledby*='-title']")
     protected WebElement labelLoginSuccess;
 
-
-    @FindBy(css = "ul[class='right_list_fix']")
-    protected WebElement fldLoggedArea;
-
     @FindBy(css = "span[class='invalid_input']")
     protected WebElement fldErrorMessages;
 }

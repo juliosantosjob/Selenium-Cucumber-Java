@@ -12,5 +12,4 @@ import io.cucumber.junit.CucumberOptions;
         glue = {"steps"},
         monochrome = false,
         dryRun = false)
-
 public class TestRunner {}

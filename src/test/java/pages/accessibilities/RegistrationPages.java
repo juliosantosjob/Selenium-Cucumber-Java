@@ -23,7 +23,6 @@ public class RegistrationPages {
     @FindBy(css = "#btnRegister")
     protected WebElement btnRegistrationSubmit;
 
-
     @FindBy(css = "div[aria-modal='true']")
     protected WebElement popupSuccessRegister;
 

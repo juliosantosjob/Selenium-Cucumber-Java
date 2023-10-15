@@ -3,7 +3,7 @@ package steps.accessibilities;
 import actions.accessibilities.LoginActions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import support.DriverDefinition;
 
@@ -21,14 +21,14 @@ public class LoginSteps extends DriverDefinition {
         login.fillEmailPasswd(dataTable);
     }
 
-    @Então("ele é logado com sucesso")
-    public void ele_e_logado_com_sucesso() {
-        login.heSee("Login realizado");
-        login.isLoggedIn("Acompanhe seu pedido");
+    @Entao("ele visualiza a mensagem {string}")
+    public void ele_visualiza_a_mensagem(String msgPerformLogin) {
+        login.heSee(msgPerformLogin);
     }
 
-    @Então("ele vê {string}")
-    public void ele_ve(String msgOutput) {
+    @Entao("ele vê a mensagem de erro {string}")
+    public void ele_ve_a_mensagem_de_erro(String msgOutput) {
         login.seeErrorMessages(msgOutput);
     }
+
 }

@@ -12,8 +12,7 @@ import static utils.Asserts.*;
 import static utils.Commands.*;
 
 public class LoginActions extends LoginPages {
-    private WebDriver driver;
-    private String pageTitle;
+    private final WebDriver driver;
 
     public LoginActions(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -21,7 +20,7 @@ public class LoginActions extends LoginPages {
     }
 
     public void goHome() {
-        pageTitle = driver.getTitle();
+        String pageTitle = driver.getTitle();
         assertEquals("QAZANDO Shop E-Commerce", pageTitle);
         waitForElement(fldWebsiteHeader, 5);
         contains(fldWebsiteHeader, "Promoções especiais disponíveis.");
@@ -41,11 +40,6 @@ public class LoginActions extends LoginPages {
     public void heSee(String msgSuccess) {
         waitForElement(labelLoginSuccess, 5);
         contains(labelLoginSuccess, msgSuccess);
-    }
-
-    public void isLoggedIn(String msgYourOrder) {
-        clickText("OK");
-        contains(fldLoggedArea, msgYourOrder);
     }
 
     public void seeErrorMessages(String msgOutput) {

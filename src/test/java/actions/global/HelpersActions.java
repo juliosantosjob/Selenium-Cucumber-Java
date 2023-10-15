@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.global.HelpersPages;
 
-import static environments.setup.DataMass.dataMass;
 import static utils.Commands.*;
 
 public class HelpersActions extends HelpersPages {
@@ -14,9 +13,9 @@ public class HelpersActions extends HelpersPages {
     }
 
     public void fillEmailPassword(String email, String passwd) {
-        isEnable(fldEmail).sendKeys(dataMass().getData(email));
-        isEnable(fldPassword).sendKeys(dataMass().getData(passwd));
-        isEnable(btnLoginSubmit).click();
+        fldEmail.sendKeys(email);
+        fldPassword.sendKeys(passwd);
+        btnLoginSubmit.click();
     }
 
     public void logOut() {

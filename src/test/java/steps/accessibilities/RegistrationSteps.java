@@ -3,7 +3,7 @@ package steps.accessibilities;
 import actions.accessibilities.RegistrationActions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.pt.E;
-import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import support.DriverDefinition;
 
@@ -20,7 +20,7 @@ public class RegistrationSteps extends DriverDefinition {
         register.fillForm();
     }
 
-    @Então("ele vê a mensagem de sucesso: {string}")
+    @Entao("ele vê a mensagem de sucesso: {string}")
     public void ele_ve_a_mensagem_de_sucesso(String messageRegistDone) {
         register.heSeePopup(messageRegistDone);
     }
@@ -35,7 +35,7 @@ public class RegistrationSteps extends DriverDefinition {
         register.fillForms(dataTable);
     }
 
-    @Então("ele vê a mensagem: {string}")
+    @Entao("ele vê a mensagem: {string}")
     public void ele_ve_a_mensagem(String message) {
         register.seeMessage(message);
     }

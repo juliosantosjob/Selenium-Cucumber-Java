@@ -20,8 +20,8 @@ public class Env {
                     pathProject + "/src/test/java/environments/resources/env.properties");
             prop.load(input);
         } catch (Exception e) {
-            e.printStackTrace();
-            out.println("Unable to load data mass properties file!");
+            out.println("**** WARNING: Unable to load data mass properties file, " +
+                    "Create the env.properties file and enter the project base url! **** " + e);
         }
         return prop;
     }

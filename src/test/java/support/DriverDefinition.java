@@ -11,13 +11,10 @@ import static java.lang.System.getProperty;
 
 public class DriverDefinition {
     protected static WebDriver driver;
-    private String browser = getProperty("BROWSER");
+    private static String browser = getProperty("BROWSER");
 
-    public static DriverDefinition driverDefinition() {
-        return new DriverDefinition();
-    }
 
-    public void browserConfig() {
+    public static void browserConfig() {
         if (browser == null)
             browser = "chrome-headless";
 
