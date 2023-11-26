@@ -39,7 +39,7 @@ Github Pages, é possível visualizar o resultado da última execução clicando
 - Clone o projeto rodando o comando:
 
 ````
-git clone https://github.com/juliosantosjob/Selenium-Framework.git
+git clone https://github.com/juliosantosjob/Selenium-Cucumber-Java.git
 ````
 
 <p>
