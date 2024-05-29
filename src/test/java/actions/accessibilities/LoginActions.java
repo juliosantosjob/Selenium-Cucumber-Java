@@ -8,10 +8,8 @@ import pages.accessibilities.LoginPages;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-
-import static utils.Asserts.*;
+import static org.junit.Assert.assertTrue;
 import static utils.Commands.*;
-import static utils.Asserts.containsText;
 
 public class LoginActions extends LoginPages {
     private final WebDriver driver;
@@ -21,39 +19,38 @@ public class LoginActions extends LoginPages {
         this.driver = driver;
     }
 
-    public LoginActions goHome() {
+    public void openHome() {
         String pageTitle = driver.getTitle();
-        containsText("QAZANDO Shop E-Commerce", pageTitle);
+        assertEquals("QAZANDO Shop E-Commerce", pageTitle);
         waitForElement(fldWebsiteHeader, 5);
-        contains(fldWebsiteHeader, "Promoções especiais disponíveis.");
 
-        return new LoginActions(driver);
+        String websiteHeader = fldWebsiteHeader.getText();
+        assertTrue(websiteHeader.contains("Promoções especiais disponíveis."));
     }
 
-    public LoginActions accessLoginPage() {
-        isEnable(btnLogin).click();
-
-        return new LoginActions(driver);
+    public void goToLogin() {
+        btnLogin.click();
     }
 
-    public LoginActions fillEmailPasswd(DataTable dataTable) {
+    public void fillCredents(DataTable dataTable) {
         List<List<String>> data = dataTable.cells();
         fldEmail.sendKeys(data.get(0).get(1));
         fldPassword.sendKeys(data.get(1).get(1));
         btnLoginSubmit.click();
-
-        return new LoginActions(driver);
     }
 
-    public String getMessageSuccess() {
+    public void seeMessage(String msg) {
         waitForElement(labelLoginSuccess, 5);
 
-        return labelLoginSuccess.getText();
+        String getMessageLabel = labelLoginSuccess.getText();
+        assertTrue(getMessageLabel.contains(msg));
     }
 
-    public String getMessageError() {
-        assertVisible(fldErrorMessages);
 
-        return fldErrorMessages.getText();
+    public void seeError(String msg) {
+        waitForElement(fldErrorMessages, 5);
+
+        String getErrorMessage = fldErrorMessages.getText();
+        assertTrue(getErrorMessage.contains(msg));
     }
 }

@@ -2,7 +2,7 @@
 
 @regression @login_all
 Funcionalidade: Login
-  - Eu como usuario devo poder realizar login na site.
+  - Eu como usuario devo poder realizar login na site
 
   Contexto:
     Dado que o usuario acesse o site

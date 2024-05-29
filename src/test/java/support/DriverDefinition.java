@@ -1,6 +1,5 @@
 package support;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,11 +15,11 @@ public class DriverDefinition {
 
     public static void browserConfig() {
         if (browser == null)
-            browser = "chrome-headless";
+            browser = "chrome";
 
         switch (browser) {
             case "chrome":
-                WebDriverManager.chromedriver().setup();
+                System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
                 ChromeOptions options = new ChromeOptions();
 
                 options.addArguments("--remote-allow-origins=*");
@@ -28,12 +27,12 @@ public class DriverDefinition {
                 break;
 
             case "edge":
-                WebDriverManager.edgedriver().setup();
+                System.setProperty("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe");
                 driver = new EdgeDriver();
                 break;
 
             case "chrome-headless":
-                WebDriverManager.chromedriver().setup();
+                System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
                 ChromeOptions optChrome = new ChromeOptions();
                 optChrome.addArguments("--headless");
                 optChrome.addArguments("--remote-allow-origins=*");
@@ -42,7 +41,7 @@ public class DriverDefinition {
                 break;
 
             case "edge-headless":
-                WebDriverManager.edgedriver().setup();
+                System.setProperty("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe");
                 EdgeOptions optEdge = new EdgeOptions();
                 optEdge.addArguments("headless");
                 optEdge.addArguments("--window-size=1920x1080");

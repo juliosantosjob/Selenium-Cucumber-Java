@@ -2,10 +2,11 @@
 
 @regression   @buy_product_all
 Funcionalidade: Compra de um produtos
-  - Eu como usuario devo poder realizar a compra de um produto no site.
+  - Eu como usuario devo poder realizar a compra de um produto no site
 
   Contexto:
     Dado que o usuario acesse o site
+    E acesse a pagina de login
     E faça login com o email "qaTest@gmail.com" e a senha "Mudar@123"
 
   @buy_product

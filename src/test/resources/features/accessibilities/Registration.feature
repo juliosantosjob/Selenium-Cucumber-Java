@@ -2,7 +2,7 @@
 
 @regression @registration_all
 Funcionalidade: Cadastro de usuario
-  - Eu como usuario devo poder me cadastrar na plataforma.
+  - Eu como usuario devo poder me cadastrar na plataforma
 
   Contexto:
     Dado que o usuario acesse o site

@@ -2,7 +2,7 @@ package support;
 
 import java.time.Duration;
 
-import static environments.setup.Env.env;
+import static env.setup.Envs.env;
 import static java.lang.System.getProperty;
 
 public class BeforwardRunning extends DriverDefinition {

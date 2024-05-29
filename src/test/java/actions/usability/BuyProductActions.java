@@ -6,81 +6,72 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.usability.BuyProductPages;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static utils.Asserts.*;
 import static utils.Commands.*;
 import static utils.DynamicMass.*;
 
 public class BuyProductActions extends BuyProductPages {
-    private final WebDriver driver;
 
     public BuyProductActions(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
-    public BuyProductActions searchForProduct(String item) {
+    public void searchForProduct(String item) {
         realClick(btnSearch);
-        isEnable(fldSearch).sendKeys(item, Keys.ENTER);
+        fldSearch.sendKeys(item, Keys.ENTER);
         clickText("OK");
-
-        return new BuyProductActions(driver);
     }
 
-    public BuyProductActions productIsDisplayed(String item) {
+    public void productIsDisplayed(String item) {
         WebElement myProduct = product.get(1);
         contains(myProduct, item);
         waitAndClick(myProduct, 10);
-
-        return new BuyProductActions(driver);
     }
 
-    public BuyProductActions addProductCart() {
+    public void addProductCart() {
         realClick(btnAddToCart);
         waitElementDisappear(fldShow, 5);
         realClick(btnBag);
-
-        return new BuyProductActions(driver);
     }
 
-    public BuyProductActions seeProductInCart() {
+    public void seeProductInCart() {
         waitForElement(pageCart, 10);
-
-        return new BuyProductActions(driver);
     }
 
-    public BuyProductActions checkoutProduct() {
+    public void checkoutProduct() {
         WebElement buttonCheckout = btnCheckout.get(1);
         realClick(buttonCheckout);
-
-        return new BuyProductActions(driver);
     }
 
-    public BuyProductActions fillPaymentForm() {
-        contains(areaBillings, "Billings Information");
-        isEnable(fldFirtsName).sendKeys(randomName());
-        isEnable(fldLastName).sendKeys(randomLastName());
-        isEnable(fldCompany).sendKeys(randomNameCompany());
-        isEnable(fldEmail).sendKeys(randomEmail());
+    public void fillPaymentForm() {
+        String areaBillingsTxt = areaBillings.getText();
+        assertTrue(areaBillingsTxt.contains("Billings Information"));
+
+        fldFirtsName.sendKeys(randomName());
+        fldLastName.sendKeys(randomLastName());
+        fldCompany.sendKeys(randomNameCompany());
+        fldEmail.sendKeys(randomEmail());
 
         selectOption(optCountry, "usa");
         selectOption(optCountry, "Afghanistan");
-        isEnable(fldZip).sendKeys("07500000");
-        isEnable(fldAdress).sendKeys("Rua roberto silva - 3578");
-        isEnable(fldAdditionalNotes).sendKeys("Informações Adicionais");
+        fldZip.sendKeys("07500000");
+        fldAdress.sendKeys("Rua roberto silva - 3578");
+        fldAdditionalNotes.sendKeys("Informações Adicionais");
         scrollTo(btnSave);
-
-        return new BuyProductActions(driver);
     }
 
-    public BuyProductActions saveAndSend() {
+    public void saveAndSend() {
         realClick(btnSave);
         realClick(btnPlaceOrder);
-
-        return new BuyProductActions(driver);
     }
 
-    public String getModalSuccess() {
+    public void registrationSuccess() {
         waitForElement(modalSuccess, 5);
-        return modalSuccess.getText();
+        String getMessage = modalSuccess.getText();
+
+        assertTrue(getMessage.contains("Order success!"));
+        assertTrue(getMessage.contains("Congrats! Your order was created with sucess!"));
     }
 }
