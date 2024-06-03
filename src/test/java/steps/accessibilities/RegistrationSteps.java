@@ -39,4 +39,5 @@ public class RegistrationSteps extends DriverDefinition {
     public void ele_ve_a_mensagem(String message) {
         registActions.outgoingMsg(message);
     }
+    
 }

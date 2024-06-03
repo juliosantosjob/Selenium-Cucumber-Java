@@ -19,4 +19,5 @@ public class HelpersSteps extends DriverDefinition {
     public void logout() {
         helpersActions.logOut();
     }
+
 }

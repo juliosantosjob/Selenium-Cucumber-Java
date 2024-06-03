@@ -7,7 +7,6 @@ import pages.accessibilities.RegistrationPages;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static utils.Commands.*;
 import static utils.DynamicMass.*;

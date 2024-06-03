@@ -34,5 +34,5 @@ public class LoginSteps extends DriverDefinition {
     public void ele_ve_a_mensagem_de_erro(String msgOutput) {
         loginActions.seeError(msgOutput);
     }
-    
+
 }

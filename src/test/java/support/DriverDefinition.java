@@ -12,7 +12,6 @@ public class DriverDefinition {
     protected static WebDriver driver;
     private static String browser = getProperty("BROWSER");
 
-
     public static void browserConfig() {
         if (browser == null)
             browser = "chrome";
