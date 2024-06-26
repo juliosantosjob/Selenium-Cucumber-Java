@@ -4,13 +4,10 @@ import static env.setup.Envs.env;
 import static java.lang.System.getProperty;
 
 public class SetURL extends DriverDefinition {
-    private static String getEnv = getProperty("ENV");
+    private static String getEnv = getProperty("ENV", "hmg");
     private static String baseUrl;
 
     public static String urlBase() {
-        if (getEnv == null)
-            getEnv = "hmg";
-
         switch (getEnv) {
             case "hmg":
                 baseUrl = env().getEnv("URL_HOM");
