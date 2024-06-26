@@ -1,15 +1,13 @@
 package support;
 
-import java.time.Duration;
-
 import static env.setup.Envs.env;
 import static java.lang.System.getProperty;
 
-public class BeforwardRunning extends DriverDefinition {
+public class SetURL extends DriverDefinition {
     private static String getEnv = getProperty("ENV");
     private static String baseUrl;
 
-    private static String urlBase() {
+    public static String urlBase() {
         if (getEnv == null)
             getEnv = "hmg";
 
@@ -30,13 +28,5 @@ public class BeforwardRunning extends DriverDefinition {
                 throw new IllegalArgumentException("Invalid environment argument!");
         }
         return baseUrl;
-    }
-
-    public static void addSettings() {
-        if (driver != null) {
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            driver.get(urlBase());
-        }
     }
 }

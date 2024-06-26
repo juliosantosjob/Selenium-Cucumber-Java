@@ -1,11 +1,12 @@
 package steps;
 
-
+import support.SetURL;
 import support.DriverDefinition;
 
 import static java.lang.System.out;
-import static support.BeforwardRunning.addSettings;
 import static utils.Screenshots.takingScreenshot;
+
+import java.time.Duration;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
@@ -13,17 +14,21 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
 public class Hooks extends DriverDefinition {
+    String baseUrl = SetURL.urlBase();
 
     @Before
     public void init(Scenario scenario) {
         out.println("*************************************************");
         out.println("Starting Test Execution...");
-        out.println("Running Scenario: [" +  scenario.getName() + "]");
-        out.println("Scenario Status: [" +  scenario.getStatus() +  "]");
-        out.println("Execution Tag: " +  scenario.getSourceTagNames());
+        out.println("Running Scenario: [" + scenario.getName() + "]");
+        out.println("Scenario Status: [" + scenario.getStatus() + "]");
+        out.println("Execution Tag: " + scenario.getSourceTagNames());
         out.println("*************************************************");
-        browserConfig();
-        addSettings();
+        setDriver();
+
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.get(baseUrl);
     }
 
     @AfterStep
@@ -39,5 +44,5 @@ public class Hooks extends DriverDefinition {
         out.println(" ");
         driver.quit();
     }
-    
+
 }

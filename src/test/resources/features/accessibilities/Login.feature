@@ -8,7 +8,7 @@ Funcionalidade: Login
     Dado que o usuario acesse o site
     E acesse a pagina de login
 
-  @loginSuccess
+  @login
   Cenario: Login sucesso
     Quando ele preecher:
       | email    | qaTest@gmail.com |

@@ -24,7 +24,11 @@ public enum Browsers {
     }
 
     public static Browsers getBrowsers(String browser) {
-        return Browsers.valueOf(browser.toUpperCase());
+        try {
+            return Browsers.valueOf(browser.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Browser not recognized: " + browser);
+        }
     }
 
     public static String getPropertyDriver(String propertyDrowser) {
