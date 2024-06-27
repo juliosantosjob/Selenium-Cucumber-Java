@@ -26,9 +26,9 @@ public class Hooks extends DriverDefinition {
         out.println("*************************************************");
         setDriver();
 
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get(baseUrl);
+        getDriver().manage().window().maximize();
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        getDriver().get(baseUrl);
     }
 
     @AfterStep
@@ -42,7 +42,7 @@ public class Hooks extends DriverDefinition {
         out.println("Finishing Test Execution...");
         out.println("***************************");
         out.println(" ");
-        driver.quit();
+        getDriver().quit();
     }
 
 }

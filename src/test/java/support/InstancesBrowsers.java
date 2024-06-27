@@ -6,13 +6,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
-public class InstancesBrowsers extends DriverDefinition {
-    static EdgeOptions edgeOptions = new EdgeOptions();
-    static ChromeOptions chromeOptions = new ChromeOptions();
-
+public class InstancesBrowsers {
+    
     public static WebDriver getInstanceOptions() {
+        EdgeOptions edgeOptions = new EdgeOptions();
+        ChromeOptions chromeOptions = new ChromeOptions();
 
-        switch (browser.toUpperCase()) {
+        switch (DriverDefinition.browser.toUpperCase()) {
             case "CHROME":
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 chromeOptions.addArguments("--window-size=1920x1080");
@@ -35,7 +35,7 @@ public class InstancesBrowsers extends DriverDefinition {
                 return new EdgeDriver(edgeOptions);
 
             default:
-                throw new IllegalArgumentException("Browser not supported: " + browser);
+                throw new IllegalArgumentException("Browser not supported: " + DriverDefinition.browser);
         }
     }
 }
