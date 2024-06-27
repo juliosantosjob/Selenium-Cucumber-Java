@@ -15,6 +15,7 @@ public class InstancesBrowsers extends DriverDefinition {
         switch (browser.toUpperCase()) {
             case "CHROME":
                 chromeOptions.addArguments("--remote-allow-origins=*");
+                chromeOptions.addArguments("--window-size=1920x1080");
                 return new ChromeDriver(chromeOptions);
 
             case "EDGE":
