@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import pages.usability.BuyProductPages;
 
 import static org.junit.Assert.assertTrue;
-import static utils.Asserts.*;
-import static utils.Commands.*;
+import static support.BasePage.*;
 import static utils.DynamicMass.*;
 
 public class BuyProductActions extends BuyProductPages {

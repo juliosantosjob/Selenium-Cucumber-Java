@@ -1,27 +1,27 @@
-#language:pt
+#language:en
 
 @regression @login_all
-Funcionalidade: Login
-  - Eu como usuario devo poder realizar login na site
+Feature: Login
+  - As a user, I should be able to log in to the site
 
-  Contexto:
-    Dado que o usuario acesse o site
-    E acesse a pagina de login
+  Background:
+    Given the user accesses the site
+    And accesses the login page
 
   @login
-  Cenario: Login sucesso
-    Quando ele preecher:
+  Scenario: Successful Login
+    When they fill in:
       | email    | qaTest@gmail.com |
       | password | Mudar@123        |
-    Então ele visualiza a mensagem "Login realizado"
+    Then they see the message success "Login realizado"
 
-  Esquema do Cenario: Cenários alternativos
-    Quando ele preecher:
+  Scenario Outline: Alternative Scenarios
+    When they fill in:
       | email    | <email>    |
       | password | <password> |
-    Então ele vê a mensagem de erro "<mensagem>"
+    Then they see the error <message>
 
-    Exemplos:
-      | email               | password  | mensagem         |
-      | dominioinvalido.com | Mudar@123 | E-mail inválido. |
-      | qaTest@gmail.com    | \n        | Senha inválida.  |
+    Examples:
+      | email               | password    | message            |
+      | dominioinvalido.com | "Mudar@123" | "E-mail inválido." |
+      | qaTest@gmail.com    | \n          | "Senha inválida."  |

@@ -1,6 +1,6 @@
 package steps;
 
-import support.DriverDefinition;
+import support.BasePage;
 import support.SetupEnv;
 
 import static java.lang.System.out;
@@ -12,7 +12,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-public class Hooks extends DriverDefinition {
+public class Hooks extends BasePage {
     public final long TIMEOUT = 5;
     public final String BASE_URL = SetupEnv.setBaseUrl();
 
@@ -23,7 +23,7 @@ public class Hooks extends DriverDefinition {
                 + "Scenario Name: [" + scenario.getName() + "]\n"
                 + "Scenario Tags: " + scenario.getSourceTagNames() + "\n");
 
-        DriverDefinition.setUp();
+        BasePage.setUp();
         getDriver().manage().window().maximize();
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
         getDriver().get(BASE_URL);
@@ -35,7 +35,7 @@ public class Hooks extends DriverDefinition {
                 "*************************************************");
 
         takingScreenshot(scenario);
-        DriverDefinition.tearDown();
+        BasePage.tearDown();
     }
 
 }

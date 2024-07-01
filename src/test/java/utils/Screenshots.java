@@ -5,14 +5,13 @@ import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import support.DriverDefinition;
+import support.BasePage;
 
 import java.io.File;
-import static utils.Commands.sleep;
 
 import static java.lang.System.out;
 
-public class Screenshots extends DriverDefinition {
+public class Screenshots extends BasePage {
 
     /**
      * Screenshots settings in the project using adaptation of the allure report.

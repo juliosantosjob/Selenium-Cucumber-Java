@@ -12,7 +12,7 @@ public class InstancesBrowsers {
         EdgeOptions edgeOptions = new EdgeOptions();
         ChromeOptions chromeOptions = new ChromeOptions();
 
-        switch (DriverDefinition.browser.toUpperCase()) {
+        switch (BasePage.browser.toUpperCase()) {
             case "CHROME":
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 chromeOptions.addArguments("--window-size=1920x1080");
@@ -35,7 +35,7 @@ public class InstancesBrowsers {
                 return new EdgeDriver(edgeOptions);
 
             default:
-                throw new IllegalArgumentException("Browser not supported: " + DriverDefinition.browser);
+                throw new IllegalArgumentException("Browser not supported: " + BasePage.browser);
         }
     }
 }

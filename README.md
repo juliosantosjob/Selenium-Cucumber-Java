@@ -56,7 +56,7 @@ git clone https://github.com/juliosantosjob/Selenium-Cucumber-Java.git
   env.properties.example</strong>, ele serve como base para informar qual URL o teste deve apontar, então
   no lugar de <strong>env.properties.example</strong> crie um arquivo chamado <strong>env.properties
   </strong> e informe nele a url base utilizada para automação deste projeto que seria:
-  <a href="http://automationpratice.com.br/">
+  <a href="http://automationpratice.com.br">
   SiteQazando</a>,
   (Esta url não foi adicionada ao código para exemplificar boas praticas utilizando o secrets do Github).
 

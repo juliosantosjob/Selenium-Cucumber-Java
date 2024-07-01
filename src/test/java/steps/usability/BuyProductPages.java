@@ -1,43 +1,44 @@
 package steps.usability;
 
 import actions.usability.BuyProductActions;
-import io.cucumber.java.pt.E;
-import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Quando;
-import support.DriverDefinition;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import support.BasePage;
 
-public class BuyProductPages extends DriverDefinition {
+public class BuyProductPages extends BasePage {
     BuyProductActions buyProductActions = new BuyProductActions(driver);
 
-    @E("busque pelo produto {string}")
-    public void busque_pelo_produto(String item) {
+    @And("search for the product {string}")
+    public void search_for_the_product(String item) {
         buyProductActions.searchForProduct(item);
         buyProductActions.productIsDisplayed(item);
     }
 
-    @E("adicione este item ao carrinho")
-    public void adicione_este_item_ao_carrinho() {
+    @And("add this item to the cart")
+    public void add_this_item_to_the_cart() {
         buyProductActions.addProductCart();
         buyProductActions.seeProductInCart();
     }
 
-    @E("vá para a pagina de checkout")
-    public void va_para_a_pagina_de_checkout() {
+    @Given("proceed to checkout")
+    public void proceed_to_checkout() {
         buyProductActions.checkoutProduct();
     }
 
-    @Quando("ele escolher a forma de pagamento")
-    public void ele_escolher_a_forma_de_pagamento() {
+    @When("they choose the payment method")
+    public void they_choose_the_payment_method() {
         buyProductActions.fillPaymentForm();
     }
 
-    @E("confirmar a compra")
-    public void confirmar_a_compra() {
+    @And("confirm the purchase")
+    public void confirm_the_purchase() {
         buyProductActions.saveAndSend();
     }
 
-    @Entao("sua compra é feita com sucesso")
-    public void sua_compra_e_feita_com_sucesso() {
+    @Then("their purchase is completed successfully")
+    public void their_purchase_is_completed_successfully() {
         buyProductActions.registrationSuccess();
     }
 }

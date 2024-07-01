@@ -1,29 +1,30 @@
-#language:pt
+#language:en
 
 @regression @registration_all
-Funcionalidade: Cadastro de usuario
-  - Eu como usuario devo poder me cadastrar na plataforma
+Feature: User Registration
+  As a user, I should be able to register on the platform
 
-  Contexto:
-    Dado que o usuario acesse o site
-    E acesse a pagina de cadastro
+  Background:
+    Given the user accesses the site
+    And accesses the registration page
 
-  Cenario: Cadastro com sucesso
-    Quando ele submeter o formulario com dados validos
-    Então ele vê a mensagem de sucesso: "Cadastro realizado!"
-    E "Bem-vindo"
+  @regist
+  Scenario: Successful registration
+    When they submit the form with valid data
+    Then they see the success message: "Cadastro realizado!"
+    And the message: "Bem-vindo"
 
-  Esquema do Cenario: Envio de formulario com email invalido
-    Quando ele submeter o formulario com:
+  Scenario Outline: Alternative registration flows
+    When they submit the form with:
       | name     | <name>     |
       | email    | <email>    |
       | password | <password> |
-    Então ele vê a mensagem: "<mensagem>"
+    Then they see the message <message>
 
-    Exemplos:
-      | name | email             | password  | mensagem                                       |
-      | João | joao123@erro      | Mudar@123 | O campo e-mail deve ser prenchido corretamente |
-      | \n   | \n                | \n        | O campo nome deve ser prenchido                |
-      | \n   | joao123@erro      | Mudar@123 | O campo nome deve ser prenchido                |
-      | João | \n                | Mudar@123 | O campo e-mail deve ser prenchido corretamente |
-      | João | joao123@gmail.com | \n        | O campo senha deve ter pelo menos 6 dígitos    |
+    Examples:
+      | name   | email             | password    | message                                          |
+      | "João" | "joao123@erro"    | "Mudar@123" | "O campo e-mail deve ser prenchido corretamente" |
+      | \n     | \n                | \n          | "O campo nome deve ser prenchido"                |
+      | \n     | "joao123@erro"    | "Mudar@123" | "O campo nome deve ser prenchido"                |
+      | "João" | \n                | "Mudar@123" | "O campo e-mail deve ser prenchido corretamente" |
+      | "João" | joao123@gmail.com | \n          | "O campo senha deve ter pelo menos 6 dígitos"    |

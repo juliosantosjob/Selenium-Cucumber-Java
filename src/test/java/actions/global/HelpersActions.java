@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.global.HelpersPages;
 
-import static utils.Commands.mouseHover;
+import static support.BasePage.*;
 
 public class HelpersActions extends HelpersPages {
 

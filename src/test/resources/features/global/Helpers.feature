@@ -1,13 +1,12 @@
-#language:pt
+#language:en
 
-  Funcionalidade: Steps de suporte
-    - Esta feature tem como objetivo dar suporte para todos os cenarios que tenha
-      a necessidade de estar logado para atingir seu objetivo
+Feature: Support Steps
+  - This feature aims to provide support for all scenarios that require being logged in to achieve their objective
 
-    Contexto:
-      Dado que o usuario acesse o site
-      E acesse a pagina de login
+  Background:
+    Given the user accesses the site
+    And accesses the login page
 
-    Cenario: Login suporte
-      E faça login com o email "" e a senha ""
-      E logout
+  Scenario: Login support
+    And log in with email "" and password ""
+    And log out

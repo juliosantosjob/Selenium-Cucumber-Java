@@ -2,22 +2,21 @@ package steps.global;
 
 import actions.accessibilities.LoginActions;
 import actions.global.HelpersActions;
-import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.E;
-import support.DriverDefinition;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.And;
+import support.BasePage;
 
-public class HelpersSteps extends DriverDefinition {
+public class HelpersSteps extends BasePage {
     HelpersActions helpersActions = new HelpersActions(driver);
     LoginActions loginActions = new LoginActions(driver);
 
-    @Dado("faça login com o email {string} e a senha {string}")
-    public void faca_login_com_o_email_e_a_senha(String email, String password) {
+    @Given("logs in with email {string} and password {string}")
+    public void logs_in_with_email_and_password(String email, String password) {
         helpersActions.fill(email, password);
     }
 
-    @E("logout")
+    @And("logout")
     public void logout() {
         helpersActions.logOut();
     }
-
 }

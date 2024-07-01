@@ -1,19 +1,19 @@
-#language:pt
+#language:en
 
-@regression   @buy_product_all
-Funcionalidade: Compra de um produtos
-  - Eu como usuario devo poder realizar a compra de um produto no site
+@regression @buy_product_all
+Feature: Purchase of a Product
+  - As a user, I should be able to make a purchase of a product on the website
 
-  Contexto:
-    Dado que o usuario acesse o site
-    E acesse a pagina de login
-    E faça login com o email "qaTest@gmail.com" e a senha "Mudar@123"
+  Background:
+    Given the user accesses the site
+    And accesses the login page
+    And logs in with email "qaTest@gmail.com" and password "Change@123"
 
   @buy_product
-  Cenario: Compra de um produto
-    E busque pelo produto "T-Shirt For Men"
-    E adicione este item ao carrinho
-    E vá para a pagina de checkout
-    Quando ele escolher a forma de pagamento
-    E confirmar a compra
-    Então sua compra é feita com sucesso
+  Scenario: Purchase of a product
+    And search for the product "T-Shirt For Men"
+    And add this item to the cart
+    And proceed to checkout
+    When they choose the payment method
+    And confirm the purchase
+    Then their purchase is completed successfully

@@ -1,15 +1,44 @@
-package utils;
-
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.*;
-import support.DriverDefinition;
+package support;
 
 import java.time.Duration;
 
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import static java.lang.System.out;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-public class Commands extends DriverDefinition {
+import enums.Browsers;
+
+public class BasePage {
+    protected static WebDriver driver;
+    public static String browser = System.getProperty("BROWSER", "CHROME_HEADLESS");
+
+    public static void setUp() {
+        if (driver == null) {
+            System.setProperty(Browsers.getPropertyDriver(browser),
+                    Browsers.getPathDriver(browser));
+            driver = InstancesBrowsers.getInstanceOptions();
+        }
+    }
+
+    public static void tearDown() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
 
     /**
      * Click on the field.
@@ -170,6 +199,67 @@ public class Commands extends DriverDefinition {
             Thread.sleep(timeout);
         } catch (InterruptedException ignored) {
             out.println("Error execution wait!");
+        }
+    }
+
+    /**
+     * Ensures that web element contains exactly one text.
+     * Example: assertive(element, "text of assertion");
+     *
+     * @param webElement
+     * @param text
+     */
+
+    public static void assertive(WebElement webElement, String text) {
+        webElement.isEnabled();
+        assertEquals(webElement.getText(), text);
+    }
+
+    /*
+     * Comando para fazer asserções com textos e textos
+     * Ex: assertText(elemento, "meu texto");
+     */
+
+    public static void assertText(String text, String textTwo) {
+        Assert.assertEquals(text, textTwo);
+    };
+
+    /*
+     * Comando para fazer asserções com textos e textos
+     * Ex: containsText("Texto 1", "texto 2");
+     */
+
+    public static void containsText(String textOne, String textTwo) {
+        Assert.assertTrue(textOne.contains(textTwo));
+    };
+
+    /**
+     * Validation contains text in a web element.
+     * Example: contains(element, "text of assertion");
+     * 
+     * @param webElement
+     * @param text
+     */
+
+    public static void contains(WebElement webElement, String text) {
+        webElement.isEnabled();
+        assertTrue(webElement.getText().contains(text));
+    }
+
+    /**
+     * Asserts which element is visible on the screen
+     * Example: assertVisible(element);
+     *
+     * @param webElement
+     */
+
+    public static void assertVisible(WebElement webElement) {
+        try {
+            webElement.isEnabled();
+            webElement.isDisplayed();
+        } catch (Exception e) {
+            e.printStackTrace();
+            out.println("Element not visible!");
         }
     }
 }

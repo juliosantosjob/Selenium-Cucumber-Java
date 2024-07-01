@@ -2,42 +2,42 @@ package steps.accessibilities;
 
 import actions.accessibilities.RegistrationActions;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.pt.E;
-import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Quando;
-import support.DriverDefinition;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import support.BasePage;
 
-public class RegistrationSteps extends DriverDefinition {
+public class RegistrationSteps extends BasePage {
     RegistrationActions registActions = new RegistrationActions(driver);
 
-    @E("acesse a pagina de cadastro")
-    public void acesse_a_pagina_de_cadastro() {
+    @Given("accesses the registration page")
+    public void accesses_the_registration_page() {
         registActions.goToRegistPage();
     }
 
-    @Quando("ele submeter o formulario com dados validos")
-    public void ele_submeter_o_formulario_com_dados_validos() {
+    @When("they submit the form with valid data")
+    public void they_submit_the_form_with_valid_data() {
         registActions.fillForm();
     }
 
-    @Entao("ele vê a mensagem de sucesso: {string}")
-    public void ele_ve_a_mensagem_de_sucesso(String messageRegistDone) {
+    @Then("they see the success message: {string}")
+    public void they_see_the_success_message(String messageRegistDone) {
         registActions.successMsg(messageRegistDone);
     }
 
-    @E("{string}")
-    public void a_mensagem(String messageWelcome) {
+    @And("the message: {string}")
+    public void the_message(String messageWelcome) {
         registActions.successMsg(messageWelcome);
     }
 
-    @Quando("ele submeter o formulario com:")
-    public void ele_submeter_o_formulario_com(DataTable dataTable) {
+    @When("they submit the form with:")
+    public void they_submit_the_form_with(DataTable dataTable) {
         registActions.fillForms(dataTable);
     }
 
-    @Entao("ele vê a mensagem: {string}")
-    public void ele_ve_a_mensagem(String message) {
+    @Then("they see the message {string}")
+    public void they_see_the_message(String message) {
         registActions.outgoingMsg(message);
     }
-    
 }

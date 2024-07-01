@@ -8,7 +8,7 @@ import pages.accessibilities.RegistrationPages;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
-import static utils.Commands.*;
+import static support.BasePage.*;
 import static utils.DynamicMass.*;
 
 public class RegistrationActions extends RegistrationPages {

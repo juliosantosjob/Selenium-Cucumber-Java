@@ -2,37 +2,36 @@ package steps.accessibilities;
 
 import actions.accessibilities.LoginActions;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Quando;
-import support.DriverDefinition;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import support.BasePage;
 
-public class LoginSteps extends DriverDefinition {
+public class LoginSteps extends BasePage {
     LoginActions loginActions = new LoginActions(driver);
 
-    @Dado("que o usuario acesse o site")
-    public void que_o_usuario_acesso_o_site() {
+    @Given("the user accesses the site")
+    public void the_user_accesses_the_site() {
         loginActions.openHome();
     }
 
-    @Dado("acesse a pagina de login")
-    public void acesse_a_pagina_de_login() {
+    @Given("accesses the login page")
+    public void accesses_the_login_page() {
         loginActions.goToLogin();
     }
 
-    @Quando("ele preecher:")
-    public void ele_preecher(DataTable dataTable) {
+    @When("they fill in:")
+    public void they_fill_in(DataTable dataTable) {
         loginActions.fillCredents(dataTable);
     }
 
-    @Entao("ele visualiza a mensagem {string}")
-    public void ele_visualiza_a_mensagem(String msgPerformLogin) { 
+    @Then("they see the message success {string}")
+    public void they_see_the_message_success(String msgPerformLogin) {
         loginActions.seeMessage(msgPerformLogin);
     }
 
-    @Entao("ele vê a mensagem de erro {string}")
-    public void ele_ve_a_mensagem_de_erro(String msgOutput) {
+    @Then("they see the error {string}")
+    public void they_see_the_error(String msgOutput) {
         loginActions.seeError(msgOutput);
     }
-
 }
