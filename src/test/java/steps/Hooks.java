@@ -1,7 +1,7 @@
 package steps;
 
-import support.SetURL;
 import support.DriverDefinition;
+import support.SetupEnv;
 
 import static java.lang.System.out;
 import static utils.Screenshots.takingScreenshot;
@@ -9,40 +9,33 @@ import static utils.Screenshots.takingScreenshot;
 import java.time.Duration;
 
 import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
 public class Hooks extends DriverDefinition {
-    String baseUrl = SetURL.urlBase();
+    public final long TIMEOUT = 5;
+    public final String BASE_URL = SetupEnv.setBaseUrl();
 
     @Before
     public void init(Scenario scenario) {
-        out.println("*************************************************");
-        out.println("Starting Test Execution...");
-        out.println("Running Scenario: [" + scenario.getName() + "]");
-        out.println("Scenario Status: [" + scenario.getStatus() + "]");
-        out.println("Execution Tag: " + scenario.getSourceTagNames());
-        out.println("*************************************************");
-        setDriver();
+        out.println("*************************************************\n"
+                + "Running Test...\n"
+                + "Scenario Name: [" + scenario.getName() + "]\n"
+                + "Scenario Tags: " + scenario.getSourceTagNames() + "\n");
 
+        DriverDefinition.setUp();
         getDriver().manage().window().maximize();
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        getDriver().get(baseUrl);
-    }
-
-    @AfterStep
-    public static void addReport(Scenario scenario) {
-        takingScreenshot(scenario);
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
+        getDriver().get(BASE_URL);
     }
 
     @After
-    public void end() {
-        out.println("***************************");
-        out.println("Finishing Test Execution...");
-        out.println("***************************");
-        out.println(" ");
-        getDriver().quit();
+    public void end(Scenario scenario) {
+        out.println("Scenario Status: [" + scenario.getStatus() + "]\n" +
+                "*************************************************");
+
+        takingScreenshot(scenario);
+        DriverDefinition.tearDown();
     }
 
 }

@@ -1,32 +1,25 @@
 package env.setup;
 
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.Properties;
 
-import static java.lang.System.out;
-
 public class Envs {
-    private Properties prop = new Properties();
+    private static String PATH_PROJECT = System.getProperty("user.dir");
+    private static Properties prop;
 
-    public static Envs env() {
-        return new Envs();
-    }
-
-    private Properties loadProp() {
+    private static Properties loadProp() {
         try {
-            String pathProject = System.getProperty("user.dir");
-            InputStream input = new FileInputStream(
-                    pathProject + "/src/test/java/env/resources/env.properties");
-            prop.load(input);
+            Envs.prop = new Properties();
+            Envs.prop.load(new FileInputStream(PATH_PROJECT + "/src/test/java/env/resources/env.properties"));
+
         } catch (Exception e) {
-            out.println("**** WARNING: Unable to load data mass properties file, " +
-                    "Create the env.properties file and enter the project base url! **** " + e);
+            System.out.println("**** WARNING: Missing env.properties. Add base URL! **** " + e);
         }
-        return prop;
+        return Envs.prop;
     }
 
-    public String getEnv(String env) {
-        return loadProp().getProperty(env);
+    public static String getEnv(String env) {
+        return Envs.loadProp().getProperty(env);
     }
+    
 }

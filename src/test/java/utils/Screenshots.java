@@ -8,7 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import support.DriverDefinition;
 
 import java.io.File;
-import static utils.Commands.*;
+import static utils.Commands.sleep;
 
 import static java.lang.System.out;
 
