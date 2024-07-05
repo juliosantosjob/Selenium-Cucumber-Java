@@ -7,7 +7,11 @@ import env.setup.Envs;
 public class SetupEnv {
     private static String envParam = getProperty("ENV", "HMG");
 
-    public static String setBaseUrl() {
+    public static SetupEnv setupEnv() {
+        return new SetupEnv();
+    }
+
+    public String setBaseUrl() {
         switch (envParam) {
             case "HMG":
                 return Envs.getEnv("URL_HOM");

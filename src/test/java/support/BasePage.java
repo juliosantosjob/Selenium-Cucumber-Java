@@ -2,9 +2,10 @@ package support;
 
 import java.time.Duration;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,14 +13,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import enums.Browsers;
 
 public class BasePage {
     protected static WebDriver driver;
     public static String browser = System.getProperty("BROWSER", "CHROME_HEADLESS");
+
+    /**
+     * Set up the driver instance.
+     */
 
     public static void setUp() {
         if (driver == null) {
@@ -29,6 +32,10 @@ public class BasePage {
         }
     }
 
+    /**
+     * Close the browser.
+     */
+
     public static void tearDown() {
         if (driver != null) {
             driver.quit();
@@ -36,8 +43,62 @@ public class BasePage {
         }
     }
 
+    /**
+     * Get the driver.
+     * 
+     * @return driver
+     */
+
     public static WebDriver getDriver() {
         return driver;
+    }
+
+    /**
+     * Visit the url.
+     * Example: visit("https://www.example.com");
+     *
+     * @param text The url to be visited
+     */
+
+    public static void visit(String url) {
+        try {
+            driver.get(url);
+        } catch (Exception e) {
+            System.out.println("Error to visit the url " + url);
+        }
+    }
+
+    /**
+     * Get the text from the web element.
+     * Example: getTxt(element);
+     *
+     * @param webElement
+     * @return
+     * @throws Exception
+     */
+
+    public static String grabText(WebElement webElement) {
+        try {
+            waitForElement(webElement, 10);
+            return webElement.getText();
+        } catch (Exception e) {
+            throw new RuntimeException("Error getting text from element: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Clicks on the specified WebElement.
+     *
+     * @param webElement the WebElement to be clicked
+     */
+
+    public static void click(WebElement webElement) {
+        try {
+            waitForElement(webElement, 10);
+            webElement.click();
+        } catch (Exception e) {
+            throw new RuntimeException("Error clicking on element: " + e.getMessage());
+        }
     }
 
     /**
@@ -52,18 +113,49 @@ public class BasePage {
         try {
             driver.findElement(By.xpath("//*[text()='" + text + "']")).click();
         } catch (Exception e) {
-            out.println("Unable to click text!");
+            out.println("Not found text: " + text);
         }
     }
 
     /**
-     * Wait for a defined time until the web element is visible on the screen.
-     * Example: waitForElement(element, 10);
+     * Sends a given text to a web element by invoking the `sendKeys` method on the
+     * web element.
      *
-     * @param webElement
-     * @param timeout    How many seconds to wait for element to be visible
-     * @return
-     * @throws Exception
+     * @param webElement the web element to type the text into
+     * @param text       the text to send to the web element
+     */
+
+    public static void type(WebElement webElement, String text) {
+        try {
+            webElement.sendKeys(text);
+        } catch (Exception e) {
+            out.println("Error trying to send keys: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Sends a given text to a web element by invoking the `sendKeys` method on the
+     * web element.
+     *
+     * @param webElement the web element to type the text into
+     * @param text       the text to send to the web element
+     */
+
+    public static void typeAndPress(WebElement webElement, String text, Keys enter) {
+        try {
+            webElement.sendKeys(text, enter);
+        } catch (Exception e) {
+            out.println("Error trying to send keys: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Waits for a web element to become clickable within a specified timeout.
+     *
+     * @param webElement the web element to wait for
+     * @param timeout    the maximum time to wait in seconds
+     * @return the web element if it becomes clickable within the timeout,
+     *         or null if it does not become clickable
      */
 
     public static WebElement waitForElement(WebElement webElement, int timeout) {
@@ -72,7 +164,8 @@ public class BasePage {
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.isDisplayed();
         } catch (Exception e) {
-            out.println("Unable to wait for element!");
+            out.println("Error waiting for element to be clickable: " + e.getMessage());
+            return null;
         }
         return webElement;
     }
@@ -84,31 +177,13 @@ public class BasePage {
      * @param elementBy
      */
 
-    public static void waitElementDisappear(By elementBy, int timeout) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
-    }
-
-    /**
-     * Wait a defined time until the web element is visible on the screen and click
-     * on it.
-     * Example: waitAndTap(element, 10);
-     *
-     * @param webElement
-     * @param timeout
-     * @return
-     * @throws Exception
-     */
-
-    public static WebElement waitAndClick(WebElement webElement, int timeout) {
+    public static void waitElementDisappear(By elementBy) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-            wait.until(ExpectedConditions.elementToBeClickable(webElement));
-            webElement.click();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
         } catch (Exception e) {
-            out.println("Unable to wait for element!");
+            out.println("Error waiting for element to disappear: " + e.getMessage());
         }
-        return webElement;
     }
 
     /**
@@ -120,7 +195,11 @@ public class BasePage {
 
     public static void realClick(WebElement webElement) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", webElement);
+        try {
+            executor.executeScript("arguments[0].click();", webElement);
+        } catch (Exception e) {
+            out.println("Error click: " + e.getMessage());
+        }
     }
 
     /**
@@ -138,10 +217,11 @@ public class BasePage {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.isEnabled();
+            return webElement;
         } catch (Exception e) {
-            out.println("element is not enabled!");
+            out.println("Error waiting for element to be clickable: " + e.getMessage());
+            return null;
         }
-        return webElement;
     }
 
     /**
@@ -155,10 +235,11 @@ public class BasePage {
     public static WebElement scrollTo(WebElement webElement) {
         try {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+            return webElement;
         } catch (Exception e) {
-            out.println(e.getCause());
+            out.println("Error scrolling to element: " + e.getMessage());
+            return null;
         }
-        return webElement;
     }
 
     /**
@@ -169,9 +250,14 @@ public class BasePage {
      */
 
     public static WebElement mouseHover(WebElement webElement) {
-        Actions action = new Actions(driver);
-        action.moveToElement(webElement).build().perform();
-        return webElement;
+        try {
+            Actions action = new Actions(driver);
+            action.moveToElement(webElement).build().perform();
+            return webElement;
+        } catch (Exception e) {
+            out.println("Error hovering mouse to element: " + e.getMessage());
+            return null;
+        }
     }
 
     /**
@@ -182,9 +268,13 @@ public class BasePage {
      * @param option
      */
 
-    public static void selectOption(WebElement webElement, String option) {
-        Select select = new Select(webElement);
-        select.selectByVisibleText(option);
+    public static void selectOptions(WebElement webElement, String option) {
+        try {
+            Select select = new Select(webElement);
+            select.selectByVisibleText(option);
+        } catch (Exception e) {
+            out.println("Error selecting option: " + e.getMessage());
+        }
     }
 
     /**
@@ -200,50 +290,6 @@ public class BasePage {
         } catch (InterruptedException ignored) {
             out.println("Error execution wait!");
         }
-    }
-
-    /**
-     * Ensures that web element contains exactly one text.
-     * Example: assertive(element, "text of assertion");
-     *
-     * @param webElement
-     * @param text
-     */
-
-    public static void assertive(WebElement webElement, String text) {
-        webElement.isEnabled();
-        assertEquals(webElement.getText(), text);
-    }
-
-    /*
-     * Comando para fazer asserções com textos e textos
-     * Ex: assertText(elemento, "meu texto");
-     */
-
-    public static void assertText(String text, String textTwo) {
-        Assert.assertEquals(text, textTwo);
-    };
-
-    /*
-     * Comando para fazer asserções com textos e textos
-     * Ex: containsText("Texto 1", "texto 2");
-     */
-
-    public static void containsText(String textOne, String textTwo) {
-        Assert.assertTrue(textOne.contains(textTwo));
-    };
-
-    /**
-     * Validation contains text in a web element.
-     * Example: contains(element, "text of assertion");
-     * 
-     * @param webElement
-     * @param text
-     */
-
-    public static void contains(WebElement webElement, String text) {
-        webElement.isEnabled();
-        assertTrue(webElement.getText().contains(text));
     }
 
     /**

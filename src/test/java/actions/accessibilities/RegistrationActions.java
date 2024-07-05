@@ -18,39 +18,33 @@ public class RegistrationActions extends RegistrationPages {
     }
 
     public void goToRegistPage() {
-        btnRegistration.click();
-
-        String titleFormTxt = titleForm.getText();
-        assertTrue(titleFormTxt.contains("Cadastro de usuário"));
+        click(btnRegistration);
+        assertTrue(grabText(titleForm)
+                .contains("Cadastro de usuário"));
     }
 
     public void fillForm() {
-        fldUserForm.sendKeys(randomName());
-        fldEmailForm.sendKeys(randomEmail());
-        fldPasswordForm.sendKeys(randomPassword());
+        type(fldUserForm, randomName());
+        type(fldEmailForm, randomEmail());
+        type(fldPasswordForm, randomPassword());
         realClick(btnRegistrationSubmit);
     }
 
     public void fillForms(DataTable dataTable) {
         List<List<String>> data = dataTable.cells();
 
-        fldUserForm.sendKeys(data.get(0).get(1));
-        fldEmailForm.sendKeys(data.get(1).get(1));
-        fldPasswordForm.sendKeys(data.get(2).get(1));
+        type(fldUserForm, data.get(0).get(1));
+        type(fldEmailForm, data.get(1).get(1));
+        type(fldPasswordForm, data.get(2).get(1));
         realClick(btnRegistrationSubmit);
     }
 
     public void successMsg(String message) {
-        waitForElement(popupSuccessRegister, 5);
-
-        String messagePp = popupSuccessRegister.getText();
-        assertTrue(messagePp.contains(message));
+        assertTrue(grabText(popupSuccessRegister).contains(message));
     }
 
     public void outgoingMsg(String message) {
-        waitForElement(form, 5);
-
-        String formTxt = form.getText();
-        assertTrue(formTxt.contains(message));
+        assertTrue(grabText(form).contains(message));
     }
+    
 }

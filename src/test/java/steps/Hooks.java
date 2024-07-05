@@ -1,7 +1,6 @@
 package steps;
 
 import support.BasePage;
-import support.SetupEnv;
 
 import static java.lang.System.out;
 import static utils.Screenshots.takingScreenshot;
@@ -14,7 +13,6 @@ import io.cucumber.java.Scenario;
 
 public class Hooks extends BasePage {
     public final long TIMEOUT = 5;
-    public final String BASE_URL = SetupEnv.setBaseUrl();
 
     @Before
     public void init(Scenario scenario) {
@@ -26,7 +24,6 @@ public class Hooks extends BasePage {
         BasePage.setUp();
         getDriver().manage().window().maximize();
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
-        getDriver().get(BASE_URL);
     }
 
     @After

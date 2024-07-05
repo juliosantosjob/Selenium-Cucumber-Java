@@ -7,8 +7,22 @@ import org.openqa.selenium.support.PageFactory;
 import pages.usability.BuyProductPages;
 
 import static org.junit.Assert.assertTrue;
-import static support.BasePage.*;
-import static utils.DynamicMass.*;
+
+import static support.BasePage.realClick;
+import static support.BasePage.type;
+import static support.BasePage.typeAndPress;
+import static support.BasePage.clickText;
+import static support.BasePage.click;
+import static support.BasePage.waitElementDisappear;
+import static support.BasePage.waitForElement;
+import static support.BasePage.grabText;
+import static support.BasePage.selectOptions;
+import static support.BasePage.scrollTo;
+
+import static utils.DynamicMass.randomName;
+import static utils.DynamicMass.randomLastName;
+import static utils.DynamicMass.randomNameCompany;
+import static utils.DynamicMass.randomEmail;
 
 public class BuyProductActions extends BuyProductPages {
 
@@ -18,19 +32,21 @@ public class BuyProductActions extends BuyProductPages {
 
     public void searchForProduct(String item) {
         realClick(btnSearch);
-        fldSearch.sendKeys(item, Keys.ENTER);
+        typeAndPress(fldSearch, item, Keys.ENTER);
         clickText("OK");
     }
 
     public void productIsDisplayed(String item) {
         WebElement myProduct = product.get(1);
-        contains(myProduct, item);
-        waitAndClick(myProduct, 10);
+
+        assertTrue(grabText(myProduct)
+                .contains(item));
+        click(myProduct);
     }
 
     public void addProductCart() {
         realClick(btnAddToCart);
-        waitElementDisappear(fldShow, 5);
+        waitElementDisappear(fldShow);
         realClick(btnBag);
     }
 
@@ -39,24 +55,25 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void checkoutProduct() {
-        WebElement buttonCheckout = btnCheckout.get(1);
-        realClick(buttonCheckout);
+        realClick(btnCheckout.get(1));
     }
 
     public void fillPaymentForm() {
-        String areaBillingsTxt = areaBillings.getText();
-        assertTrue(areaBillingsTxt.contains("Billings Information"));
+        assertTrue(grabText(areaBillings)
+                .contains("Billings Information"));
 
-        fldFirtsName.sendKeys(randomName());
-        fldLastName.sendKeys(randomLastName());
-        fldCompany.sendKeys(randomNameCompany());
-        fldEmail.sendKeys(randomEmail());
+        type(fldFirtsName, randomName());
+        type(fldLastName, randomLastName());
+        type(fldCompany, randomNameCompany());
+        type(fldEmail, randomEmail());
 
-        selectOption(optCountry, "usa");
-        selectOption(optCountry, "Afghanistan");
-        fldZip.sendKeys("07500000");
-        fldAdress.sendKeys("Rua roberto silva - 3578");
-        fldAdditionalNotes.sendKeys("Informações Adicionais");
+        selectOptions(optCountry, "usa");
+        selectOptions(optCountry, "Afghanistan");
+
+        type(fldZip, "07500000");
+        type(fldAdress, "Rua roberto silva - 3578");
+        type(fldAdditionalNotes, "Informacoes Adicionais");
+        
         scrollTo(btnSave);
     }
 
@@ -66,10 +83,9 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void registrationSuccess() {
-        waitForElement(modalSuccess, 5);
-        String getMessage = modalSuccess.getText();
-
-        assertTrue(getMessage.contains("Order success!"));
-        assertTrue(getMessage.contains("Congrats! Your order was created with sucess!"));
+        assertTrue(grabText(modalSuccess)
+                .contains("Order success!"));
+        assertTrue(grabText(modalSuccess)
+                .contains("Congrats! Your order was created with sucess!"));
     }
 }

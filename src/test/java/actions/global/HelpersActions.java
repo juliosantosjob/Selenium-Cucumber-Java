@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pages.global.HelpersPages;
 
-import static support.BasePage.*;
+import static support.BasePage.type;
+import static support.BasePage.click;
+import static support.BasePage.mouseHover;
 
 public class HelpersActions extends HelpersPages {
 
@@ -13,9 +15,9 @@ public class HelpersActions extends HelpersPages {
     }
 
     public void fill(String email, String password) {
-        fldEmail.sendKeys(email);
-        fldPassword.sendKeys(password);
-        btnLoginSubmit.click();
+        type(fldEmail, email);
+        type(fldPassword, password);
+        click(btnLoginSubmit);
     }
 
     public void logOut() {
