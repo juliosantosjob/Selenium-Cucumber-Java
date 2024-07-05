@@ -2,7 +2,6 @@ package support;
 
 import java.time.Duration;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -12,9 +11,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static java.lang.System.out;
 
-import enums.Browsers;
+import support.enums.Browsers;
+
+import static java.lang.System.out;
 
 public class BasePage {
     protected static WebDriver driver;

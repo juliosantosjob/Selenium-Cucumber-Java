@@ -1,4 +1,4 @@
-package enums;
+package support.enums;
 
 public enum Browsers {
     CHROME("webdriver.chrome.driver", "drivers/chromedriver.exe"),
