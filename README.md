@@ -1,4 +1,5 @@
 # Selenium-Cucumber-Java
+
 - Este projeto foi criado para fins de estudo, seu foco está em criar um framework de automação E2E utilizando Selenium,
 Cucumber e Java, e para a visualização do resultado da execução dos testes foi utilizado o Allure Report. O projeto foi
 desenvolvido utilizando as boas práticas dos padrões Page Objects e Page Factory, e para exemplificar boas práticas de
@@ -52,7 +53,7 @@ git clone https://github.com/juliosantosjob/Selenium-Cucumber-Java.git
 
 <p>
 
-- No caminho <strong>"src/test/java/environments/resources"</strong> existe um arquivo chamado <strong>
+- No caminho <strong>"src/test/java/env/resources"</strong> existe um arquivo chamado <strong>
   env.properties.example</strong>, ele serve como base para informar qual URL o teste deve apontar, então
   no lugar de <strong>env.properties.example</strong> crie um arquivo chamado <strong>env.properties
   </strong> e informe nele a url base utilizada para automação deste projeto que seria:
@@ -76,15 +77,15 @@ git clone https://github.com/juliosantosjob/Selenium-Cucumber-Java.git
 
 - No parâmetro ENV você deve informar em qual ambiente deseja executar os testes, neste caso seria homologação
   (deixei a opção de stage para exemplificar caso houvesse um segundo ambiente).<p>
-  example:<strong> -DENV=hmg</strong> ou <strong> -DENV=stg</strong>.
-  para rodar o projeto no Github Actions é obrigatório passar: <strong>-DENV=hmg-actions</strong> ou <strong>
-  -DENV=stg-actions</strong>
+  example:<strong> -DENV=HMG</strong> ou <strong> -DENV=STG</strong>.
+  para rodar o projeto no Github Actions é obrigatório passar: <strong>-DENV=CHROME_HEADLESS</strong> ou <strong>
+  -DENV=EDGE_HEADLESS</strong>
 
 <p>
 
 - No parâmetro BROWSER você pode escolher qual o navegador deseja para a execução, para informa-lo apenas passe o nome
   do navegador em caixa baixa,
-  <p>example: <strong>-DBROWSER=chrome</strong> ou <strong>-DBROWSER=edge</strong>
+  <p>example: <strong>-DBROWSER=CHROME</strong> ou <strong>-DBROWSER=EDGE</strong>
   (Este projeto foi estruturado para rodar somente nos navegadores Chrome e Edge).
 
 <p>
