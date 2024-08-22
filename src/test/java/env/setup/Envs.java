@@ -4,9 +4,8 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 public class Envs {
-    private static String PATH_PROJECT = System.getProperty("user.dir");
     private static String PATH_PROP = "/src/test/java/env/resources/env.properties";
-    private static String LOAD_PATH = PATH_PROJECT + PATH_PROP;
+    private static String LOAD_PATH = System.getProperty("user.dir") + PATH_PROP;
     private static Properties prop;
 
     private static Properties loadProp() {
