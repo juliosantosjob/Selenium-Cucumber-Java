@@ -19,7 +19,8 @@ public class Hooks extends BasePage {
         out.println("*************************************************\n"
                 + "Running Test...\n"
                 + "Scenario Name: [" + scenario.getName() + "]\n"
-                + "Scenario Tags: " + scenario.getSourceTagNames() + "\n");
+                + "Scenario Tags: " + scenario.getSourceTagNames() + "\n"
+                 + "*************************************************");
 
         BasePage.setUp();
         getDriver().manage().window().maximize();
@@ -28,9 +29,7 @@ public class Hooks extends BasePage {
 
     @After
     public void end(Scenario scenario) {
-        out.println("Scenario Status: [" + scenario.getStatus() + "]\n" +
-                "*************************************************");
-
+        out.println("Scenario Status: [" + scenario.getStatus() + "]\n");
         takingScreenshot(scenario);
         BasePage.tearDown();
     }
