@@ -20,7 +20,7 @@ public class Hooks extends BasePage {
                 + "Running Test...\n"
                 + "Scenario Name: [" + scenario.getName() + "]\n"
                 + "Scenario Tags: " + scenario.getSourceTagNames() + "\n"
-                 + "*************************************************");
+                + "*************************************************");
 
         BasePage.setUp();
         getDriver().manage().window().maximize();
