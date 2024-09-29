@@ -19,7 +19,6 @@ public class InstancesBrowsers {
                 return new ChromeDriver(chromeOptions);
 
             case "EDGE":
-                edgeOptions.addArguments("headless");
                 edgeOptions.addArguments("--window-size=1920x1080");
                 return new EdgeDriver(edgeOptions);
 
