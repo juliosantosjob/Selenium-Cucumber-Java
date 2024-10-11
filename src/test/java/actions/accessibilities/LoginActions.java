@@ -18,7 +18,7 @@ import static support.BasePage.click;
 import static support.SetupEnv.setupEnv;
 
 public class LoginActions extends LoginPages {
-    public final String BASE_URL = setupEnv().setBaseUrl();
+    public final String BASE_URL = setupEnv().getBaseUrl();
 
     public LoginActions(WebDriver driver) {
         PageFactory.initElements(driver, this);

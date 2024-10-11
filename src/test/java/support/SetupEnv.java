@@ -5,13 +5,13 @@ import static java.lang.System.getProperty;
 import env.setup.Envs;
 
 public class SetupEnv {
-    private static String envParam = getProperty("ENV", "HMG");
+    private static final String envParam = getProperty("ENV", "HMG");
 
     public static SetupEnv setupEnv() {
         return new SetupEnv();
     }
 
-    public String setBaseUrl() {
+    public String getBaseUrl() {
         switch (envParam) {
             case "HMG":
                 return Envs.getEnv("URL_HOM");

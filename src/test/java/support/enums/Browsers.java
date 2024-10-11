@@ -1,11 +1,11 @@
 package support.enums;
 
 public enum Browsers {
-    CHROME("webdriver.chrome.driver", "drivers/chromedriver.exe"),
-    CHROME_HEADLESS("webdriver.chrome.driver", "drivers/chromedriver.exe"),
-    FIREFOX("webdriver.gecko.driver", "drivers/geckodriver.exe"),
-    EDGE("webdriver.edge.driver", "drivers/msedgedriver.exe"),
-    EDGE_HEADLESS("webdriver.edge.driver", "drivers/msedgedriver.exe");
+    CHROME("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe"),
+    CHROME_HEADLESS("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe"),
+    FIREFOX("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe"),
+    EDGE("webdriver.edge.driver", "src/test/resourcesdrivers/msedgedriver.exe"),
+    EDGE_HEADLESS("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe");
 
     private final String property;
     private final String path;

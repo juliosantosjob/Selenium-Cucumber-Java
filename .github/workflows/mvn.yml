@@ -1,8 +1,6 @@
 name: Pipe Selenium-Framework
 
 on:
-  push:
-    branches: [master]
   pull_request:
     branches: [master]
 

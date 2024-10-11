@@ -12,13 +12,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import support.enums.Browsers;
-
 import static java.lang.System.out;
 
 public class BasePage {
     protected static WebDriver driver;
-    public static String browser = System.getProperty("BROWSER", "CHROME_HEADLESS");
+    public static String browser = System.getProperty("BROWSER", "CHROME");
 
     /**
      * Set up the driver instance.
@@ -26,9 +24,9 @@ public class BasePage {
 
     public static void setUp() {
         if (driver == null) {
-            System.setProperty(Browsers.getPropertyDriver(browser),
-                    Browsers.getPathDriver(browser));
-            driver = InstancesBrowsers.getInstanceOptions();
+            System.setProperty(support.enums.Browsers.getPropertyDriver(browser),
+                    support.enums.Browsers.getPathDriver(browser));
+            driver = Browsers.getInstanceOptions();
         }
     }
 
@@ -57,14 +55,14 @@ public class BasePage {
      * Visit the url.
      * Example: visit("https://www.example.com");
      *
-     * @param text The url to be visited
+     * @param url The url to be visited
      */
 
     public static void visit(String url) {
         try {
             driver.get(url);
         } catch (Exception e) {
-            System.out.println("Error to visit the url " + url);
+            out.println("Error to visit the url " + url);
         }
     }
 
