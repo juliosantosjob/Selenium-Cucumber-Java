@@ -4,3 +4,4 @@ target
 allure-report
 allure-results
 Env.properties
+*~
