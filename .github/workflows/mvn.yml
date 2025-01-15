@@ -45,8 +45,5 @@ jobs:
         env:
           URL_HOM: ${{ secrets.URL_HOM }}
         run: |
-<<<<<<< HEAD
           mvn test -DENV=hmg-actions -DBROWSER=chrome-headless
-=======
-          mvn test -DENV=hmg-actions -DBROWSER=chrome-headless
->>>>>>> fd3d97e1a78697d76af250f00a90a2eb4c199bdd
+
