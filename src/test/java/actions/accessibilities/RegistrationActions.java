@@ -27,7 +27,7 @@ public class RegistrationActions extends RegistrationPages {
         type(fldUserForm, randomName());
         type(fldEmailForm, randomEmail());
         type(fldPasswordForm, randomPassword());
-        realClick(btnRegistrationSubmit);
+        clickJS(btnRegistrationSubmit);
     }
 
     public void fillForms(DataTable dataTable) {
@@ -36,7 +36,7 @@ public class RegistrationActions extends RegistrationPages {
         type(fldUserForm, data.get(0).get(1));
         type(fldEmailForm, data.get(1).get(1));
         type(fldPasswordForm, data.get(2).get(1));
-        realClick(btnRegistrationSubmit);
+        clickJS(btnRegistrationSubmit);
     }
 
     public void successMsg(String message) {

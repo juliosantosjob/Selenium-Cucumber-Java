@@ -16,23 +16,23 @@ import static java.lang.System.out;
 
 public class BasePage {
     protected static WebDriver driver;
-    public static String browser = System.getProperty("BROWSER", "CHROME");
+    public static String browser = System.getProperty("BROWSER", "CHROME_HEADLESS");
 
-    /**
-     * Set up the driver instance.
-     */
 
     public static void setUp() {
         if (driver == null) {
-            System.setProperty(support.enums.Browsers.getPropertyDriver(browser),
-                    support.enums.Browsers.getPathDriver(browser));
+            String os = System.getProperty("os.name");
+
+            if (os.equalsIgnoreCase("win")) {
+                System.setProperty(support.enums.Browsers.getPropertyDriver(browser),
+                        support.enums.Browsers.getPathDriver(browser));
+            }  else if (os.equalsIgnoreCase("nix") || os.equalsIgnoreCase("nux")) {
+                System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+            }
+
             driver = Browsers.getInstanceOptions();
         }
     }
-
-    /**
-     * Close the browser.
-     */
 
     public static void tearDown() {
         if (driver != null) {
@@ -41,22 +41,9 @@ public class BasePage {
         }
     }
 
-    /**
-     * Get the driver.
-     * 
-     * @return driver
-     */
-
     public static WebDriver getDriver() {
         return driver;
     }
-
-    /**
-     * Visit the url.
-     * Example: visit("https://www.example.com");
-     *
-     * @param url The url to be visited
-     */
 
     public static void visit(String url) {
         try {
@@ -65,15 +52,6 @@ public class BasePage {
             out.println("Error to visit the url " + url);
         }
     }
-
-    /**
-     * Get the text from the web element.
-     * Example: getTxt(element);
-     *
-     * @param webElement
-     * @return
-     * @throws Exception
-     */
 
     public static String grabText(WebElement webElement) {
         try {
@@ -84,28 +62,26 @@ public class BasePage {
         }
     }
 
-    /**
-     * Clicks on the specified WebElement.
-     *
-     * @param webElement the WebElement to be clicked
-     */
-
     public static void click(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        int maxAttempts = 5;
+        int attempts = 1;
+
         try {
-            waitForElement(webElement, 10);
-            webElement.click();
+            while (attempts <= maxAttempts) {
+                try {
+                    wait.until(ExpectedConditions.visibilityOfAllElements(webElement));
+                    wait.until(ExpectedConditions.elementToBeClickable(webElement));
+                    webElement.click();
+                    break;
+                } catch (Exception e) {
+                    attempts++;
+                }
+            }
         } catch (Exception e) {
             throw new RuntimeException("Error clicking on element: " + e.getMessage());
         }
     }
-
-    /**
-     * Click on the field.
-     * Example: clickText("text");
-     *
-     * @param text The text to be clicked
-     * @throws Exception
-     */
 
     public static void clickText(String text) {
         try {
@@ -115,14 +91,6 @@ public class BasePage {
         }
     }
 
-    /**
-     * Sends a given text to a web element by invoking the `sendKeys` method on the
-     * web element.
-     *
-     * @param webElement the web element to type the text into
-     * @param text       the text to send to the web element
-     */
-
     public static void type(WebElement webElement, String text) {
         try {
             webElement.sendKeys(text);
@@ -131,14 +99,6 @@ public class BasePage {
         }
     }
 
-    /**
-     * Sends a given text to a web element by invoking the `sendKeys` method on the
-     * web element.
-     *
-     * @param webElement the web element to type the text into
-     * @param text       the text to send to the web element
-     */
-
     public static void typeAndPress(WebElement webElement, String text, Keys enter) {
         try {
             webElement.sendKeys(text, enter);
@@ -146,15 +106,6 @@ public class BasePage {
             out.println("Error trying to send keys: " + e.getMessage());
         }
     }
-
-    /**
-     * Waits for a web element to become clickable within a specified timeout.
-     *
-     * @param webElement the web element to wait for
-     * @param timeout    the maximum time to wait in seconds
-     * @return the web element if it becomes clickable within the timeout,
-     *         or null if it does not become clickable
-     */
 
     public static WebElement waitForElement(WebElement webElement, int timeout) {
         try {
@@ -168,13 +119,6 @@ public class BasePage {
         return webElement;
     }
 
-    /**
-     * Wait for element to become invisible.
-     * Example: waitElementDisappear(element, 10);
-     *
-     * @param elementBy
-     */
-
     public static void waitElementDisappear(By elementBy) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -184,14 +128,7 @@ public class BasePage {
         }
     }
 
-    /**
-     * Click command for element that is not in focus.
-     * Example: realClick(element);
-     *
-     * @param webElement
-     */
-
-    public static void realClick(WebElement webElement) {
+    public static void clickJS(WebElement webElement) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         try {
             executor.executeScript("arguments[0].click();", webElement);
@@ -199,16 +136,6 @@ public class BasePage {
             out.println("Error click: " + e.getMessage());
         }
     }
-
-    /**
-     * Wait until element is visible and enabled.
-     * Element: isEnable(element);
-     *
-     * @param webElement
-     * @param timeout
-     * @return
-     * @throws Exception
-     */
 
     public static WebElement isEnable(WebElement webElement) {
         try {
@@ -222,14 +149,6 @@ public class BasePage {
         }
     }
 
-    /**
-     * Scroll to web element.
-     * Element: scrollTo(element);
-     *
-     * @param webElement
-     * @return
-     */
-
     public static WebElement scrollTo(WebElement webElement) {
         try {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
@@ -239,13 +158,6 @@ public class BasePage {
             return null;
         }
     }
-
-    /**
-     * Floating mouse over web element.
-     * Example: mouseHover(element);
-     *
-     * @param webElement
-     */
 
     public static WebElement mouseHover(WebElement webElement) {
         try {
@@ -258,14 +170,6 @@ public class BasePage {
         }
     }
 
-    /**
-     * Command to select options.
-     * Example: selectOption(element, "text option");
-     *
-     * @param webElement
-     * @param option
-     */
-
     public static void selectOptions(WebElement webElement, String option) {
         try {
             Select select = new Select(webElement);
@@ -275,35 +179,11 @@ public class BasePage {
         }
     }
 
-    /**
-     * Support command to debug.
-     * Example: sleep(5000);
-     *
-     * @param timeout
-     */
-
-    public static void sleep(int timeout) {
+    public static void stop(int timeout) {
         try {
             Thread.sleep(timeout);
         } catch (InterruptedException ignored) {
             out.println("Error execution wait!");
-        }
-    }
-
-    /**
-     * Asserts which element is visible on the screen
-     * Example: assertVisible(element);
-     *
-     * @param webElement
-     */
-
-    public static void assertVisible(WebElement webElement) {
-        try {
-            webElement.isEnabled();
-            webElement.isDisplayed();
-        } catch (Exception e) {
-            e.printStackTrace();
-            out.println("Element not visible!");
         }
     }
 }

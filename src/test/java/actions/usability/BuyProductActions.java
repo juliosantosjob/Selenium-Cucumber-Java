@@ -8,7 +8,7 @@ import pages.usability.BuyProductPages;
 
 import static org.junit.Assert.assertTrue;
 
-import static support.BasePage.realClick;
+import static support.BasePage.clickJS;
 import static support.BasePage.type;
 import static support.BasePage.typeAndPress;
 import static support.BasePage.clickText;
@@ -31,7 +31,7 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void searchForProduct(String item) {
-        realClick(btnSearch);
+        clickJS(btnSearch);
         typeAndPress(fldSearch, item, Keys.ENTER);
         clickText("OK");
     }
@@ -45,9 +45,9 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void addProductCart() {
-        realClick(btnAddToCart);
+        clickJS(btnAddToCart);
         waitElementDisappear(fldShow);
-        realClick(btnBag);
+        clickJS(btnBag);
     }
 
     public void seeProductInCart() {
@@ -55,7 +55,7 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void checkoutProduct() {
-        realClick(btnCheckout.get(1));
+        clickJS(btnCheckout.get(1));
     }
 
     public void fillPaymentForm() {
@@ -78,8 +78,8 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void saveAndSend() {
-        realClick(btnSave);
-        realClick(btnPlaceOrder);
+        clickJS(btnSave);
+        clickJS(btnPlaceOrder);
     }
 
     public void registrationSuccess() {

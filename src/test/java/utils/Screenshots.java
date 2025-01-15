@@ -39,7 +39,7 @@ public class Screenshots extends BasePage {
 
     public static void takingScreenshot(Scenario scenario) {
         if (!scenario.isFailed()) {
-            sleep(1000);
+            stop(1000);
             shot(scenario);
         } else {
             out.println("****** Scenario Name: [" + scenario.getName() + "]");
