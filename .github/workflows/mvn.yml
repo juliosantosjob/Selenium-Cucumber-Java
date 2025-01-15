@@ -1,12 +1,17 @@
-name: Pipe Selenium-Framework
+name: Run Selenium Tests with ChromeDriver
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
-    branches: [master]
+    branches:
+      - main
 
 jobs:
-  tests-e2e:
+  test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
@@ -15,11 +20,28 @@ jobs:
           java-version: "11"
           distribution: "adopt"
 
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb
+
+      # Passo 2: Instalar o ChromeDriver
+      - name: Install ChromeDriver
+        run: |
+          LATEST=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget https://chromedriver.storage.googleapis.com/${LATEST}/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
+
       - name: Build Project
         run: mvn clean install -DskipTests
 
-      - name: Runner tests with Chrome
+      - name: Run Selenium Tests
         if: always()
         env:
           URL_HOM: ${{ secrets.URL_HOM }}
-        run: mvn test -DENV=hmg-actions -DBROWSER=chrome-headless
+        run: |
+          mvn test -DENV=hmg-actions -DBROWSER=chrome-headless
