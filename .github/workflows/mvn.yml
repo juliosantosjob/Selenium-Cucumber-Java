@@ -3,17 +3,11 @@ name: Run Selenium Tests with ChromeDriver
 on:
   push:
     branches:
-<<<<<<< HEAD
-      - main
-  pull_request:
-    branches:
-      - main
-=======
       - master
   pull_request:
     branches:
       - master
->>>>>>> fd3d97e1a78697d76af250f00a90a2eb4c199bdd
+
 
 jobs:
   test:
