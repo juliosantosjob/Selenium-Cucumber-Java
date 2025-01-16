@@ -8,7 +8,6 @@ on:
     branches:
       - master
 
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -28,14 +27,14 @@ jobs:
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install ./google-chrome-stable_current_amd64.deb
 
-      # Passo 2: Instalar o ChromeDriver
+
       - name: Install ChromeDriver
         run: |
-          LATEST=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          wget https://chromedriver.storage.googleapis.com/${LATEST}/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+          LATEST=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_132)
+           wget https://chromedriver.storage.googleapis.com/${LATEST}/chromedriver_linux64.zip
+           unzip chromedriver_linux64.zip
+           sudo mv chromedriver /usr/local/bin/
+           sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Build Project
         run: mvn clean install -DskipTests
@@ -46,4 +45,3 @@ jobs:
           URL_HOM: ${{ secrets.URL_HOM }}
         run: |
           mvn test -DENV=hmg-actions -DBROWSER=CHROME_HEADLESS
-
