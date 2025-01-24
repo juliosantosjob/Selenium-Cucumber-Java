@@ -22,7 +22,6 @@ public class BasePage {
     public static void setUp() {
         if (driver == null) {
             String os = System.getProperty("os.name");
-
             if (os.equalsIgnoreCase("win")) {
                 System.setProperty(support.enums.Browsers.getPropertyDriver(browser),
                         support.enums.Browsers.getPathDriver(browser));
