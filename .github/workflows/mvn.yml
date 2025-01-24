@@ -1,4 +1,4 @@
-name: Run Selenium Tests with ChromeDriver
+name: Run Tests
 
 on:
   push:
@@ -7,6 +7,9 @@ on:
   pull_request:
     branches:
       - master
+
+  schedule:
+    - cron: '0 8-17 * * 1-5'
 
 jobs:
   test:
@@ -32,22 +35,6 @@ jobs:
         with:
           chromeapp: google-chrome-stable
 
-      - name: Install Microsoft Edge and EdgeDriver
-        run: |
-            sudo apt-get update
-            sudo apt-get install -y wget apt-transport-https
-            wget https://packages.microsoft.com/keys/microsoft.asc
-            sudo mkdir -p /etc/apt/keyrings
-            sudo mv microsoft.asc /etc/apt/keyrings/microsoft.asc
-            echo "deb [signed-by=/etc/apt/keyrings/microsoft.asc] https://packages.microsoft.com/repos/edge stable main" | sudo tee /etc/apt/sources.list.d/microsoft-edge.list > /dev/null
-            sudo apt-get update
-            sudo apt-get install -y microsoft-edge-stable
-            edge_version=$(microsoft-edge --version | awk '{print $NF}')
-            curl -Lo msedgedriver.zip "https://msedgedriver.azureedge.net/${edge_version}/edgedriver_linux64.zip"
-            unzip msedgedriver.zip -d /usr/local/bin
-            rm msedgedriver.zip
-            chmod +x /usr/local/bin/msedgedriver
-
       - name: Build Project
         run: mvn clean install -DskipTests
 
@@ -56,7 +43,7 @@ jobs:
         env:
           URL_HOM: ${{ secrets.URL_HOM }}
         run: |
-          mvn test -DENV=HMG-CLOUD -DBROWSER=EDGE_HEADLESS    
+          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS    
 
       - name: Get Allure History
         uses: actions/checkout@v2
