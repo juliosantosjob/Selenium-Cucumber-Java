@@ -14,24 +14,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: "11"
           distribution: "adopt"
 
-      - name: Install Google Chrome (specific version)
+      - name: Install Google Chrome
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
-          wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_114.0.5735.90-1_amd64.deb
-          sudo apt install ./google-chrome-stable_114.0.5735.90-1_amd64.deb
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb
 
-      - name: Set up ChromeDriver (specific version)
+      - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v2
         with:
-          chromedriver-version: '114.0.5735.90'
           chromeapp: google-chrome-stable
 
       - name: Build Project
