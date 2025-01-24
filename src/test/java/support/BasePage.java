@@ -11,24 +11,27 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import support.enums.BrowsersLin;
+import support.enums.BrowsersMac;
+import support.enums.BrowsersWin;
 
 import static java.lang.System.out;
 
 public class BasePage {
     protected static WebDriver driver;
-    public static String browser = System.getProperty("BROWSER", "CHROME_HEADLESS");
-
+    public static long MAT_TIMEOUT = 10;
+    public static String browser = System.getProperty("BROWSER");
+    public static String os = System.getProperty("os.name");
 
     public static void setUp() {
         if (driver == null) {
-            String os = System.getProperty("os.name");
-            if (os.equalsIgnoreCase("win")) {
-                System.setProperty(support.enums.Browsers.getPropertyDriver(browser),
-                        support.enums.Browsers.getPathDriver(browser));
-            }  else if (os.equalsIgnoreCase("nix") || os.equalsIgnoreCase("nux")) {
-                System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+            if (os.toLowerCase().contains("win")) {
+                System.setProperty(BrowsersWin.getPropertyDriver(browser), BrowsersWin.getPathDriver(browser));
+            } else if (os.toLowerCase().contains("nix") || os.contains("nux")) {
+                System.setProperty(BrowsersLin.getPropertyDriver(browser), BrowsersLin.getPathDriver(browser));
+            } else if (os.toLowerCase().contains("mac")) {
+                System.setProperty(BrowsersMac.getPropertyDriver(browser), BrowsersMac.getPathDriver(browser));
             }
-
             driver = Browsers.getInstanceOptions();
         }
     }
@@ -54,7 +57,7 @@ public class BasePage {
 
     public static String grabText(WebElement webElement) {
         try {
-            waitForElement(webElement, 10);
+            waitForElement(webElement, MAT_TIMEOUT);
             return webElement.getText();
         } catch (Exception e) {
             throw new RuntimeException("Error getting text from element: " + e.getMessage());
@@ -62,7 +65,7 @@ public class BasePage {
     }
 
     public static void click(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAT_TIMEOUT));
         int maxAttempts = 5;
         int attempts = 1;
 
@@ -106,7 +109,7 @@ public class BasePage {
         }
     }
 
-    public static WebElement waitForElement(WebElement webElement, int timeout) {
+    public static WebElement waitForElement(WebElement webElement, long timeout) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
@@ -120,7 +123,7 @@ public class BasePage {
 
     public static void waitElementDisappear(By elementBy) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAT_TIMEOUT));
             wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
         } catch (Exception e) {
             out.println("Error waiting for element to disappear: " + e.getMessage());
