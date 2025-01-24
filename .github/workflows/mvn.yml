@@ -30,9 +30,12 @@ jobs:
       - name: Install Microsoft Edge
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget
-          wget https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_amd64.deb
-          sudo apt install ./microsoft-edge-stable_amd64.deb
+          sudo apt-get install -y wget apt-transport-https
+          wget https://packages.microsoft.com/keys/microsoft.asc
+          sudo apt-key add microsoft.asc
+          sudo wget -q https://packages.microsoft.com/repos/edge stable main
+          sudo apt-get update
+          sudo apt-get install -y microsoft-edge-stable
 
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v2
@@ -42,12 +45,19 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
 
-      - name: Run Selenium Tests
+      - name: Run tests with Chrome
         if: always()
         env:
           URL_HOM: ${{ secrets.URL_HOM }}
         run: |
           mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
+
+      - name: Run tests with Edge
+        if: always()
+        env:
+          URL_HOM: ${{ secrets.URL_HOM }}
+        run: |
+          mvn test -DENV=HMG-CLOUD -DBROWSER=EDGE_HEADLESS
 
       - name: Get Allure History
         uses: actions/checkout@v2
