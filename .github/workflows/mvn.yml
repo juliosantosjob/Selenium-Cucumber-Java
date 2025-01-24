@@ -43,10 +43,17 @@ jobs:
         with:
           chromeapp: google-chrome-stable
 
-      - name: Set up EdgeDriver
-        uses: browser-actions/setup-edge@v1
-        with:
-          driver-version: latest
+      - name: Install EdgeDriver
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y microsoft-edge-stable
+            edge_version=$(microsoft-edge --version | awk '{print $NF}')
+            curl -Lo msedgedriver.zip "https://msedgedriver.azureedge.net/$edge_version/edgedriver_linux64.zip"
+            unzip msedgedriver.zip -d /usr/local/bin
+            rm msedgedriver.zip
+            chmod +x /usr/local/bin/msedgedriver
+        env:
+            DEBIAN_FRONTEND: noninteractive
 
       - name: Build Project
         run: mvn clean install -DskipTests
