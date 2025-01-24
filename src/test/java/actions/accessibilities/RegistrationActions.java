@@ -19,8 +19,7 @@ public class RegistrationActions extends RegistrationPages {
 
     public void goToRegistPage() {
         click(btnRegistration);
-        assertTrue(grabText(titleForm)
-                .contains("Cadastro de usuário"));
+        assertTrue(grabText(titleForm).contains("Cadastro de usuário"));
     }
 
     public void fillForm() {

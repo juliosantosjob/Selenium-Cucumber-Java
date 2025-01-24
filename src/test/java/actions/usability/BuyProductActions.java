@@ -38,9 +38,7 @@ public class BuyProductActions extends BuyProductPages {
 
     public void productIsDisplayed(String item) {
         WebElement myProduct = product.get(1);
-
-        assertTrue(grabText(myProduct)
-                .contains(item));
+        assertTrue(grabText(myProduct).contains(item));
         click(myProduct);
     }
 
@@ -59,8 +57,7 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void fillPaymentForm() {
-        assertTrue(grabText(areaBillings)
-                .contains("Billings Information"));
+        assertTrue(grabText(areaBillings).contains("Billings Information"));
 
         type(fldFirtsName, randomName());
         type(fldLastName, randomLastName());
@@ -83,9 +80,7 @@ public class BuyProductActions extends BuyProductPages {
     }
 
     public void registrationSuccess() {
-        assertTrue(grabText(modalSuccess)
-                .contains("Order success!"));
-        assertTrue(grabText(modalSuccess)
-                .contains("Congrats! Your order was created with sucess!"));
+        assertTrue(grabText(modalSuccess).contains("Order success!"));
+        assertTrue(grabText(modalSuccess).contains("Congrats! Your order was created with sucess!"));
     }
 }

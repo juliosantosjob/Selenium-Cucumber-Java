@@ -26,11 +26,8 @@ public class LoginActions extends LoginPages {
 
     public void openHome() {
         visit(BASE_URL);
-
-        assertEquals("QAZANDO Shop E-Commerce",
-                getDriver().getTitle());
-        assertTrue(grabText(fldWebsiteHeader)
-                .contains("Promoções especiais disponíveis."));
+        assertEquals("QAZANDO Shop E-Commerce", getDriver().getTitle());
+        assertTrue(grabText(fldWebsiteHeader).contains("Promoções especiais disponíveis."));
     }
 
     public void goToLogin() {
@@ -39,7 +36,6 @@ public class LoginActions extends LoginPages {
 
     public void fillCredents(DataTable dataTable) {
         List<List<String>> data = dataTable.cells();
-
         type(fldEmail, data.get(0).get(1));
         type(fldPassword, data.get(1).get(1));
         click(btnLoginSubmit);
