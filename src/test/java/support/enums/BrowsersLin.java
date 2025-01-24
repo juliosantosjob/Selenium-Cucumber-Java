@@ -3,7 +3,6 @@ package support.enums;
 public enum BrowsersLin {
     CHROME("webdriver.chrome.driver", "/usr/local/bin/chromedriver"),
     CHROME_HEADLESS("webdriver.chrome.driver", "/usr/local/bin/chromedriver"),
-    FIREFOX("webdriver.gecko.driver", "/usr/local/bin/geckodriver"),
     EDGE("webdriver.edge.driver", "/usr/local/bin/msedgedriver"),
     EDGE_HEADLESS("webdriver.edge.driver", "/usr/local/bin/msedgedriver");
 

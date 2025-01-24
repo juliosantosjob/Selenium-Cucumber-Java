@@ -3,7 +3,6 @@ package support.enums;
 public enum BrowsersWin {
     CHROME("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe"),
     CHROME_HEADLESS("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe"),
-    FIREFOX("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe"),
     EDGE("webdriver.edge.driver", "src/test/resourcesdrivers/msedgedriver.exe"),
     EDGE_HEADLESS("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe");
 

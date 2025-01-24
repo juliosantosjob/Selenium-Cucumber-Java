@@ -5,14 +5,14 @@ import static java.lang.System.getProperty;
 import env.setup.Envs;
 
 public class SetupEnv {
-    private static final String envParam = getProperty("ENV", "HMG-CLOUD");
+    private static final String ENVIROMENTS = getProperty("ENV", "HMG-CLOUD");
 
     public static SetupEnv setupEnv() {
         return new SetupEnv();
     }
 
     public String getBaseUrl() {
-        switch (envParam) {
+        switch (ENVIROMENTS) {
             case "HMG":
                 return Envs.getEnv("URL_HOM");
             case "STG":
@@ -22,7 +22,7 @@ public class SetupEnv {
             case "STG-CLOUD":
                 return System.getenv("URL_STG");
             default:
-                throw new IllegalArgumentException("Invalid environment " + envParam + " argument!");
+                throw new IllegalArgumentException("Invalid environment " + ENVIROMENTS + " argument!");
         }
     }
 }

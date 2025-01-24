@@ -45,16 +45,11 @@ jobs:
 
       - name: Set up EdgeDriver
         uses: browser-actions/setup-edge@v1
+        with:
+          driver-version: latest
 
       - name: Build Project
         run: mvn clean install -DskipTests
-
-      - name: Run tests with Chrome
-        if: always()
-        env:
-          URL_HOM: ${{ secrets.URL_HOM }}
-        run: |
-          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
 
       - name: Run tests with Edge
         if: always()
