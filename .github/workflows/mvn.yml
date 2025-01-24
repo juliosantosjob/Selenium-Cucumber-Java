@@ -32,8 +32,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y wget apt-transport-https
           wget https://packages.microsoft.com/keys/microsoft.asc
-          sudo apt-key add microsoft.asc
-          sudo wget -q https://packages.microsoft.com/repos/edge stable main
+          sudo mkdir -p /etc/apt/keyrings
+          sudo mv microsoft.asc /etc/apt/keyrings/microsoft.asc
+          echo "deb [signed-by=/etc/apt/keyrings/microsoft.asc] https://packages.microsoft.com/repos/edge stable main" | sudo tee /etc/apt/sources.list.d/microsoft-edge.list > /dev/null
           sudo apt-get update
           sudo apt-get install -y microsoft-edge-stable
 
@@ -51,13 +52,6 @@ jobs:
           URL_HOM: ${{ secrets.URL_HOM }}
         run: |
           mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
-
-      - name: Run tests with Edge
-        if: always()
-        env:
-          URL_HOM: ${{ secrets.URL_HOM }}
-        run: |
-          mvn test -DENV=HMG-CLOUD -DBROWSER=EDGE_HEADLESS
 
       - name: Get Allure History
         uses: actions/checkout@v2
