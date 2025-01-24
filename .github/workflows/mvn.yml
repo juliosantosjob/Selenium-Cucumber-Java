@@ -32,6 +32,20 @@ jobs:
         with:
           chromeapp: google-chrome-stable
 
+      - name: Install Microsoft Edge
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget software-properties-common
+          wget https://packages.microsoft.com/keys/microsoft.asc -O- | sudo gpg --dearmor -o /usr/share/keyrings/microsoft.gpg
+          sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
+          sudo apt-get update
+          sudo apt-get install -y microsoft-edge-stable
+
+      - name: Set up EdgeDriver
+        uses: nanasess/setup-edgedriver@v2
+        with:
+          edgeapp: microsoft-edge-stable
+
       - name: Build Project
         run: mvn clean install -DskipTests
 

@@ -5,7 +5,7 @@ import static java.lang.System.getProperty;
 import env.setup.Envs;
 
 public class SetupEnv {
-    private static final String envParam = getProperty("ENV", "HMG");
+    private static final String envParam = getProperty("ENV", "HMG-CLOUD");
 
     public static SetupEnv setupEnv() {
         return new SetupEnv();
