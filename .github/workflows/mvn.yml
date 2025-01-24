@@ -44,7 +44,7 @@ jobs:
           chromeapp: google-chrome-stable
 
       - name: Set up EdgeDriver
-      - uses: browser-actions/setup-edge@v1
+        uses: browser-actions/setup-edge@v1
 
       - name: Build Project
         run: mvn clean install -DskipTests
