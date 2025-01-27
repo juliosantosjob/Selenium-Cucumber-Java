@@ -70,11 +70,10 @@ public class BuyProductActions extends BuyProductPages {
         type(fldZip, "07500000");
         type(fldAdress, "Rua roberto silva - 3578");
         type(fldAdditionalNotes, "Informacoes Adicionais");
-        
-        scrollTo(btnSave);
     }
 
     public void saveAndSend() {
+        scrollTo(btnSave);
         clickJS(btnSave);
         clickJS(btnPlaceOrder);
     }
