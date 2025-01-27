@@ -2,14 +2,12 @@ name: Run Tests
 
 on:
   push:
-    branches:
-      - master
   pull_request:
     branches:
       - master
 
   schedule:
-    - cron: "0 12,20 * * 1-5"
+    - cron: 0 12,20 * * 1-5
 
 jobs:
   test:
