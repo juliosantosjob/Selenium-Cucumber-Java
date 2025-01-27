@@ -9,7 +9,7 @@ on:
       - master
 
   schedule:
-    - cron: '0 8-17 * * 1-5'
+    - cron: "0 12,20 * * 1-5"
 
 jobs:
   test:
