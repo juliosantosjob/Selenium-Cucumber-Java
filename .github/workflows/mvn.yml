@@ -40,6 +40,17 @@ jobs:
           chromedriver --version
 
 
+      - name: Check PATH for chromedriver
+        run: |
+          echo $PATH
+          which chromedriver
+
+      - name: Add /usr/local/bin to PATH
+        run: |
+          echo "/usr/local/bin" >> ~/.bashrc
+          source ~/.bashrc
+          which chromedriver
+
 
 
       - name: Build Project
