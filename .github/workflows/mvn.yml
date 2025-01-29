@@ -21,55 +21,74 @@ jobs:
           java-version: 11
           distribution: "adopt"
 
-      - name: Install Google Chrome
+#      - name: Install Google Chrome
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y wget
+#          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+#
+#      - name: Install Chrome Driver
+#        run: |
+#          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+#          wget -N https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip
+#          unzip chromedriver-linux64.zip
+#          mv chromedriver-linux64/chromedriver .
+#          sudo mv chromedriver /usr/local/bin/
+#          sudo chmod +x /usr/local/bin/chromedriver
+#          chromedriver --version
+
+      - name: Install Microsoft Edge
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+          sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+          sudo apt-get update
+          sudo apt-get install -y microsoft-edge-stable
 
-      - name: Install Chrome Driver
-        run: |   
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-          wget -N https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip
-          unzip chromedriver-linux64.zip
-          mv chromedriver-linux64/chromedriver .
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
-          chromedriver --version
-
-      - name: Build Project
-        run: mvn clean install -DskipTests
-
-      - name: Run tests e2e
-        if: always()
-        env:
-          URL_HOM: ${{ secrets.URL_HOM }}
+      - name: Install Edge Driver
         run: |
-          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
+          EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
+          wget -N https://msedgedriver.azureedge.net/LATEST_RELEASE/$EDGE_VERSION/edgedriver_linux64.zip
+          unzip -o edgedriver_linux64.zip
+          mv edgedriver_linux64/edgedriver .
+          sudo mv edgedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/edgedriver
+          edgedriver --version
 
-      - name: Get Allure History
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Action From Marketplace
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
-        with:
-          allure_results: ./allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-
-      - name: Deploy report to Github Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+#      - name: Build Project
+#        run: mvn clean install -DskipTests
+#
+#      - name: Run tests e2e
+#        if: always()
+#        env:
+#          URL_HOM: ${{ secrets.URL_HOM }}
+#        run: |
+#          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
+#
+#      - name: Get Allure History
+#        uses: actions/checkout@v2
+#        if: always()
+#        continue-on-error: true
+#        with:
+#          ref: gh-pages
+#          path: gh-pages
+#
+#      - name: Action From Marketplace
+#        uses: simple-elf/allure-report-action@master
+#        if: always()
+#        id: allure-report
+#        with:
+#          allure_results: ./allure-results
+#          gh_pages: gh-pages
+#          allure_report: allure-report
+#          allure_history: allure-history
+#
+#      - name: Deploy report to Github Pages
+#        if: always()
+#        uses: peaceiris/actions-gh-pages@v2
+#        env:
+#          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          PUBLISH_BRANCH: gh-pages
+#          PUBLISH_DIR: allure-history

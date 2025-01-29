@@ -15,23 +15,20 @@ public class Browsers {
         switch (BasePage.browser.toUpperCase()) {
             case "CHROME":
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                chromeOptions.addArguments("--window-size=1920x1080");
                 return new ChromeDriver(chromeOptions);
 
             case "EDGE":
-                edgeOptions.addArguments("--disable-web-security");
-                edgeOptions.addArguments("--window-size=1920x1080");
+                edgeOptions.addArguments("--remote-allow-origins=*");
                 return new EdgeDriver(edgeOptions);
 
             case "CHROME_HEADLESS":
                 chromeOptions.addArguments("--headless");
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                chromeOptions.addArguments("--window-size=1920x1080");
                 return new ChromeDriver(chromeOptions);
 
             case "EDGE_HEADLESS":
-                edgeOptions.addArguments("headless");
-                edgeOptions.addArguments("--window-size=1920x1080");
+                edgeOptions.addArguments("--headless");
+                edgeOptions.addArguments("--remote-allow-origins=*");
                 return new EdgeDriver(edgeOptions);
 
             default:

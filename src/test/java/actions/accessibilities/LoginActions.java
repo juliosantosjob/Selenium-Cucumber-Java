@@ -14,10 +14,10 @@ import static support.BasePage.visit;
 import static support.BasePage.getDriver;
 import static support.BasePage.type;
 import static support.BasePage.click;
-import static support.SetupEnv.getURLforEnv;
+import static support.SetupEnv.getURLByEnvironment;
 
 public class LoginActions extends LoginPages {
-    public final String BASE_URL = getURLforEnv();
+    public final String BASE_URL = getURLByEnvironment();
 
     public LoginActions(WebDriver driver) {
         PageFactory.initElements(driver, this);

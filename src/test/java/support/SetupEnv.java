@@ -1,14 +1,12 @@
 package support;
 
-import static java.lang.System.getProperty;
-
 import env.setup.Envs;
 
 public class SetupEnv {
-    private static final String ENVIROMENTS = getProperty("ENV", "URL_HOM");
+    public static String environment = System.getProperty("ENV", "HMG");
 
-    public static String getURLforEnv() {
-        switch (ENVIROMENTS) {
+    public static String getURLByEnvironment() {
+        switch (environment) {
             case "HMG":
                 return Envs.getEnv("URL_HOM");
             case "STG":
@@ -18,7 +16,7 @@ public class SetupEnv {
             case "STG-CLOUD":
                 return System.getenv("URL_STG");
             default:
-                throw new IllegalArgumentException("Invalid environment " + ENVIROMENTS + " argument!");
+                throw new IllegalArgumentException("Invalid environment " + environment + " argument!");
         }
     }
 }

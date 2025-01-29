@@ -20,7 +20,7 @@ import static java.lang.System.out;
 public class BasePage {
     protected static WebDriver driver;
     public static long MAT_TIMEOUT = 10;
-    public static String browser = System.getProperty("BROWSER");
+    public static String browser = System.getProperty("BROWSER", "CHROME");
     public static String OS = System.getProperty("os.name");
 
     public static void setUp() {
