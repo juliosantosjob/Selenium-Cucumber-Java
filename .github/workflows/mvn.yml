@@ -27,10 +27,9 @@ jobs:
           sudo apt-get install -y wget
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          CHROME_VERSION=$(google-chrome --version | awk -F. '{print $1}' | awk '{print $NF}')
 
-      - name: Install ChromeDriver
-        run: |
-          wget -N https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.159/linux64/chromedriver-linux64.zip
+          wget -N https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip
           unzip chromedriver-linux64.zip
           mv chromedriver-linux64/chromedriver .
           sudo mv chromedriver /usr/local/bin/
