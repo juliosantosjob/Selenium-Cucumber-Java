@@ -46,16 +46,11 @@ jobs:
           sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
           sudo apt-get update
           sudo apt-get install -y microsoft-edge-stable
+          # Print the installed version of Microsoft Edge
+          microsoft-edge --version
 
-      - name: Install Edge Driver
-        run: |
-          EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
-          wget -N https://msedgedriver.azureedge.net/LATEST_RELEASE/$EDGE_VERSION/edgedriver_linux64.zip
-          unzip -o edgedriver_linux64.zip
-          mv edgedriver_linux64/edgedriver .
-          sudo mv edgedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/edgedriver
-          edgedriver --version
+
+
 
 #      - name: Build Project
 #        run: mvn clean install -DskipTests
