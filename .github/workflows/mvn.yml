@@ -54,7 +54,6 @@ jobs:
           wget -N https://msedgedriver.azureedge.net/132.0.2957.127/edgedriver_linux64.zip
           unzip edgedriver_linux64
           ls
-          cd msedgedriver
           mv msedgedriver/msedgedriver .
           
 
