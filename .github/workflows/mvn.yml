@@ -32,10 +32,9 @@ jobs:
         run: |
           wget -N https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.159/linux64/chromedriver-linux64.zip
           unzip chromedriver-linux64.zip
-          mv chromedriver-linux64 chromedriver
+          mv chromedriver-linux64/chromedriver .
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
-          ls /usr/local/bin
           chromedriver --version
 
       - name: Build Project
