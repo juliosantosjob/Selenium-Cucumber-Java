@@ -32,8 +32,9 @@ jobs:
       - name: Install matching ChromeDriver
         run: |
           wget -N https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.159/linux64/chrome-linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin
+          unzip chrome-linux64.zip
+          ls
+          sudo mv chrome-linux64 /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
           chromedriver --version
 
