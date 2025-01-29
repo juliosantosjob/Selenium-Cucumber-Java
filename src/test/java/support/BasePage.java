@@ -28,7 +28,8 @@ public class BasePage {
             if (os.toLowerCase().contains("win")) {
                 System.setProperty(BrowsersWin.getPropertyDriver(browser), BrowsersWin.getPathDriver(browser));
             } else if (os.toLowerCase().contains("nix") || os.contains("nux")) {
-                System.setProperty(BrowsersLin.getPropertyDriver(browser), BrowsersLin.getPathDriver(browser));
+                System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+//                System.setProperty(BrowsersLin.getPropertyDriver(browser), BrowsersLin.getPathDriver(browser));
             } else if (os.toLowerCase().contains("mac")) {
                 System.setProperty(BrowsersMac.getPropertyDriver(browser), BrowsersMac.getPathDriver(browser));
             }
