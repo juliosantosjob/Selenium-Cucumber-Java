@@ -21,24 +21,21 @@ jobs:
           java-version: 11
           distribution: "adopt"
 
-      - name: Install Google Chrome
+      - name: Install Google Chrome And Chrome Driver
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install -y ./google-chrome-stable_current_amd64.deb
-
-      - name: Install Chrome Driver
-        run: |
+          
           CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
           wget -N https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip
           unzip chromedriver-linux64.zip
           mv chromedriver-linux64/chromedriver .
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
-          chromedriver --version
 
-      - name: Install Microsoft Edge
+      - name: Install Microsoft Edge And EdgeDriver
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
@@ -46,11 +43,7 @@ jobs:
           sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
           sudo apt-get update
           sudo apt-get install -y microsoft-edge-stable
-          # Print the installed version of Microsoft Edge
-          microsoft-edge --version
-
-      - name: Install Edge Driver
-        run: |
+          
           wget -N https://msedgedriver.azureedge.net/132.0.2957.127/edgedriver_linux64.zip
           unzip edgedriver_linux64
           sudo mv msedgedriver /usr/local/bin/
@@ -60,17 +53,14 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
 
-      - name: Run tests e2e
+      - name: Run Tests Chrome
         if: always()
         env:
           URL_HOM: ${{ secrets.URL_HOM }}
         run: |
           mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
 
-      - name: Build Project
-        run: mvn clean install -DskipTests
-
-      - name: Run tests e2e
+      - name: Run Tests Edge
         if: always()
         env:
           URL_HOM: ${{ secrets.URL_HOM }}
