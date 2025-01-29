@@ -21,17 +21,14 @@ jobs:
           java-version: "11"
           distribution: "adopt"
 
-      - name: Install Google Chrome
+      - name: Install Google Chrome and ChromeDriver
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install -y ./google-chrome-stable_current_amd64.deb
-         
-
-      - name: Install ChromeDriver
-        run: |
           CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+          echo "Chrome installed on version is: " $CHROME VERSION
           wget -N https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip
           unzip chromedriver-linux64.zip
           mv chromedriver-linux64/chromedriver .
@@ -39,12 +36,12 @@ jobs:
           sudo chmod +x /usr/local/bin/chromedriver
           chromedriver --version
 
-#      - name: Build Project
-#        run: mvn clean install -DskipTests
-#
-#      - name: Run tests e2e
-#        if: always()
-#        env:
-#          URL_HOM: ${{ secrets.URL_HOM }}
-#        run: |
-#          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
+      - name: Build Project
+        run: mvn clean install -DskipTests
+
+      - name: Run tests e2e
+        if: always()
+        env:
+          URL_HOM: ${{ secrets.URL_HOM }}
+        run: |
+          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
