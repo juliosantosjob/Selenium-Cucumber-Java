@@ -31,12 +31,28 @@ jobs:
 
       - name: Install Chrome Driver
         run: |
+          # Extrair a versão do Chrome (sem o "Google Chrome")
           CHROME_VERSION=$(google-chrome --version | sed 's/Google Chrome //')
-          wget https://storage.googleapis.com/chrome-for-testing/$CHROME_VERSION/chromedriver_linux64.zip
+          
+          # Substituir os pontos por barras na versão para formar a URL
+          VERSION_PATH=$(echo $CHROME_VERSION | sed 's/\./\//g')
+          
+          # Baixar o ChromeDriver
+          wget https://chromedriver.storage.googleapis.com/$VERSION_PATH/chromedriver_linux64.zip
+          
+          # Instalar o unzip
           sudo apt-get install -y unzip
+          
+          # Descompactar o arquivo baixado
           unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin
-          sudo chmod +x /usr/local/bin
+          
+          # Mover o chromedriver para o diretório apropriado
+          sudo mv chromedriver /usr/local/bin/
+          
+          # Tornar o chromedriver executável
+          sudo chmod +x /usr/local/bin/chromedriver
+          
+          # Verificar a versão do ChromeDriver instalado
           chromedriver --version
 
       - name: Build Project
