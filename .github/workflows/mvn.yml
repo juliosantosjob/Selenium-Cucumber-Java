@@ -27,24 +27,19 @@ jobs:
           sudo apt-get install -y wget
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install ./google-chrome-stable_current_amd64.deb
-          
-          
+
       - name: Get Chrome version and install matching ChromeDriver
         run: |
-          # Obtém a versão do Google Chrome instalada
           CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
-      
-          # Baixa o ChromeDriver correspondente
+    
           CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
           wget -N https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
       
-          # Instala o ChromeDriver
           sudo apt-get install -y unzip
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
-      
-          # Verifica a instalação
+          
           chromedriver --version
 
       - name: Build Project
@@ -55,30 +50,4 @@ jobs:
         env:
           URL_HOM: ${{ secrets.URL_HOM }}
         run: |
-          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS    
-
-      - name: Get Allure History
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Action From Marketplace
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
-        with:
-          allure_results: ./allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-
-      - name: Deploy report to Github Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
