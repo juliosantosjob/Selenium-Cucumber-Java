@@ -30,7 +30,7 @@ jobs:
           CHROME_VERSION=$(google-chrome --version)
 
       - name: Install Chrome Driver
-        run: |   
+        run: |
           wget https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/win64/chromedriver-win64.zip
           sudo apt-get install -y unzip
           unzip chromedriver-win64.zip
