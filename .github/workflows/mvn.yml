@@ -35,7 +35,7 @@ jobs:
           unzip chrome-linux64.zip
           ls
           sudo mv chrome-linux64 /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chrome-linux64
           chromedriver --version
 
       - name: Build Project
