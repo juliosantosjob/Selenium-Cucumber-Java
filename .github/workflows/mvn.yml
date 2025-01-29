@@ -35,6 +35,7 @@ jobs:
           mv chrome-linux64 chromedriver
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
+          ls /usr/local/bin/
           chromedriver --version
 
       - name: Build Project
