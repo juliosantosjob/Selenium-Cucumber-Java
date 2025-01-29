@@ -31,12 +31,19 @@ jobs:
       - name: Install ChromeDriver
         run: |
           wget -N https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.159/linux64/chrome-linux64.zip
-          unzip chrome-linux64.zip
-          mv chrome-linux64 chromedriver
+          unzip -o chrome-linux64.zip
+          ls -l chrome-linux64
+          mv chrome-linux64/chromedriver chromedriver
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
           ls -l /usr/local/bin/chromedriver
           chromedriver --version
+
+      - name: Check chromedriver file type
+        run: |
+          file /usr/local/bin/chromedriver
+
+
 
       - name: Build Project
         run: mvn clean install -DskipTests
