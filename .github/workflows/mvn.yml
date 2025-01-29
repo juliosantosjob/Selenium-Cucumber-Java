@@ -29,31 +29,18 @@ jobs:
           sudo apt install -y ./google-chrome-stable_current_amd64.deb
           CHROME_VERSION=$(google-chrome --version)
 
-      - name: Install Chrome Driver
+      - name: Get Chrome version and install matching ChromeDriver
         run: |
-          # Extrair a versão do Chrome (sem o "Google Chrome")
-          CHROME_VERSION=$(google-chrome --version | sed 's/Google Chrome //')
-          
-          # Substituir os pontos por barras na versão para formar a URL
-          VERSION_PATH=$(echo $CHROME_VERSION | sed 's/\./\//g')
-          
-          # Baixar o ChromeDriver
-          wget https://chromedriver.storage.googleapis.com/$VERSION_PATH/chromedriver_linux64.zip
-          
-          # Instalar o unzip
+          wget -N https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.159/linux64/chrome-linux64.zip
           sudo apt-get install -y unzip
-          
-          # Descompactar o arquivo baixado
+          unzip chrome-linux64.zip
+          sudo mv chrome-linux64 /opt/google/chrome
+          wget -N https://chromedriver.storage.googleapis.com/132.0.6834.159/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
-          
-          # Mover o chromedriver para o diretório apropriado
-          sudo mv chromedriver /usr/local/bin/
-          
-          # Tornar o chromedriver executável
+          sudo mv chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
-          
-          # Verificar a versão do ChromeDriver instalado
           chromedriver --version
+
 
       - name: Build Project
         run: mvn clean install -DskipTests
