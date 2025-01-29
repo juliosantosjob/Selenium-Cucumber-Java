@@ -49,6 +49,15 @@ jobs:
           # Print the installed version of Microsoft Edge
           microsoft-edge --version
 
+      - name: Install Edge Driver
+        run: |
+          wget -N https://msedgedriver.azureedge.net/132.0.2957.127/edgedriver_linux64.zip
+          unzip edgedriver_linux64
+          mv edgedriver_linux64/msedgedriver .
+          sudo mv msedgedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/msedgedriver
+          msedgedriver --version
+
 
 
 
