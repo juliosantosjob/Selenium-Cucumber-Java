@@ -31,27 +31,13 @@ jobs:
       - name: Install ChromeDriver
         run: |
           wget -N https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.159/linux64/chrome-linux64.zip
-          unzip -o chrome-linux64.zip
-          ls -l chrome-linux64 # Verifique se o arquivo chromedriver está aqui
-          mv chrome-linux64/chromedriver chromedriver
+          unzip chrome-linux64.zip
+          mv chrome-linux64 chromedriver
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
-          ls -l /usr/local/bin/chromedriver # Verifique novamente o arquivo no destino
+          
+          ls /usr/local/bin
           chromedriver --version
-
-
-      - name: Check PATH for chromedriver
-        run: |
-          echo $PATH
-          which chromedriver
-
-      - name: Add /usr/local/bin to PATH
-        run: |
-          echo "/usr/local/bin" >> ~/.bashrc
-          source ~/.bashrc
-          which chromedriver
-
-
 
       - name: Build Project
         run: mvn clean install -DskipTests
