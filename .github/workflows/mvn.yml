@@ -51,16 +51,10 @@ jobs:
 
       - name: Install Edge Driver
         run: |
-            EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}' | sed 's/\.[0-9]*$//')  # Remove the last part of version
-            DRIVER_VERSION=$(curl -s https://msedgedriver.azureedge.net/LATEST_RELEASE/$EDGE_VERSION)  # Get driver version for Edge version
-            wget -N https://msedgedriver.azureedge.net/$DRIVER_VERSION/edgedriver_linux64.zip
-            unzip edgedriver_linux64.zip
-            mv edgedriver_linux64/msedgedriver .
-            sudo mv msedgedriver /usr/local/bin/
-            sudo chmod +x /usr/local/bin/msedgedriver
-            msedgedriver --version
-          
-
+          wget -N https://msedgedriver.azureedge.net/132.0.2957.127/edgedriver_linux64.zip
+          unzip edgedriver_linux64
+          ls
+          mv edgedriver_linux64/msedgedriver .
 #          sudo mv msedgedriver /usr/local/bin/
 #          sudo chmod +x /usr/local/bin/msedgedriver
 #          msedgedriver --version
