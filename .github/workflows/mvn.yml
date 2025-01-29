@@ -28,16 +28,13 @@ jobs:
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install -y ./google-chrome-stable_current_amd64.deb
           CHROME_VERSION=$(google-chrome --version)
-          echo "Google Chrome version ********** $CHROME_VERSION"
-
-      - name: Get Chrome version and install matching ChromeDriver
-        run: |
-          wget -N https://chromedriver.storage.googleapis.com/$CHROME_VERSION/chromedriver_linux64.zip
+          
+          wget https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/win64/chromedriver-win64.zip
           sudo apt-get install -y unzip
-          unzip chromedriver_linux64.zip
+          unzip chromedriver-win64.zip
           sudo mv chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
-          chromedriver --version 
+          chromedriver --version
 
       - name: Build Project
         run: mvn clean install -DskipTests
