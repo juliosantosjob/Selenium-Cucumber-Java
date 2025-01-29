@@ -27,14 +27,22 @@ jobs:
           sudo apt-get install -y wget
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install -y ./google-chrome-stable_current_amd64.deb
-          CHROME_VERSION=$(google-chrome --version)
 
       - name: Install matching ChromeDriver
         run: |
           wget -N https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.159/linux64/chrome-linux64.zip
           unzip chrome-linux64.zip
           mv chrome-linux64 chromedriver
-          ls
           sudo mv chromedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/chromedriver
           chromedriver --version
+
+      - name: Build Project
+        run: mvn clean install -DskipTests
+
+      - name: Run tests e2e
+        if: always()
+        env:
+          URL_HOM: ${{ secrets.URL_HOM }}
+        run: |
+          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
