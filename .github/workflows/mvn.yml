@@ -69,7 +69,17 @@ jobs:
 #          URL_HOM: ${{ secrets.URL_HOM }}
 #        run: |
 #          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
-#
+
+      - name: Build Project
+        run: mvn clean install -DskipTests
+
+      - name: Run tests e2e
+        if: always()
+        env:
+          URL_HOM: ${{ secrets.URL_HOM }}
+        run: |
+          mvn test -DENV=HMG-CLOUD -DBROWSER=EDGE_HEADLESS
+
 #      - name: Get Allure History
 #        uses: actions/checkout@v2
 #        if: always()
