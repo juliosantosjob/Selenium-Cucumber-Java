@@ -21,15 +21,15 @@ public class BasePage {
     protected static WebDriver driver;
     public static long MAT_TIMEOUT = 10;
     public static String browser = System.getProperty("BROWSER");
-    public static String os = System.getProperty("os.name");
+    public static String OS = System.getProperty("os.name");
 
     public static void setUp() {
         if (driver == null) {
-            if (os.toLowerCase().contains("win")) {
+            if (OS.toLowerCase().contains("win")) {
                 System.setProperty(BrowsersWin.getPropertyDriver(browser), BrowsersWin.getPathDriver(browser));
-            } else if (os.toLowerCase().contains("nix") || os.contains("nux")) {
+            } else if (OS.toLowerCase().contains("nix") || OS.contains("nux")) {
                 System.setProperty(BrowsersLin.getPropertyDriver(browser), BrowsersLin.getPathDriver(browser));
-            } else if (os.toLowerCase().contains("mac")) {
+            } else if (OS.toLowerCase().contains("mac")) {
                 System.setProperty(BrowsersMac.getPropertyDriver(browser), BrowsersMac.getPathDriver(browser));
             }
             driver = Browsers.getInstanceOptions();

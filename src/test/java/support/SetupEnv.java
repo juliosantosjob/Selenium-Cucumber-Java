@@ -5,13 +5,9 @@ import static java.lang.System.getProperty;
 import env.setup.Envs;
 
 public class SetupEnv {
-    private static final String ENVIROMENTS = getProperty("ENV", "HMG-CLOUD");
+    private static final String ENVIROMENTS = getProperty("ENV", "URL_HOM");
 
-    public static SetupEnv setupEnv() {
-        return new SetupEnv();
-    }
-
-    public String getBaseUrl() {
+    public static String getURLforEnv() {
         switch (ENVIROMENTS) {
             case "HMG":
                 return Envs.getEnv("URL_HOM");
