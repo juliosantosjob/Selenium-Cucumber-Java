@@ -21,7 +21,7 @@ jobs:
           java-version: "11"
           distribution: "adopt"
 
-      - name: Install Google Chrome and ChromeDriver
+      - name: Install Google Chrome And ChromeDriver
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
