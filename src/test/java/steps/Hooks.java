@@ -5,11 +5,10 @@ import support.BasePage;
 import static java.lang.System.out;
 import static utils.Screenshots.takingScreenshot;
 
-import java.time.Duration;
-
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import support.ViewManager;
 
 public class Hooks extends BasePage {
     public final long TIMEOUT = 5;
@@ -23,8 +22,7 @@ public class Hooks extends BasePage {
                 + "*************************************************");
 
         BasePage.setUp();
-        getDriver().manage().window().maximize();
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
+        ViewManager.setViewPort();
     }
 
     @After

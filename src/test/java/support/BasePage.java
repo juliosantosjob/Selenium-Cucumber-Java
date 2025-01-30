@@ -11,26 +11,24 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import support.enums.BrowsersLin;
-import support.enums.BrowsersMac;
-import support.enums.BrowsersWin;
+import support.enums.TypeDrivers;
 
 import static java.lang.System.out;
 
 public class BasePage {
     protected static WebDriver driver;
     public static long MAT_TIMEOUT = 10;
-    public static String browser = System.getProperty("BROWSER", "CHROME");
+    public static String browser = System.getProperty("BROWSER", "CHROME").toUpperCase();
     public static String OS = System.getProperty("os.name");
 
     public static void setUp() {
         if (driver == null) {
             if (OS.toLowerCase().contains("win")) {
-                System.setProperty(BrowsersWin.getPropertyDriver(browser), BrowsersWin.getPathDriver(browser));
+                System.setProperty(TypeDrivers.getPropertyDriver(browser), TypeDrivers.getPathWinDriver(browser));
             } else if (OS.toLowerCase().contains("nix") || OS.contains("nux")) {
-                System.setProperty(BrowsersLin.getPropertyDriver(browser), BrowsersLin.getPathDriver(browser));
+                System.setProperty(TypeDrivers.getPropertyDriver(browser), TypeDrivers.getPathLinuxDriver(browser));
             } else if (OS.toLowerCase().contains("mac")) {
-                System.setProperty(BrowsersMac.getPropertyDriver(browser), BrowsersMac.getPathDriver(browser));
+                System.setProperty(TypeDrivers.getPropertyDriver(browser), TypeDrivers.getPathMacDriver(browser));
             }
             driver = Browsers.getInstanceOptions();
         }
