@@ -12,7 +12,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    env:
+      URL_HOM: ${{ secrets.URL_HOM }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
@@ -55,15 +56,11 @@ jobs:
 
       - name: Run Tests Chrome
         if: always()
-        env:
-          URL_HOM: ${{ secrets.URL_HOM }}
         run: |
           mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
 
       - name: Run Tests Edge
         if: always()
-        env:
-          URL_HOM: ${{ secrets.URL_HOM }}
         run: |
           mvn test -DENV=HMG-CLOUD -DBROWSER=EDGE_HEADLESS
 
