@@ -59,4 +59,18 @@ public enum TypeDrivers {
     public static String getPathMacDriver(String browser) {
         return TypeDrivers.getBrowser(browser).getPathMac().toString();
     }
+
+    public static String getPathBySystem(String browser) {
+        String osName = System.getProperty("os.name").toLowerCase();
+
+        if (osName.contains("win")) {
+            return TypeDrivers.getPathWinDriver(browser);
+        } else if (osName.contains("nix") || osName.contains("nux")) {
+            return TypeDrivers.getPathLinuxDriver(browser);
+        } else if (osName.contains("mac")) {
+            return TypeDrivers.getPathMacDriver(browser);
+        } else {
+            throw new UnsupportedOperationException("Operating system not supported: " + osName);
+        }
+    }
 }

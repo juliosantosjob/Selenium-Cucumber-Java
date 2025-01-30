@@ -11,7 +11,6 @@ import io.cucumber.java.Scenario;
 import support.ViewManager;
 
 public class Hooks extends BasePage {
-    public final long TIMEOUT = 5;
 
     @Before
     public void init(Scenario scenario) {
@@ -31,5 +30,4 @@ public class Hooks extends BasePage {
         takingScreenshot(scenario);
         BasePage.tearDown();
     }
-
 }

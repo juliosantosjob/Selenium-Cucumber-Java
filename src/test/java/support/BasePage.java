@@ -16,22 +16,17 @@ import support.enums.TypeDrivers;
 import static java.lang.System.out;
 
 public class BasePage {
+    public static String browser = System.getProperty("BROWSER", "CHROME");
     protected static WebDriver driver;
+    public static WebDriverWait wait;
     public static long MAT_TIMEOUT = 10;
-    public static String browser = System.getProperty("BROWSER", "CHROME").toUpperCase();
-    public static String OS = System.getProperty("os.name");
+    public static Actions action;
+    public static Select select;
 
     public static void setUp() {
-        if (driver == null) {
-            if (OS.toLowerCase().contains("win")) {
-                System.setProperty(TypeDrivers.getPropertyDriver(browser), TypeDrivers.getPathWinDriver(browser));
-            } else if (OS.toLowerCase().contains("nix") || OS.contains("nux")) {
-                System.setProperty(TypeDrivers.getPropertyDriver(browser), TypeDrivers.getPathLinuxDriver(browser));
-            } else if (OS.toLowerCase().contains("mac")) {
-                System.setProperty(TypeDrivers.getPropertyDriver(browser), TypeDrivers.getPathMacDriver(browser));
-            }
-            driver = Browsers.getInstanceOptions();
-        }
+        System.setProperty(TypeDrivers.getPropertyDriver(browser),
+                TypeDrivers.getPathBySystem(browser));
+        driver = Browsers.getInstanceOptions();
     }
 
     public static void tearDown() {
@@ -53,17 +48,18 @@ public class BasePage {
         }
     }
 
-    public static String grabText(WebElement webElement) {
+    public static String grabText(WebElement webElement, long... timeout) {
         try {
-            waitForElement(webElement, MAT_TIMEOUT);
+            wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout.length > 0 ? timeout[0] : MAT_TIMEOUT));
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
             return webElement.getText();
         } catch (Exception e) {
             throw new RuntimeException("Error getting text from element: " + e.getMessage());
         }
     }
 
-    public static void click(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAT_TIMEOUT));
+    public static void click(WebElement webElement, long... timeout) {
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout.length > 0 ? timeout[0] : MAT_TIMEOUT));
         int maxAttempts = 5;
         int attempts = 1;
 
@@ -85,31 +81,37 @@ public class BasePage {
 
     public static void clickText(String text) {
         try {
-            driver.findElement(By.xpath("//*[text()='" + text + "']")).click();
+            getDriver().findElement(By.xpath("//*[text()='" + text + "']")).click();
         } catch (Exception e) {
             out.println("Not found text: " + text);
         }
     }
 
-    public static void type(WebElement webElement, String text) {
+    public static void type(WebElement webElement, String text, long... timeout) {
         try {
+            wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout.length > 0 ? timeout[0] : MAT_TIMEOUT));
+            wait.until(ExpectedConditions.visibilityOfAllElements(webElement));
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.sendKeys(text);
         } catch (Exception e) {
             out.println("Error trying to send keys: " + e.getMessage());
         }
     }
 
-    public static void typeAndPress(WebElement webElement, String text, Keys enter) {
+    public static void typeAndPress(WebElement webElement, String text, Keys enter, long... timeout) {
         try {
+            wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout.length > 0 ? timeout[0] : MAT_TIMEOUT));
+            wait.until(ExpectedConditions.visibilityOfAllElements(webElement));
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.sendKeys(text, enter);
         } catch (Exception e) {
             out.println("Error trying to send keys: " + e.getMessage());
         }
     }
 
-    public static WebElement waitForElement(WebElement webElement, long timeout) {
+    public static WebElement waitForElement(WebElement webElement, long... timeout) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+            wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout.length > 0 ? timeout[0] : MAT_TIMEOUT));
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.isDisplayed();
         } catch (Exception e) {
@@ -119,9 +121,9 @@ public class BasePage {
         return webElement;
     }
 
-    public static void waitElementDisappear(By elementBy) {
+    public static void waitElementDisappear(By elementBy, long... timeout) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(MAT_TIMEOUT));
+            wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout.length > 0 ? timeout[0] : MAT_TIMEOUT));
             wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
         } catch (Exception e) {
             out.println("Error waiting for element to disappear: " + e.getMessage());
@@ -129,7 +131,7 @@ public class BasePage {
     }
 
     public static void clickJS(WebElement webElement) {
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         try {
             executor.executeScript("arguments[0].click();", webElement);
         } catch (Exception e) {
@@ -139,7 +141,7 @@ public class BasePage {
 
     public static WebElement isEnable(WebElement webElement) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.isEnabled();
             return webElement;
@@ -151,7 +153,7 @@ public class BasePage {
 
     public static WebElement scrollTo(WebElement webElement) {
         try {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
             return webElement;
         } catch (Exception e) {
             out.println("Error scrolling to element: " + e.getMessage());
@@ -161,7 +163,7 @@ public class BasePage {
 
     public static WebElement mouseHover(WebElement webElement) {
         try {
-            Actions action = new Actions(driver);
+            action = new Actions(getDriver());
             action.moveToElement(webElement).build().perform();
             return webElement;
         } catch (Exception e) {
@@ -172,7 +174,7 @@ public class BasePage {
 
     public static void selectOptions(WebElement webElement, String option) {
         try {
-            Select select = new Select(webElement);
+            select = new Select(webElement);
             select.selectByVisibleText(option);
         } catch (Exception e) {
             out.println("Error selecting option: " + e.getMessage());
