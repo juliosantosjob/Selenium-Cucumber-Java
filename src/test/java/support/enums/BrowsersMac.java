@@ -4,7 +4,9 @@ public enum BrowsersMac {
     CHROME("webdriver.chrome.driver", "/usr/local/bin/chromedriver"),
     CHROME_HEADLESS("webdriver.chrome.driver", "/usr/local/bin/chromedriver"),
     EDGE("webdriver.edge.driver", "/usr/local/bin/msedgedriver"),
-    EDGE_HEADLESS("webdriver.edge.driver", "/usr/local/bin/msedgedriver");
+    EDGE_HEADLESS("webdriver.edge.driver", "/usr/local/bin/msedgedriver"),
+    FIREFOX("webdriver.gecko.driver", "/usr/local/bin/msedgedriver"),
+    FIREFOX_HEADLESS("webdriver.gecko.driver", "/usr/local/bin/msedgedriver");
 
     private final String property;
     private final String path;

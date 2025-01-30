@@ -4,7 +4,9 @@ public enum BrowsersWin {
     CHROME("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe"),
     CHROME_HEADLESS("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe"),
     EDGE("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe"),
-    EDGE_HEADLESS("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe");
+    EDGE_HEADLESS("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe"),
+    FIREFOX("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe"),
+    FIREFOX_HEADLESS("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe");
 
     private final String property;
     private final String path;
