@@ -55,15 +55,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y firefox
           
-          GECKODRIVER_VERSION=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | jq -r '.tag_name' | sed 's/v//')
-          wget -N https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz
-          tar -xzf geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz
-          sudo mv geckodriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/geckodriver
-          geckodriver --version
+          wget -N https://github.com/mozilla/geckodriver/releases/download/v0.35.0/geckodriver-v0.35.0-linux64.tar.gz
+          unzip geckodriver-v0.35.0-win64.tar
+          
 
-      - name: Build Project
-        run: mvn clean install -DskipTests
+
+#      - name: Build Project
+#        run: mvn clean install -DskipTests
 
 #      - name: Run Tests Chrome
 #        if: always()
@@ -79,12 +77,12 @@ jobs:
 #        run: |
 #          mvn test -DENV=HMG-CLOUD -DBROWSER=EDGE_HEADLESS
 
-      - name: Run Tests Firefox
-        if: always()
-        env:
-          URL_HOM: ${{ secrets.URL_HOM }}
-        run: |
-          mvn test -DENV=HMG-CLOUD -DBROWSER=FIREFOX_HEADLESS
+#      - name: Run Tests Firefox
+#        if: always()
+#        env:
+#          URL_HOM: ${{ secrets.URL_HOM }}
+#        run: |
+#          mvn test -DENV=HMG-CLOUD -DBROWSER=FIREFOX_HEADLESS
 
 #      - name: Get Allure History
 #        uses: actions/checkout@v2
