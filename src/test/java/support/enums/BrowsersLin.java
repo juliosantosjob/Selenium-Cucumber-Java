@@ -5,8 +5,8 @@ public enum BrowsersLin {
     CHROME_HEADLESS("webdriver.chrome.driver", "/usr/local/bin/chromedriver"),
     EDGE("webdriver.edge.driver", "/usr/local/bin/msedgedriver"),
     EDGE_HEADLESS("webdriver.edge.driver", "/usr/local/bin/msedgedriver"),
-    FIREFOX("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe"),
-    FIREFOX_HEADLESS("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe");
+    FIREFOX("webdriver.gecko.driver", "/usr/local/bin/geckodriver"),
+    FIREFOX_HEADLESS("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
 
     private final String property;
     private final String path;
