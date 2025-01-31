@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"  - As a user, I should be able to make a purchase of a product on the website","56047","Purchase of a product","","Fri Jan 31 02:25:11 GMT 2025","passed","Fri Jan 31 02:26:07 GMT 2025","","Purchase of a Product","Purchase of a product",""
