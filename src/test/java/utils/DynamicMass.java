@@ -1,5 +1,8 @@
 package utils;
 
+import com.github.javafaker.Faker;
+import domain.UserDmn;
+
 import java.util.Random;
 
 public class DynamicMass {
@@ -86,5 +89,27 @@ public class DynamicMass {
 
         int position = randomName.nextInt(max - min) + min;
         return name[position];
+    }
+
+    /**
+     * Return an object randomic from new user.
+     *
+     * @return Object
+     */
+
+    public static UserDmn generateRandomUser() {
+        UserDmn user = new UserDmn();
+        Faker faker = new Faker();
+
+        user.setFirstName(randomName());
+        user.setLastName(randomLastName());
+        user.setCompany(randomNameCompany());
+        user.setEmail(randomEmail());
+
+        user.setCountry(String.valueOf(faker.country()));
+        user.setZip(String.valueOf(faker.code()));
+        user.setAddress(String.valueOf(faker.address()));
+        user.setAdditionalNotes(String.valueOf(faker.music()));
+        return user;
     }
 }

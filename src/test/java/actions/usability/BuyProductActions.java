@@ -1,5 +1,6 @@
 package actions.usability;
 
+import domain.UserDmn;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,11 +19,6 @@ import static support.BasePage.waitForElement;
 import static support.BasePage.grabText;
 import static support.BasePage.selectOptions;
 import static support.BasePage.scrollTo;
-
-import static utils.DynamicMass.randomName;
-import static utils.DynamicMass.randomLastName;
-import static utils.DynamicMass.randomNameCompany;
-import static utils.DynamicMass.randomEmail;
 
 public class BuyProductActions extends BuyProductPages {
 
@@ -56,20 +52,19 @@ public class BuyProductActions extends BuyProductPages {
         clickJS(btnCheckout.get(1));
     }
 
-    public void fillPaymentForm() {
+    public void fillPaymentForm(UserDmn user) {
         assertTrue(grabText(areaBillings).contains("Billings Information"));
 
-        type(fldFirtsName, randomName());
-        type(fldLastName, randomLastName());
-        type(fldCompany, randomNameCompany());
-        type(fldEmail, randomEmail());
+        type(fldFirtsName, user.getFirstName());
+        type(fldLastName, user.getLastName());
+        type(fldCompany, user.getCompany());
+        type(fldEmail, user.getEmail());
 
-        selectOptions(optCountry, "usa");
-        selectOptions(optCountry, "Afghanistan");
+        selectOptions(optCountry, user.getCountry());
 
-        type(fldZip, "07500000");
-        type(fldAdress, "Rua roberto silva - 3578");
-        type(fldAdditionalNotes, "Informacoes Adicionais");
+        type(fldZip, user.getZip());
+        type(fldAdress, user.getAddress());
+        type(fldAdditionalNotes, user.getAdditionalNotes());
     }
 
     public void saveAndSend() {

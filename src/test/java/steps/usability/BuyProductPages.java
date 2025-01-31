@@ -1,14 +1,18 @@
 package steps.usability;
 
 import actions.usability.BuyProductActions;
+import domain.UserDmn;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import support.BasePage;
 
+import static utils.DynamicMass.generateRandomUser;
+
 public class BuyProductPages extends BasePage {
     BuyProductActions buyProductActions = new BuyProductActions(driver);
+    UserDmn newUser = generateRandomUser();
 
     @And("search for the product {string}")
     public void search_for_the_product(String item) {
@@ -29,7 +33,7 @@ public class BuyProductPages extends BasePage {
 
     @When("they choose the payment method")
     public void they_choose_the_payment_method() {
-        buyProductActions.fillPaymentForm();
+        buyProductActions.fillPaymentForm(newUser);
     }
 
     @And("confirm the purchase")

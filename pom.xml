@@ -17,6 +17,7 @@
         <cucumber.version>7.3.3</cucumber.version>
         <webdriverm.version>5.5.2</webdriverm.version>
         <allure.version>2.19.0</allure.version>
+        <faker.version>1.0.2</faker.version>
     </properties>
 
     <dependencies>
@@ -54,6 +55,11 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
             <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${faker.version}</version>
         </dependency>
     </dependencies>
     <build>
