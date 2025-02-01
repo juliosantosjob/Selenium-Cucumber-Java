@@ -26,7 +26,7 @@ public class BasePage {
     public static void setUp() {
         System.setProperty(TypeDrivers.getPropertyDriver(browser),
                 TypeDrivers.getPathBySystem(browser));
-        driver = Browsers.getInstanceOptions();
+        driver = Browsers.getDriverPathBySystem();
     }
 
     public static void tearDown() {
