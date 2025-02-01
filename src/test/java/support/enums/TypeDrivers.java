@@ -60,7 +60,7 @@ public enum TypeDrivers {
         return TypeDrivers.getBrowser(browser).getPathMac().toString();
     }
 
-    public static String getPathBySystem(String browser) {
+    public static String getDriverPathBySystem(String browser) {
         String osName = System.getProperty("os.name").toLowerCase();
 
         if (osName.contains("win")) {
