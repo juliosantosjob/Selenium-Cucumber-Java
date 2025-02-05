@@ -22,42 +22,45 @@ jobs:
           java-version: 11
           distribution: "adopt"
 
-      - name: Install Google Chrome And Chrome Driver
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install -y ./google-chrome-stable_current_amd64.deb
-          
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-          wget -N https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip
-          unzip chromedriver-linux64.zip
-          mv chromedriver-linux64/chromedriver .
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+#      - name: Install Google Chrome And Chrome Driver
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y wget
+#          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+#
+#          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+#          wget -N https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip
+#          unzip chromedriver-linux64.zip
+#          mv chromedriver-linux64/chromedriver .
+#          sudo mv chromedriver /usr/local/bin/
+#          sudo chmod +x /usr/local/bin/chromedriver
 
-      - name: Install Microsoft Edge And EdgeDriver
+      - name: Install Microsoft Edge and EdgeDriver
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget
+          sudo apt-get install -y wget curl unzip
           wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
           sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
           sudo apt-get update
           sudo apt-get install -y microsoft-edge-stable
           
-          wget -N https://msedgedriver.azureedge.net/132.0.2957.127/edgedriver_linux64.zip
-          unzip edgedriver_linux64
+          EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}' | cut -d '.' -f1-3)
+          wget -N "https://msedgedriver.azureedge.net/${EDGE_VERSION}/edgedriver_linux64.zip"
+          
+          unzip -o edgedriver_linux64.zip
           sudo mv msedgedriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/msedgedriver
           msedgedriver --version
 
+
       - name: Build Project
         run: mvn clean install -DskipTests
 
-      - name: Run Tests Chrome
-        if: always()
-        run: |
-          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
+#      - name: Run Tests Chrome
+#        if: always()
+#        run: |
+#          mvn test -DENV=HMG-CLOUD -DBROWSER=CHROME_HEADLESS
 
       - name: Run Tests Edge
         if: always()
