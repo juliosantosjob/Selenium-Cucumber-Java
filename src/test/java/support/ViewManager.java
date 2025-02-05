@@ -19,7 +19,7 @@ public class ViewManager extends BasePage {
             String[] size = viewPort.toLowerCase().split("x");
             if (size.length != 2)
                 throw new IllegalArgumentException("Invalid viewport size: " + viewPort +
-                        ". Expected format: widthxheight (e.g., 1920x1080).");
+                        ". Expected format: SET_VIEWPORT=widthxheight (SET_VIEWPORT=1920x1080).");
 
             try {
                 int width = parseInt(size[0].trim());

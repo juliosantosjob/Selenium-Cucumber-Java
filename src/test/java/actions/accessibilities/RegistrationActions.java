@@ -23,7 +23,7 @@ public class RegistrationActions extends RegistrationPages {
     }
 
     public void fillForm() {
-        type(fldUserForm, randomName());
+        type(fldUserForm, randomFirstName());
         type(fldEmailForm, randomEmail());
         type(fldPasswordForm, randomPassword());
         clickJS(btnRegistrationSubmit);

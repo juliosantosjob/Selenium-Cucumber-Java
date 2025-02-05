@@ -10,56 +10,56 @@ public class DynamicMass {
     /**
      * Returns a random email.
      *
-     * @return
+     * @return String
      */
 
     public static String randomEmail() {
-        String emailInt = "testName";
-        String emailFinal = "@gmail.com";
+        String nameUser = "user";
+        String domain = "@gmail.com";
         Random randomEmail = new Random();
 
-        int min = 100000;
-        int max = 100000000;
-        int dynamicNumber = randomEmail.nextInt(max - min) + min;
-        return emailInt + dynamicNumber + emailFinal;
+        int min = 1000000;
+        int max = 1000000000;
+        int randomNumber = randomEmail.nextInt(max - min) + min;
+        return nameUser + randomNumber + domain;
     }
 
     /**
      * Returns a random password.
      *
-     * @return
+     * @return String
      */
 
     public static String randomPassword() {
-        Random randomPasswd = new Random();
+        Random random = new Random();
         int min = 10000000;
         int max = 90000000;
-        String dynamicNumber = String.valueOf(randomPasswd.nextInt(max - min) + min);
 
-        return dynamicNumber;
+        String randomNumber = String.valueOf(random.nextInt(max - min) + min);
+        return "Teste@" + randomNumber;
     }
 
     /**
      * Returns a random name.
      *
-     * @return
+     * @return String
      */
 
-    public static String randomName() {
+    public static String randomFirstName() {
         String[] name = {"Pedro", "Gustavo", "João", "Fernando", "Lucas", "Daniel", "Maria", "Rosa", "Bruno", "Luana", "Miguel", "Jose", "Hugo", "Claudia"};
 
         int min = 0;
         int max = (name.length) - 1;
-        Random randomName = new Random();
+        Random random = new Random();
 
-        int position = randomName.nextInt(max - min) + min;
+        int position = random.nextInt(max - min) + min;
         return name[position];
     }
 
     /**
      * Returns a random last name.
      *
-     * @return
+     * @return String
      */
 
 
@@ -68,27 +68,27 @@ public class DynamicMass {
 
         int min = 0;
         int max = (name.length) - 1;
-        Random randomName = new Random();
+        Random random = new Random();
 
-        int position = randomName.nextInt(max - min) + min;
+        int position = random.nextInt(max - min) + min;
         return name[position];
     }
 
     /**
      * Returns a random name company.
      *
-     * @return
+     * @return String
      */
 
     public static String randomNameCompany() {
-        String[] name = {"Next", "Test Software", "Test Machine", "Testsmart", "Testsmart", "Never"};
+        String[] companyName = {"NextQA", "SoftTest", "MachinaTest", "SmartQA", "TestWise", "EverTest"};
 
         int min = 0;
-        int max = (name.length) - 1;
+        int max = (companyName.length) - 1;
         Random randomName = new Random();
 
         int position = randomName.nextInt(max - min) + min;
-        return name[position];
+        return companyName[position];
     }
 
     /**
@@ -98,18 +98,18 @@ public class DynamicMass {
      */
 
     public static UserDmn generateRandomUser() {
-        UserDmn user = new UserDmn();
+        UserDmn newUser = new UserDmn();
         Faker faker = new Faker();
 
-        user.setFirstName(randomName());
-        user.setLastName(randomLastName());
-        user.setCompany(randomNameCompany());
-        user.setEmail(randomEmail());
+        newUser.setFirstName(randomFirstName());
+        newUser.setLastName(randomLastName());
+        newUser.setCompany(randomNameCompany());
+        newUser.setEmail(randomEmail());
+        newUser.setCountry(String.valueOf(faker.country()));
+        newUser.setZip(String.valueOf(faker.code()));
+        newUser.setAddress(String.valueOf(faker.address()));
+        newUser.setAdditionalNotes(String.valueOf(faker.music()));
 
-        user.setCountry(String.valueOf(faker.country()));
-        user.setZip(String.valueOf(faker.code()));
-        user.setAddress(String.valueOf(faker.address()));
-        user.setAdditionalNotes(String.valueOf(faker.music()));
-        return user;
+        return newUser;
     }
 }

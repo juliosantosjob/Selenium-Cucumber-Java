@@ -8,6 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import support.BasePage;
 
 import java.io.File;
+import java.io.IOException;
 
 import static java.lang.System.out;
 
@@ -15,16 +16,14 @@ public class Screenshots extends BasePage {
 
     /**
      * Screenshots settings in the project using adaptation of the allure report.
-     *
-     * @param scenario
      */
 
     public static void shot(Scenario scenario) {
         try {
             File screenshotAs = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             Allure.addAttachment("Screenshot", FileUtils.openInputStream(screenshotAs));
-        } catch (Exception e) {
-            out.println("Error implementing screenshot!");
+        } catch (RuntimeException | IOException e) {
+            throw new RuntimeException("Error implementing screenshot!");
         }
     }
 
@@ -33,18 +32,18 @@ public class Screenshots extends BasePage {
      * in this method the screenshots will be executed at the end of each step, the
      * necessary parameter for the execution would be the scenario itself to be
      * executed.
-     *
-     * @param scenario
      */
 
     public static void takingScreenshot(Scenario scenario) {
-        if (!scenario.isFailed()) {
-            stop(1000);
+        try {
+            if (scenario.isFailed()) {
+                out.println("Scenario Failed: " + scenario.getName());
+            } else {
+                stop(1000);
+            }
             shot(scenario);
-        } else {
-            out.println("****** Scenario Name: [" + scenario.getName() + "]");
-            out.println("****** Scenario Status: [" + scenario.getStatus() + "]");
-            shot(scenario);
+        } catch (Exception e) {
+            out.println("Erro ao capturar screenshot: " + e.getMessage());
         }
     }
 }

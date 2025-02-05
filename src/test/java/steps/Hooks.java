@@ -14,14 +14,14 @@ public class Hooks extends BasePage {
 
     @Before
     public void init(Scenario scenario) {
+        BasePage.setUp();
+        ViewManager.setViewPort();
+
         out.println("*************************************************\n"
                 + "Running Test...\n"
                 + "Scenario Name: [" + scenario.getName() + "]\n"
                 + "Scenario Tags: " + scenario.getSourceTagNames() + "\n"
                 + "*************************************************");
-
-        BasePage.setUp();
-        ViewManager.setViewPort();
     }
 
     @After

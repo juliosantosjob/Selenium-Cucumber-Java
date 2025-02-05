@@ -17,15 +17,16 @@ import static java.lang.System.out;
 
 public class BasePage {
     public static String browser = System.getProperty("BROWSER", "CHROME");
-    public static JavascriptExecutor js;
     protected static WebDriver driver;
-    public static WebDriverWait wait;
     public static long MAT_TIMEOUT = 10;
+    public static JavascriptExecutor js;
+    public static WebDriverWait wait;
     public static Actions action;
     public static Select select;
 
     public static void setUp() {
-        System.setProperty(DriversEnum.getPropertyDriver(browser), DriversEnum.getDriverPathBySystem(browser));
+        System.setProperty(DriversEnum.getPropertyDriver(browser),
+                DriversEnum.getDriverPathBySystem(browser));
         driver = Browsers.getInstanceOptions();
     }
 
