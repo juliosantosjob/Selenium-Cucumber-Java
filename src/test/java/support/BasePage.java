@@ -11,12 +11,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import support.enums.TypeDrivers;
+import support.enums.DriversEnum;
 
 import static java.lang.System.out;
 
 public class BasePage {
     public static String browser = System.getProperty("BROWSER", "CHROME");
+    public static JavascriptExecutor js;
     protected static WebDriver driver;
     public static WebDriverWait wait;
     public static long MAT_TIMEOUT = 10;
@@ -24,9 +25,8 @@ public class BasePage {
     public static Select select;
 
     public static void setUp() {
-        System.setProperty(TypeDrivers.getPropertyDriver(browser),
-                TypeDrivers.getPathBySystem(browser));
-        driver = Browsers.getDriverPathBySystem();
+        System.setProperty(DriversEnum.getPropertyDriver(browser), DriversEnum.getDriverPathBySystem(browser));
+        driver = Browsers.getInstanceOptions();
     }
 
     public static void tearDown() {
@@ -131,9 +131,9 @@ public class BasePage {
     }
 
     public static void clickJS(WebElement webElement) {
-        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+        js = (JavascriptExecutor) getDriver();
         try {
-            executor.executeScript("arguments[0].click();", webElement);
+            js.executeScript("arguments[0].click();", webElement);
         } catch (Exception e) {
             out.println("Error click: " + e.getMessage());
         }
@@ -152,8 +152,10 @@ public class BasePage {
     }
 
     public static WebElement scrollTo(WebElement webElement) {
+        js = (JavascriptExecutor) getDriver();
+
         try {
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", webElement);
+            js.executeScript("arguments[0].scrollIntoView(true);", webElement);
             return webElement;
         } catch (Exception e) {
             out.println("Error scrolling to element: " + e.getMessage());
@@ -188,4 +190,5 @@ public class BasePage {
             out.println("Error execution wait!");
         }
     }
+
 }
