@@ -10,6 +10,8 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import support.ViewManager;
 
+import java.nio.file.Paths;
+
 public class Hooks extends BasePage {
 
     @Before
@@ -19,14 +21,15 @@ public class Hooks extends BasePage {
 
         out.println("*************************************************\n"
                 + "Running Test...\n"
-                + "Scenario Name: [" + scenario.getName() + "]\n"
-                + "Scenario Tags: " + scenario.getSourceTagNames() + "\n"
-                + "*************************************************");
+                + "Scenario Name: " + scenario.getName() + "\n"
+                + "Scenario Feature: " + Paths.get(scenario.getUri()).getFileName().toString() + "\n"
+                + "Scenario Tags: " + scenario.getSourceTagNames());
     }
 
     @After
     public void end(Scenario scenario) {
-        out.println("Scenario Status: [" + scenario.getStatus() + "]\n");
+        out.println("Scenario Status: " + scenario.getStatus()
+                + "\n*************************************************");
         takingScreenshot(scenario);
         BasePage.tearDown();
     }

@@ -13,8 +13,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import support.enums.DriversEnum;
 
-import static java.lang.System.out;
-
 public class BasePage {
     public static String browser = System.getProperty("BROWSER", "CHROME");
     protected static WebDriver driver;
@@ -43,9 +41,9 @@ public class BasePage {
 
     public static void visit(String url) {
         try {
-            driver.get(url);
+            getDriver().get(url);
         } catch (Exception e) {
-            out.println("Error to visit the url " + url);
+            throw new RuntimeException("Error visiting URL: " + url, e);
         }
     }
 
@@ -55,7 +53,7 @@ public class BasePage {
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             return webElement.getText();
         } catch (Exception e) {
-            throw new RuntimeException("Error getting text from element: " + e.getMessage());
+            throw new RuntimeException("Error getting text from element: " + webElement, e);
         }
     }
 
@@ -84,7 +82,7 @@ public class BasePage {
         try {
             getDriver().findElement(By.xpath("//*[text()='" + text + "']")).click();
         } catch (Exception e) {
-            out.println("Not found text: " + text);
+            throw new RuntimeException("Not found text: " + e.getMessage());
         }
     }
 
@@ -95,7 +93,7 @@ public class BasePage {
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.sendKeys(text);
         } catch (Exception e) {
-            out.println("Error trying to send keys: " + e.getMessage());
+            throw new RuntimeException("Error trying to send keys: " + e.getMessage());
         }
     }
 
@@ -106,18 +104,18 @@ public class BasePage {
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.sendKeys(text, enter);
         } catch (Exception e) {
-            out.println("Error trying to send keys: " + e.getMessage());
+            throw new RuntimeException("Error trying to send keys: " + e.getMessage());
         }
     }
 
     public static WebElement waitForElement(WebElement webElement, long... timeout) {
         try {
             wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout.length > 0 ? timeout[0] : MAT_TIMEOUT));
+            wait.until(ExpectedConditions.visibilityOfAllElements(webElement));
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.isDisplayed();
         } catch (Exception e) {
-            out.println("Error waiting for element to be clickable: " + e.getMessage());
-            return null;
+            throw new RuntimeException("Error trying to send keys: " + e.getMessage());
         }
         return webElement;
     }
@@ -127,16 +125,16 @@ public class BasePage {
             wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout.length > 0 ? timeout[0] : MAT_TIMEOUT));
             wait.until(ExpectedConditions.invisibilityOfElementLocated(elementBy));
         } catch (Exception e) {
-            out.println("Error waiting for element to disappear: " + e.getMessage());
+            throw new RuntimeException("Error waiting for element to disappear: " + e.getMessage());
         }
     }
 
     public static void clickJS(WebElement webElement) {
-        js = (JavascriptExecutor) getDriver();
         try {
+            js = (JavascriptExecutor) getDriver();
             js.executeScript("arguments[0].click();", webElement);
         } catch (Exception e) {
-            out.println("Error click: " + e.getMessage());
+            throw new RuntimeException("Error click: " + e.getMessage());
         }
     }
 
@@ -147,32 +145,28 @@ public class BasePage {
             webElement.isEnabled();
             return webElement;
         } catch (Exception e) {
-            out.println("Error waiting for element to be clickable: " + e.getMessage());
-            return null;
+            throw new RuntimeException("Error waiting for element to be clickable: " + e.getMessage());
         }
     }
 
     public static WebElement scrollTo(WebElement webElement) {
-        js = (JavascriptExecutor) getDriver();
-
         try {
+            js = (JavascriptExecutor) getDriver();
             js.executeScript("arguments[0].scrollIntoView(true);", webElement);
-            return webElement;
         } catch (Exception e) {
-            out.println("Error scrolling to element: " + e.getMessage());
-            return null;
+            throw new RuntimeException("Error scrolling to element: " + e.getMessage());
         }
+        return webElement;
     }
 
     public static WebElement mouseHover(WebElement webElement) {
         try {
             action = new Actions(getDriver());
             action.moveToElement(webElement).build().perform();
-            return webElement;
         } catch (Exception e) {
-            out.println("Error hovering mouse to element: " + e.getMessage());
-            return null;
+            throw new RuntimeException("Error hovering mouse to element: " + e.getMessage());
         }
+        return webElement;
     }
 
     public static void selectOptions(WebElement webElement, String option) {
@@ -180,16 +174,15 @@ public class BasePage {
             select = new Select(webElement);
             select.selectByVisibleText(option);
         } catch (Exception e) {
-            out.println("Error selecting option: " + e.getMessage());
+            throw new RuntimeException("Error selecting option: " + e.getMessage());
         }
     }
 
     public static void stop(int timeout) {
         try {
             Thread.sleep(timeout);
-        } catch (InterruptedException ignored) {
-            out.println("Error execution wait!");
+        } catch (InterruptedException e) {
+            throw new RuntimeException("Error execution wait!" + e.getMessage());
         }
     }
-
 }

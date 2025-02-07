@@ -60,7 +60,8 @@ public class BuyProductActions extends BuyProductPages {
         type(fldCompany, user.getCompany());
         type(fldEmail, user.getEmail());
 
-        selectOptions(optCountry, user.getCountry());
+        scrollTo(optCountry);
+        selectOptions(optCountry, "usa");
 
         type(fldZip, user.getZip());
         type(fldAdress, user.getAddress());
