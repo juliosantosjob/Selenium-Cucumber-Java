@@ -3,20 +3,25 @@ package support;
 import env.setup.Envs;
 
 public class SetupEnv {
-    public static String environment = System.getProperty("ENV", "HMG");
 
-    public static String getURLByEnvironment() {
+    public static String getURLByEnvironment(String environment) {
+        String url = null;
+
         switch (environment) {
             case "HMG":
-                return Envs.getEnv("URL_HOM");
+                url = (environment == null || environment.isEmpty()) ? System.getenv("URL_HOM") : Envs.getEnv("URL_HOM");
+                break;
             case "STG":
-                return Envs.getEnv("URL_STG");
-            case "HMG-CLOUD":
-                return System.getenv("URL_HOM");
-            case "STG-CLOUD":
-                return System.getenv("URL_STG");
+                url = (environment == null || environment.isEmpty()) ? System.getenv("URL_STG") : Envs.getEnv("URL_STG");
+                break;
             default:
-                throw new IllegalArgumentException("Invalid environment " + environment + " argument!");
+                throw new IllegalArgumentException("Invalid environment: " + environment);
         }
+
+        if (url == null) {
+            throw new RuntimeException("URL not found for environment: " + environment);
+        }
+
+        return url;
     }
 }
