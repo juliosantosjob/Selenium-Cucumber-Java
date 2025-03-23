@@ -20,14 +20,14 @@ public class Browsers {
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 return new ChromeDriver(chromeOptions);
 
-            case "EDGE":
-                edgeOptions.addArguments("--remote-allow-origins=*");
-                return new EdgeDriver(edgeOptions);
-
-            case "CHROME_HEADLESS":
+           case "CHROME_HEADLESS":
                 chromeOptions.addArguments("--headless");
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 return new ChromeDriver(chromeOptions);
+            
+            case "EDGE":
+                edgeOptions.addArguments("--remote-allow-origins=*");
+                return new EdgeDriver(edgeOptions);
 
             case "EDGE_HEADLESS":
                 edgeOptions.addArguments("--headless");
